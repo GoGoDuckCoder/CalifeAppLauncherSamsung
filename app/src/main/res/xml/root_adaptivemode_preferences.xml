@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="应用兼容模式"
+        app:iconSpaceReserved="false">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="fake_start"
+            android:title="兼容模式开关"
+            app:iconSpaceReserved="false"
+            app:summary="（不建议开启）以兼容模式启动应用。如软件为固定品牌做了特殊优化则伪装启动方式。对应用抽屉-侧栏助手中已添加的应用生效。兼容模式使用需自查兼容或群里询问：如百度地图手机版可以使三星兼容模式，宝宝巴士可使用三星vivo两个模式，乐听可使用vivo模式。兼容模式启动失败会使用默认模式启动（无提示）！！" />
+        <Preference
+            android:dependency="fake_start"
+            android:title="应用兼容设置"
+            app:iconSpaceReserved="false"
+            app:fragment="com.carlifeapplauncher.adapter.FakeStartFragment"
+            app:summary="设置应用兼容模式：请先在应用抽屉或者侧栏中添加应用后再设置"
+            />
+    </PreferenceCategory>
+
+</PreferenceScreen>

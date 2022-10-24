@@ -1,0 +1,3 @@
+C:/Users/Yichao/AndroidStudioProjects/CalifeAppLauncherSamsung/app/.cxx/RelWithDebInfo/071235w4/armeabi-v7a/CMakeFiles/music.dir
+C:/Users/Yichao/AndroidStudioProjects/CalifeAppLauncherSamsung/app/.cxx/RelWithDebInfo/071235w4/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Yichao/AndroidStudioProjects/CalifeAppLauncherSamsung/app/.cxx/RelWithDebInfo/071235w4/armeabi-v7a/CMakeFiles/rebuild_cache.dir

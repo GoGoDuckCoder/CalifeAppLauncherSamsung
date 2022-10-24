@@ -1,0 +1,59 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "music",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "music::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-music-RelWithDebInfo-26b00a39df55a2a9f2cb.json",
+					"name" : "music",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Tang-/OneDrive/WorkSpace/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/.cxx/RelWithDebInfo/3w5ay4e2/x86_64",
+		"source" : "C:/Users/Tang-/OneDrive/WorkSpace/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/src/main/cpp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 1
+	}
+}

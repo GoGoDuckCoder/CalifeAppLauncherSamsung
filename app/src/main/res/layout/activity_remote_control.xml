@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".RemoteControlActivity">
+
+    <FrameLayout
+        android:id="@+id/remoteholder"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="3dp"
+        android:layout_weight="1"></FrameLayout>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="3dp"
+        android:text="遥控器：连接车机后可以在手机上运行本应用，点击即可在车机上打开，非触控车机可用，例如：使用调起车机版本应用，再从手机版本发送导航任务至车机。添加应用：进入车联助手设置-应用抽屉-添加应用。同时调整图标大小与列数同样生效.目前仅支持服务版本为1.5以上" />
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="3dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/addfavo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="3dp"
+        android:text="设置" />
+</LinearLayout>

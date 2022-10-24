@@ -1,0 +1,6 @@
+# ninja log v5
+1	67	680277964	CMakeFiles/music.dir/music.cpp.o	15e7c7e9ada8f030
+67	162	680277964	C:/Users/Tang-/Desktop/WorkSpace/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/build/intermediates/cxx/RelWithDebInfo/372k4p6c/obj/armeabi-v7a/libmusic.so	6dea661269838f5b
+0	9	0	clean	b1bd56f53ae1a308
+0	70	680289954	CMakeFiles/music.dir/music.cpp.o	15e7c7e9ada8f030
+70	145	680289954	C:/Users/Tang-/Desktop/WorkSpace/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/build/intermediates/cxx/RelWithDebInfo/372k4p6c/obj/armeabi-v7a/libmusic.so	6dea661269838f5b

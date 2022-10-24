@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="导航栏助手"
+        app:iconSpaceReserved="false"
+        app:summary="覆盖原车机系统左侧侧栏。收起隐藏：点击侧栏时间">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="godmode"
+            android:title="随车联助手启动"
+            app:iconSpaceReserved="false"
+            app:summary="随车联助手启动：启动车联助手主界面时，自动启动导航栏助手。要求：OneUI5.0，OneUI4.1需通过卡锁屏或者拨打电话生效。" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="godmode_auto"
+            android:title="随Carlife启动"
+            app:iconSpaceReserved="false"
+            app:summary="随Carlife启动：启动车机连接Carlife时，自动启动导航栏助手。权限要求：无障碍 版本要求：车联服务 1.5以上" />
+
+        <!--        <Preference-->
+        <!--            app:dependency="godmode"-->
+        <!--            android:title="添加侧栏应用"-->
+        <!--            app:iconSpaceReserved="false"-->
+        <!--            app:fragment="com.carlifeapplauncher.adapter.AppSelectFragment"/>-->
+        <!--        <EditTextPreference-->
+        <!--            app:iconSpaceReserved="false"-->
+        <!--            android:defaultValue="0"-->
+        <!--            android:key="min_height"-->
+        <!--            android:selectAllOnFocus="true"-->
+        <!--            android:singleLine="true"-->
+        <!--            android:title="最小高度"-->
+        <!--            app:summary="侧栏最小高度，如隐藏后无法刚好遮盖carlife时间，请增加最小高度。"/>-->
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="界面设置"
+        app:iconSpaceReserved="false">
+        <EditTextPreference
+            android:defaultValue="0"
+            android:key="godmodeiconsize"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="图标大小"
+            app:iconSpaceReserved="false"
+            app:summary="设置侧栏图标大小(px)，设置为0，则软件自适应大小。" />
+        <ListPreference
+            android:defaultValue="false"
+            android:entries="@array/godmode_slot_entries"
+            android:entryValues="@array/godmode_slot_values"
+            android:key="godmode_slot_1"
+            android:title="位置1"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="false"
+            android:entries="@array/godmode_slot_entries"
+            android:entryValues="@array/godmode_slot_values"
+            android:key="godmode_slot_2"
+            android:title="位置2"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="false"
+            android:entries="@array/godmode_slot_entries"
+            android:entryValues="@array/godmode_slot_values"
+            android:key="godmode_slot_3"
+            android:title="位置3"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="false"
+            android:entries="@array/godmode_slot_entries"
+            android:entryValues="@array/godmode_slot_values"
+            android:key="godmode_slot_4"
+            android:title="位置4"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="false"
+            android:entries="@array/godmode_slot_entries"
+            android:entryValues="@array/godmode_slot_values"
+            android:key="godmode_slot_5"
+            android:title="位置5"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="自动隐藏"
+        app:iconSpaceReserved="false">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="godmodeautohide"
+            android:title="自动隐藏"
+            app:iconSpaceReserved="false"
+            app:summary="自动隐藏侧栏：如开启，打开后默认隐藏，点击时间显示" />
+        <EditTextPreference
+            android:defaultValue="3"
+            android:key="godmodeautohidetime"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="自动隐藏时间（秒）"
+            app:dependency="godmodeautohide"
+            app:iconSpaceReserved="false"
+            app:summary="自动隐藏时间"
+            app:useSimpleSummaryProvider="true" />
+
+
+    </PreferenceCategory>
+    <!--    <PreferenceCategory-->
+    <!--        android:title="自动替换侧栏（仅老版本使用）"-->
+    <!--        app:iconSpaceReserved="false">-->
+    <!--        <SwitchPreference-->
+    <!--            app:dependency="godmode"-->
+    <!--            android:defaultValue="false"-->
+    <!--            android:key="godmodephone"-->
+    <!--            android:title="自动卡BUG"-->
+    <!--            app:iconSpaceReserved="false"-->
+    <!--            app:summary="首次打开自动拨打电话,卡出侧栏。注：可自行使用宏或者bixby日常，通过锁屏或拨打电话方式替换。也可开启自动操作。" />-->
+    <!--        <EditTextPreference-->
+    <!--            app:dependency="godmodephone"-->
+    <!--            android:defaultValue="10086"-->
+    <!--            android:key="godmodephonenumber"-->
+    <!--            android:selectAllOnFocus="true"-->
+    <!--            android:singleLine="true"-->
+    <!--            android:title="自动拨打号码"-->
+    <!--            app:iconSpaceReserved="false"-->
+    <!--            app:summary="自动拨打号码"-->
+    <!--            app:useSimpleSummaryProvider="true" />-->
+    <!--        <EditTextPreference-->
+    <!--            app:dependency="godmodephone"-->
+    <!--            android:defaultValue="2000"-->
+    <!--            android:key="godmodephonenumbertictok"-->
+    <!--            android:selectAllOnFocus="true"-->
+    <!--            android:singleLine="true"-->
+    <!--            android:title="自动挂断延时（毫秒）"-->
+    <!--            app:iconSpaceReserved="false"-->
+    <!--            app:summary="自动挂断延时号码"-->
+    <!--            />-->
+    <!--    </PreferenceCategory>-->
+
+</PreferenceScreen>

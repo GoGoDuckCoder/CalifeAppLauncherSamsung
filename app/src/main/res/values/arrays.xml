@@ -1,0 +1,67 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <string-array name="ui_location_entries">
+        <item>关闭</item>
+        <item>A区域</item>
+        <item>B区域</item>
+        <item>C区域</item>
+    </string-array>
+
+    <string-array name="ui_location_values">
+        <item>false</item>
+        <item>a</item>
+        <item>b</item>
+        <item>c</item>
+    </string-array>
+
+
+    <string-array name="ui_plugin_entries">
+        <item>关闭</item>
+        <item>应用抽屉</item>
+        <item>音乐助手</item>
+        <item>桌面小插件</item>
+    </string-array>
+
+    <string-array name="ui_plugin_values">
+        <item>false</item>
+        <item>app</item>
+        <item>music</item>
+        <item>widget</item>
+    </string-array>
+
+    <string-array name="ui_modes_entries">
+        <item>黑暗模式</item>
+        <item>明亮模式</item>
+<!--        <item>跟随系统</item>-->
+    </string-array>
+
+    <string-array name="ui_modes_values">
+        <item>dark</item>
+        <item>light</item>
+<!--        <item>system</item>-->
+    </string-array>
+
+
+    <string-array name="godmode_slot_entries">
+        <item>关闭</item>
+        <item>助手主页</item>
+        <item>返回按钮</item>
+    </string-array>
+
+    <string-array name="godmode_slot_values">
+        <item>false</item>
+        <item>home</item>
+        <item>back</item>
+    </string-array>
+
+</resources>

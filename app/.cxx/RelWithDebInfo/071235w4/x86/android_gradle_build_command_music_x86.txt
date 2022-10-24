@@ -1,0 +1,7 @@
+Executable : C:\Users\Yichao\AppData\Local\Android\Sdk\cmake\3.18.1\bin\ninja.exe
+arguments : 
+-C
+C:\Users\Yichao\AndroidStudioProjects\CalifeAppLauncherSamsung\app\.cxx\RelWithDebInfo\071235w4\x86
+music
+jvmArgs : 
+

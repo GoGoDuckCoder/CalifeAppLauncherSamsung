@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:title="通知助手"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="notification_switch"
+            android:title="通知助手"
+            app:iconSpaceReserved="false"
+            app:summary="在车机上显示通知，重启应用生效。注意需要在车机上显示通知，需要每一次连接车机后在车机端启动一次车联助手方可在车机显示通知" />
+
+        <EditTextPreference
+            app:dependency="notification_switch"
+            android:defaultValue="5"
+            android:key="notification_display_seconds"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="通知显示秒数"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            app:dependency="notification_switch"
+            android:defaultValue="100"
+            android:key="notification_opacity"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="通知透明度"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <MultiSelectListPreference
+            app:dependency="notification_switch"
+            android:defaultValue="@array/reply_values"
+            android:entries="@array/reply_values"
+            android:entryValues="@array/reply_entries"
+            android:key="notification_whitelist"
+            android:title="通知白名单"
+            app:iconSpaceReserved="false" />
+        <SwitchPreference
+            app:dependency="notification_switch"
+            android:defaultValue="false"
+            android:key="play_ringtone"
+            android:title="播放提示音"
+            app:iconSpaceReserved="false"
+            app:summary="在收到通知的时候，在车机端播放默认的提示音" />
+        <EditTextPreference
+            app:dependency="play_ringtone"
+            android:defaultValue="100"
+            android:key="play_ringtone_volume"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="提示音量(%)"
+            app:iconSpaceReserved="false"
+            app:summary="以当前声音大小为基准(100%)，请输入"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

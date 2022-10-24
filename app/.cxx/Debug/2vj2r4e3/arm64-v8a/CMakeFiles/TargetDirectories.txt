@@ -1,0 +1,3 @@
+C:/Users/Yichao/Desktop/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/.cxx/Debug/2vj2r4e3/arm64-v8a/CMakeFiles/music.dir
+C:/Users/Yichao/Desktop/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/.cxx/Debug/2vj2r4e3/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/Yichao/Desktop/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/.cxx/Debug/2vj2r4e3/arm64-v8a/CMakeFiles/rebuild_cache.dir

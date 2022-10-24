@@ -1,0 +1,2 @@
+ninja: Entering directory `C:\Users\Yichao\AndroidStudioProjects\CalifeAppLauncherSamsung\app\.cxx\RelWithDebInfo\071235w4\x86'
+ninja: no work to do.

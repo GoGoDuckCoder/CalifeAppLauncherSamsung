@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ta_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="3dp"
+    app:layoutDescription="@xml/touchassistant_scene">
+
+    <ImageButton
+        android:id="@+id/ta_move"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00000000"
+        app:srcCompat="@drawable/dot" />
+
+    <ImageButton
+        android:id="@+id/ta_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00000000"
+        app:srcCompat="@drawable/arrow_left_short" />
+
+    <ImageButton
+        android:id="@+id/ta_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00000000"
+        app:srcCompat="@drawable/house_door" />
+
+    <ImageButton
+        android:id="@+id/ta_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00000000"
+        app:srcCompat="@drawable/heart" />
+    <ImageButton
+        android:id="@+id/ta_kill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00000000"
+        app:srcCompat="@drawable/emoji_kiss" />
+
+    <ImageButton
+        android:id="@+id/ta_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00000000"
+        app:srcCompat="@drawable/grid" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ta_applist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="10000">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>

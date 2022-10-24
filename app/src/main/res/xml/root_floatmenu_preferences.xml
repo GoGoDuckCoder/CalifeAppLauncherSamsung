@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="悬浮助手选项"
+        app:iconSpaceReserved="false"
+        app:summary="触控助手，可以辅助完成快捷操作">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="touchassistant"
+            android:title="随车联助手启动"
+            app:iconSpaceReserved="false"
+            app:summary="随车联助手启动：启动车联助手主界面时，自动启动小白点助手。" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="touchassistant_auto"
+            android:title="随车Carlife启动"
+            app:iconSpaceReserved="false"
+            app:summary="随Carlife启动：启动车机连接Carlife时，自动启动小白点助手。" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="显示模式"
+        app:iconSpaceReserved="false">
+
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:title="模式-小圆点模式"
+            app:iconSpaceReserved="false"
+            app:key="ta_dot_mode"
+            app:summary="以小圆点模式启动悬浮助手" />
+
+        <EditTextPreference
+            android:defaultValue="3"
+            android:key="ta_dot_autohide_time"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="圆点模式-自动隐藏时间"
+            app:dependency="ta_dot_mode"
+            app:iconSpaceReserved="false"
+            app:summary="圆点模式-自动隐藏时间"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            app:isPreferenceVisible="false"
+            android:key="ta_vertical"
+            android:title="模式-垂直模式"
+            app:iconSpaceReserved="false"
+            app:summary="垂直显示悬浮助手" />
+        <SwitchPreference
+            android:defaultValue="false"
+            app:isPreferenceVisible="false"
+            android:key="ta_reverse"
+            android:title="模式-翻转模式"
+            app:iconSpaceReserved="false"
+            app:summary="反转悬浮助手布局" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="功能按钮设置"
+        app:iconSpaceReserved="false"
+        app:summary="触控助手，可以辅助完成快捷操作">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="show_move"
+            android:title="按钮-移动"
+            app:iconSpaceReserved="false"
+            app:summary="是否显示“移动”按钮在触控辅助中" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="show_home"
+            android:title="按钮-主页"
+            app:iconSpaceReserved="false"
+            app:summary="是否显示“主页”按钮在触控辅助中" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="ta_drawer"
+            android:title="按钮-应用抽屉"
+            app:iconSpaceReserved="false"
+            app:summary="开启后会将收藏区的应用同步到悬浮窗口" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="ta_drawer_autohide"
+            android:title="抽屉-自动隐藏"
+            app:dependency="ta_drawer"
+            app:iconSpaceReserved="false"
+            app:summary="开启后仅自动隐藏触控辅助中的收藏应用！" />
+        <EditTextPreference
+            android:defaultValue="5"
+            android:key="ta_drawer_autohide_time"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="自动隐藏时间（秒）"
+            app:dependency="ta_drawer_autohide"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="show_back"
+            android:title="按钮-返回"
+            app:iconSpaceReserved="false"
+            app:summary="是否显示“返回”按钮在触控辅助中，为了避免多次提示开启权限，请设置我的应用的用电设置为“无限制”。" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="show_app"
+            android:title="按钮-专用应用"
+            app:iconSpaceReserved="false"
+            app:summary="请设置 “启动设置”中的”选定应用“，选定应用会出现在助手中" />
+
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="show_kill"
+            android:title="按钮-清理后台"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="界面设置"
+        app:iconSpaceReserved="false">
+        <EditTextPreference
+            android:defaultValue="0"
+            android:key="ta_icon_size"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="尺寸"
+            app:iconSpaceReserved="false"
+            app:summary="设置触控按钮大小，设置为0则自适应大小" />
+        <!--        <EditTextPreference-->
+        <!--            android:defaultValue="0"-->
+        <!--            android:key="ta_radius"-->
+        <!--            android:selectAllOnFocus="true"-->
+        <!--            android:singleLine="true"-->
+        <!--            android:title="圆角"-->
+        <!--            app:iconSpaceReserved="false"-->
+        <!--            app:summary="触控助手四边圆角数值"-->
+        <!--            app:useSimpleSummaryProvider="true" />-->
+        <EditTextPreference
+            android:defaultValue="100"
+            android:key="ta_opacity"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="透明度（%）"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:defaultValue="0#0#0"
+            android:key="ta_rgb"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="背景色"
+            app:iconSpaceReserved="false"
+            app:summary="背景色为RGB模式，格式为：R#G#B ，请参照格式输入，输入错误不生效！温馨提示：Carlife三星版 侧栏颜色为：55#55#55 "
+            app:useSimpleSummaryProvider="false" />
+        <!--        <EditTextPreference-->
+        <!--            android:defaultValue="300"-->
+        <!--            android:key="ta_x"-->
+        <!--            android:selectAllOnFocus="true"-->
+        <!--            android:singleLine="true"-->
+        <!--            android:title="坐标-X"-->
+        <!--            app:iconSpaceReserved="false"-->
+        <!--            app:isPreferenceVisible="false"-->
+        <!--            app:summary="设置初始化位置，如已设置可固定（取消移动按钮开关）"-->
+        <!--            app:useSimpleSummaryProvider="true" />-->
+        <!--        <EditTextPreference-->
+        <!--            android:defaultValue="300"-->
+        <!--            android:key="ta_y"-->
+        <!--            android:selectAllOnFocus="true"-->
+        <!--            android:singleLine="true"-->
+        <!--            android:title="坐标-Y"-->
+        <!--            app:iconSpaceReserved="false"-->
+        <!--            app:isPreferenceVisible="false"-->
+        <!--            app:summary="设置初始化位置，如已设置可固定（取消移动按钮开关）"-->
+        <!--            app:useSimpleSummaryProvider="true" />-->
+    </PreferenceCategory>
+</PreferenceScreen>

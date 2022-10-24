@@ -1,0 +1,14 @@
+# ninja log v5
+0	6	0	clean	b1bd56f53ae1a308
+1	51	681380743	CMakeFiles/music.dir/music.cpp.o	cbafa9dde59f8aa5
+51	104	681380743	C:/Users/Tang-/Desktop/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/build/intermediates/cxx/Debug/2f2e2d3r/obj/x86/libmusic.so	8da8788fc636eeea
+1	6	0	clean	b1bd56f53ae1a308
+1	58	681380905	CMakeFiles/music.dir/music.cpp.o	cbafa9dde59f8aa5
+58	114	681380905	C:/Users/Tang-/Desktop/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/build/intermediates/cxx/Debug/2f2e2d3r/obj/x86/libmusic.so	8da8788fc636eeea
+0	5	0	clean	b1bd56f53ae1a308
+1	47	681386345	CMakeFiles/music.dir/music.cpp.o	cbafa9dde59f8aa5
+48	100	681386345	C:/Users/Tang-/Desktop/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/build/intermediates/cxx/Debug/2f2e2d3r/obj/x86/libmusic.so	8da8788fc636eeea
+0	5	0	clean	b1bd56f53ae1a308
+1	46	681387350	CMakeFiles/music.dir/music.cpp.o	cbafa9dde59f8aa5
+46	101	681387350	C:/Users/Tang-/Desktop/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/build/intermediates/cxx/Debug/2f2e2d3r/obj/x86/libmusic.so	8da8788fc636eeea
+0	7	0	clean	b1bd56f53ae1a308

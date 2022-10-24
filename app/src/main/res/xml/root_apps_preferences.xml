@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="应用抽屉"
+        app:iconSpaceReserved="false"
+        app:summary="请在主界面中自定义区域设置应用抽屉插件">
+
+        <Preference
+            android:title="添加应用"
+            app:fragment="com.carlifeapplauncher.adapter.FavoFragment"
+            app:iconSpaceReserved="false"
+            app:summary="添加需要在主页应用抽屉显示的应用，添加后可在应用抽屉中长按图标以更改顺序。" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="抽屉界面"
+        app:iconSpaceReserved="false">
+        <EditTextPreference
+            android:defaultValue="3"
+            android:key="launcher_col"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="应用列表列数"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:defaultValue="120"
+            android:key="launcher_icon_size"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="启动器图标大小"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:defaultValue="30"
+            android:key="launcher_font_size"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="启动器标签字体大小"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="showlabel"
+            android:title="显示应用标签"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

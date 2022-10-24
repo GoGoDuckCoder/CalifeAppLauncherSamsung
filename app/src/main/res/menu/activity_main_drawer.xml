@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_4_fill"
+            android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/nav_ui"
+            android:icon="@drawable/car_fill"
+            android:title="@string/menu_ui" />
+        <item
+            android:id="@+id/nav_appDrawer"
+            android:icon="@drawable/grid_fill"
+            android:title="@string/menu_appDrawer" />
+
+        <item
+            android:id="@+id/nav_musicHelper"
+            android:icon="@drawable/music_fill"
+            android:title="@string/menu_musicHelper" />
+        <item
+            android:id="@+id/nav_navbarHelper"
+            android:icon="@drawable/side_bar_fill"
+            android:title="@string/menu_navbarHelper" />
+        <item
+            android:id="@+id/nav_floatHelper"
+            android:icon="@drawable/compass_4_fill"
+            android:title="@string/menu_floatHelper" />
+        <item
+            android:id="@+id/nav_notificationHelper"
+            android:icon="@drawable/message_3_fill"
+            android:title="@string/menu_notificationHelper" />
+
+
+        <item
+            android:id="@+id/nav_boot"
+            android:icon="@drawable/rocket_2_fill2"
+            android:title="@string/menu_boot" />
+
+        <item
+            android:id="@+id/nav_experiment"
+            android:icon="@drawable/flask_fill"
+            android:title="@string/menu_experiment" />
+
+        <item
+            android:id="@+id/nav_dev"
+            android:icon="@drawable/android_fill"
+            android:title="@string/menu_dev" />
+    </group>
+</menu>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:title="镜像服务"
+        app:iconSpaceReserved="false"
+        app:key="music_mirror"
+        app:summary="Carlife主页音频卡片适配：映射锁定的音乐播放器到系统（可实现方控）。如出现主页卡片被QQ音乐占用，或切歌卡片被占据，请卸载qq音乐并重新安装，使用qq音乐的时候，请不要授权Carlife qq音乐的读取权限，以保证镜像服务正常使用。" />
+    <PreferenceCategory
+        android:title="播放控制"
+        app:iconSpaceReserved="false">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_preference_1"
+            android:title="控制模式-线控兼容模式"
+            app:iconSpaceReserved="false"
+            app:summary="以线控的方式控制当前播放器，以兼容更老的播放器。无法控制时尝试开启。默认关闭" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="pause_when_close"
+            android:title="自动暂停"
+            app:iconSpaceReserved="false"
+            app:summary="断开Carlife时-暂停当前控制的播放器" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="播放器锁定"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="lock_music_player"
+            android:title="通用服务-锁定的播放器"
+            app:iconSpaceReserved="false"
+            app:summary="锁定播放器后，无法自动切换播放器焦点，需手动切换:设置中切换或通过播放控制器音乐按钮切换" />
+        <ListPreference
+            android:defaultValue="false"
+            android:entries="@array/reply_entries"
+            android:entryValues="@array/reply_values"
+            android:key="lock_music_player_pkg"
+            android:title="当前锁定的播放器"
+            app:dependency="lock_music_player"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <!--        <SwitchPreference-->
+        <!--            app:dependency="music_mirror"-->
+        <!--            android:defaultValue="false"-->
+        <!--            android:key="music_mirror_autostart"-->
+        <!--            android:title="镜像服务-开机自启动"-->
+        <!--            app:iconSpaceReserved="false"-->
+        <!--            app:summary="镜像服务开机自启动，注：需手动打开系统中自启动，以及电量优化：不限制" />-->
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="专辑封面"
+        app:iconSpaceReserved="false">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="showalbum"
+            android:title="播放控制器-显示专辑封面"
+            app:iconSpaceReserved="false"
+            app:summary="是否在播放控制器中显示专辑封面（如果播放器支持的话）" />
+        <EditTextPreference
+            android:defaultValue="80"
+            android:key="album_musk_alpha"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="专辑图片透明度（0-255）"
+            app:iconSpaceReserved="false"
+            app:summary="设置播放控制器专辑封面蒙板透明度"
+            app:useSimpleSummaryProvider="true" />
+        <!--        <SwitchPreference-->
+        <!--            app:dependency="showalbum"-->
+        <!--            android:defaultValue="false"-->
+        <!--            android:key="album_catch"-->
+        <!--            android:title="通用服务-抓取未适配应用专辑封面"-->
+        <!--            app:iconSpaceReserved="false"-->
+        <!--            app:summary="请先关闭该服务，如无法显示专辑封面请再打开尝试。尝试从系统通知栏的音乐播放器抓取封面以适配，专辑封面会较为模糊。" />-->
+    </PreferenceCategory>
+</PreferenceScreen>
