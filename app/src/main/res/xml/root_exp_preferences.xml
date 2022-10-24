@@ -3,36 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:title="Carlife联机后拉起指定应用（最低要求：车联服务1.5）无触屏可用"
-        app:iconSpaceReserved="false">
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="exp_autostart"
-            android:title="Carlife联机后拉起指定应用"
-            app:iconSpaceReserved="false"
-            app:summary="连接车机后直接启动指定应用无需启用助手（也可设置为助手），需要给助手自启动权限，后台无限制，无障碍权限。请保证连接车机时，助手不在后台！！！否则会掉无障碍权限。" />
-        <EditTextPreference
-            android:defaultValue="2"
-            android:dependency="exp_autostart"
-            android:key="exp_delay"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
-            android:title="拉起延迟（秒）"
-            app:iconSpaceReserved="false"
-            app:summary="必须大于1秒，否则会有启动bug" />
-        <ListPreference
-            android:defaultValue="false"
-            android:dependency="exp_autostart"
-            android:entries="@array/reply_entries"
-            android:entryValues="@array/reply_values"
-            android:key="exp_package"
-            android:title="指定应用"
-            app:iconSpaceReserved="false"
-            app:useSimpleSummaryProvider="true" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:title="自动覆盖侧栏助手（适用于：OneUI4.1+车联服务1.5，OneUI5.0不需要卡直接覆盖）两种方式互不兼容"
         app:iconSpaceReserved="false">
         <SwitchPreference
@@ -41,14 +11,16 @@
             android:key="exp_autolock"
             android:title="打开Carlife自动锁屏"
             app:iconSpaceReserved="false"
-            app:summary="开启后，会在Carlife启动时候自动锁屏以达到在低版本覆盖侧栏限制。请将所有设置设置完成之后再启动该项目。" />
+            app:summary="开启后，会在Carlife启动时候自动锁屏以达到在低版本覆盖侧栏限制。开启后会导致无法手机上启动Carlife界面。关闭即可再次启动" />
         <SwitchPreference
+            app:isPreferenceVisible="false"
             android:defaultValue="false"
             android:key="exp_autolockbyphone"
             android:title="连接Carlife自动拨打电话卡BUG"
             app:iconSpaceReserved="false"
             app:summary="开启后，会在Carlife联机后，启动助手的时候，自动拨打电话以达到在低版本覆盖侧栏限制。请将所有设置设置完成之后再启动该项目。" />
         <EditTextPreference
+            app:isPreferenceVisible="false"
             android:defaultValue="10086"
             android:key="exp_autolockbyphone_number"
             android:selectAllOnFocus="true"
@@ -60,10 +32,9 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
-
-
     <PreferenceCategory
         android:title="模拟黑屏"
+        app:isPreferenceVisible="false"
         app:iconSpaceReserved="false">
         <SwitchPreference
             android:defaultValue="false"

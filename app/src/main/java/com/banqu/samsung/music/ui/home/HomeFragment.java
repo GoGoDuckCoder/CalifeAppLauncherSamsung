@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 //import com.banqu.samsung.databinding.FragmentHomeBinding;
+import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.databinding.FragmentHomeBinding;
 import com.banqu.samsung.music.MainActivity;
 import com.carlifeapplauncher.adapter.AppAnnouncement;
@@ -27,7 +29,8 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        if (OpenProvider.isSupported(requireContext())) {
+//        if (OpenProvider.isSupported(requireContext())) {
+        if (Common.isInstalled(requireContext(),"com.samsung.android.carlink")) {
             String versionName = Common.getCarlinkVersionName(getContext());
             binding.textView19.setText("车联服务：" + versionName);
             binding.userpanel.setVisibility(View.VISIBLE);
@@ -50,6 +53,19 @@ public class HomeFragment extends Fragment {
                 Intent i = new Intent();
                 i.setClass(requireContext(), MainActivity.class);
                 startActivity(i);
+            }
+        });
+
+        binding.reboot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityManager.getInstance().clearAll();
+            }
+        });
+        binding.cafe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"请直接加群转账红包！谢谢",Toast.LENGTH_LONG).show();
             }
         });
 

@@ -49,6 +49,7 @@
         <item
             android:id="@+id/nav_dev"
             android:icon="@drawable/android_fill"
-            android:title="@string/menu_dev" />
+            android:title="@string/menu_dev"
+            android:visible="false"/>
     </group>
 </menu>

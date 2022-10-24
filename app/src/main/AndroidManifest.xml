@@ -162,6 +162,8 @@
             android:configChanges="uiMode"
             android:exported="false"
             android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.banqu.music.phoneUI"
             tools:ignore="LockedOrientationActivity" />
 
 
@@ -173,6 +175,8 @@
             android:configChanges="uiMode"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.banqu.music.phoneUI"
             tools:ignore="LockedOrientationActivity" />
 
 
@@ -180,12 +184,12 @@
 
 
 
-        <activity
-            android:name=".ui.donate.Donation"
-            android:configChanges="uiMode"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+<!--        <activity-->
+<!--            android:name=".ui.donate.Donation"-->
+<!--            android:configChanges="uiMode"-->
+<!--            android:exported="false"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            tools:ignore="LockedOrientationActivity" />-->
 
 
 
@@ -195,8 +199,10 @@
             android:name=".deeplink.MusicServiceDeepLink"
             android:excludeFromRecents="true"
             android:exported="true"
-            android:launchMode="standard"
-            android:theme="@style/empty_activity_theme">
+            android:theme="@style/empty_activity_theme"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:taskAffinity="com.banqu.music.CarUI">
 
             <!-- android:taskAffinity="com.banqu.music.PhoneUI" -->
             <intent-filter>
@@ -213,52 +219,52 @@
 
         <!-- 问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题 -->
 
-        <activity
-            android:name=".deeplink.Deeplink"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:theme="@style/empty_activity_theme">
+<!--        <activity-->
+<!--            android:name=".deeplink.Deeplink"-->
+<!--            android:excludeFromRecents="true"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/empty_activity_theme">-->
 
-            <!-- android:launchMode="singleInstance" -->
-            <!-- android:taskAffinity="com.banqu.music.deeplink" -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+<!--            &lt;!&ndash; android:launchMode="singleInstance" &ndash;&gt;-->
+<!--            &lt;!&ndash; android:taskAffinity="com.banqu.music.deeplink" &ndash;&gt;-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
 
-                <data
-                    android:host="tasker"
-                    android:scheme="banqumusic" />
-            </intent-filter>
-        </activity>
-
-
-
-
-
-        <activity
-            android:name=".SettingsActivity"
-            android:configChanges="uiMode"
-            android:exported="true"
-            android:launchMode="standard"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+<!--                <data-->
+<!--                    android:host="tasker"-->
+<!--                    android:scheme="banqumusic" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
 
 
 
 
+<!--        <activity-->
+<!--            android:name=".SettingsActivity"-->
+<!--            android:configChanges="uiMode"-->
+<!--            android:exported="true"-->
+<!--            android:launchMode="standard"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            tools:ignore="LockedOrientationActivity" />-->
 
-        <activity
-            android:name="com.carlifeapplauncher.blackscreen.BlackScreenActivity"
-            android:configChanges="uiMode"
-            android:exported="true"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
-            android:taskAffinity="com.banqu.samsung.blackscreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            tools:ignore="LockedOrientationActivity" />
+
+
+
+
+
+<!--        <activity-->
+<!--            android:name="com.carlifeapplauncher.blackscreen.BlackScreenActivity"-->
+<!--            android:configChanges="uiMode"-->
+<!--            android:exported="true"-->
+<!--            android:launchMode="singleInstance"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:taskAffinity="com.banqu.samsung.blackscreen"-->
+<!--            android:theme="@style/Theme.AppCompat.NoActionBar"-->
+<!--            tools:ignore="LockedOrientationActivity" />-->
 
 
 

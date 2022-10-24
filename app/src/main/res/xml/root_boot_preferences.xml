@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="前置启动"
+        app:iconSpaceReserved="false"
+        app:summary="在连接Calife时自动启动指定应用。要求：车联服务1.5以上">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="exp_autostart"
+            android:title="前置启动"
+            app:iconSpaceReserved="false"
+            app:summary="在连接Calife时自动启动指定应用。要求：车联服务1.5以上" />
+        <ListPreference
+            android:dependency="exp_autostart"
+            android:defaultValue="false"
+            android:entries="@array/reply_entries"
+            android:entryValues="@array/reply_values"
+            android:key="exp_package"
+            android:title="指定应用"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="后置启动"
+        app:iconSpaceReserved="false"
+        app:summary="在车机启动车联助手主界面后启动指定应用">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="jump"
+            android:title="后置启动"
+            app:iconSpaceReserved="false"
+            app:summary="首次在车机上启动车联助手时，会直接跳转指定的应用并同时启动车联助手" />
+        <ListPreference
+            android:dependency="jump"
+            android:defaultValue="false"
+            android:entries="@array/reply_entries"
+            android:entryValues="@array/reply_values"
+            android:key="jump_pkg_lp"
+            android:title="指定应用"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="兼容启动"
+        app:iconSpaceReserved="false"
+        app:summary="模拟其他品牌适配方式打开选取的应用">
+        <Preference
+            android:title="配置兼容模式"
+            app:fragment="com.carlifeapplauncher.adapter.FakeStartFragment"
+            app:iconSpaceReserved="false"
+            app:summary="尝试以友商车机适配模式启动应用以适配横屏显示" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

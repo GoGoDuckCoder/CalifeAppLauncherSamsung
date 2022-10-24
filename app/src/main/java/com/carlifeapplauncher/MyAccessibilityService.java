@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
 
 import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.deeplink.DeepLinkService;
@@ -15,6 +16,11 @@ import com.carlifeapplauncher.adapter.OpenProvider;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import java.util.List;
+import java.util.TimerTask;
+
+import androidx.preference.PreferenceManager;
 
 public class MyAccessibilityService extends AccessibilityService {
 
@@ -128,30 +134,23 @@ public class MyAccessibilityService extends AccessibilityService {
 //
 //    private boolean ConnectLockFlag = false;
 
-//    private void autolock() {
-//        if (!OpenProvider.isSupported(this)) {
-//            return;
-//        }
-//        if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("exp_autolock", false)) {
-//            return;
-//        }
-////        Log.i(TAG, "autolock: "+OpenProvider.isConnected(this));
-////        if (!OpenProvider.isConnected(this)) {
-////            if (ConnectLockFlag) {
-////                performGlobalAction(AccessibilityService.GLOBAL_ACTION_LOCK_SCREEN);
-////            } else {
-////                ConnectLockFlag = false;
-////            }
-////        }else
-////        {
-////            ConnectLockFlag = !ConnectLockFlag;
-////        }
+    private void autolock() {
+        if (!OpenProvider.isSupported(this)) {
+            return;
+        }
+        if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("exp_autolock", false)) {
+            return;
+        }
+//        Log.i(TAG, "autolock: "+OpenProvider.isConnected(this));
+        if (!OpenProvider.isConnected(this)) {
+                performGlobalAction(AccessibilityService.GLOBAL_ACTION_LOCK_SCREEN);
+        }
 //
 //        if (!OpenProvider.isConnected(this)) {
 //            Log.i(TAG, "lock !");
 //            performGlobalAction(AccessibilityService.GLOBAL_ACTION_LOCK_SCREEN);
 //        }
-//    }
+    }
 
 
 //    AccessibilityNodeInfo tempnode;
@@ -169,8 +168,11 @@ public class MyAccessibilityService extends AccessibilityService {
 
         if (pkgName.equals("com.baidu.carlife")) {
             lifeCycle();
-//            autolock();
+            autolock();
 //            autostart();
+            //phone
+
+
         }
 
 
@@ -226,7 +228,7 @@ public class MyAccessibilityService extends AccessibilityService {
 ////            }
 //            }
 //        }
-
+//
 
     }
 

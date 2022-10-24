@@ -16,9 +16,9 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="touchassistant_auto"
-            android:title="随车Carlife启动"
+            android:title="随Carlife启动"
             app:iconSpaceReserved="false"
-            app:summary="随Carlife启动：启动车机连接Carlife时，自动启动小白点助手。" />
+            app:summary="随Carlife启动：启动车机连接Carlife时，自动启动小白点助手。权限要求：无障碍 版本要求：车联服务 1.5以上" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="显示模式"
@@ -107,10 +107,17 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="show_app"
-            android:title="按钮-专用应用"
+            android:title="按钮-最爱应用"
+            app:iconSpaceReserved="false"/>
+        <ListPreference
+            android:dependency="show_app"
+            android:defaultValue="false"
+            android:entries="@array/reply_entries"
+            android:entryValues="@array/reply_values"
+            android:key="ta_favo_app"
+            android:title="最爱应用"
             app:iconSpaceReserved="false"
-            app:summary="请设置 “启动设置”中的”选定应用“，选定应用会出现在助手中" />
-
+            app:useSimpleSummaryProvider="true" />
 
         <SwitchPreference
             android:defaultValue="false"

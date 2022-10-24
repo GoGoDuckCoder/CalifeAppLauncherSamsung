@@ -39,4 +39,10 @@ public class ActivityManager {
         }
     }
 
+    public void clearAll() {
+        for (Activity activity : activities) {
+            activity.finish();
+        }
+    }
+
 }

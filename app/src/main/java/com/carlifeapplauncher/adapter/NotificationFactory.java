@@ -5,8 +5,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Insets;
 import android.graphics.PixelFormat;
 import android.media.AudioAttributes;
+import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -14,7 +16,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.view.WindowManager;
+import android.view.WindowMetrics;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,8 +37,8 @@ import androidx.preference.PreferenceManager;
 
 public class NotificationFactory {
 
-    private NotificationReceiver notificationReceiver;
     private Context context;
+    private NotificationReceiver notificationReceiver;
     //UI
     private int left;
     private int width;
@@ -42,22 +47,27 @@ public class NotificationFactory {
 
     //Setting
     private int notification_display_seconds;
-    private boolean notification_switch;
 
-//    private ArrayList<String> blacklist;
-//    private ArrayList<String> whitelist;
-//    private ArrayList<String> black_words_list;
+
+    private static NotificationFactory notificationFactory;
+
+    public static NotificationFactory getInstance() {
+        return notificationFactory;
+    }
+
+    //require activity context
+    public static void createInstance(Context context) {
+        notificationFactory = new NotificationFactory(context);
+    }
 
     public NotificationFactory(Context context) {
         this.context = context;
-    }
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowMetrics windowMetrics = wm.getCurrentWindowMetrics();
+        WindowInsets windowInsets = windowMetrics.getWindowInsets();
+        Insets insets = windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.navigationBars() | WindowInsets.Type.displayCutout());
 
-    public void onCreate() {
-        notification_switch = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("notification_switch", false);
-        if (!notification_switch) {
-            return;
-        }
-        left = 0;
+        left = insets.left;
         width = 0;
         notificationReceiver = new NotificationReceiver();
         IntentFilter filter = new IntentFilter();
@@ -68,25 +78,20 @@ public class NotificationFactory {
         notification_background_color = ContextCompat.getColor(context, R.color.cus_notification_background_color);
         notification_background_color = ColorUtils.setAlphaComponent(notification_background_color, opacity);
         notification_text_color = ContextCompat.getColor(context, R.color.cus_notification_text_color);
-//        whitelist = getwhitelist();
-//        blacklist = getblacklist();
-//        black_words_list = getblackwordslist();
     }
 
     public void onDestroy() {
         if (notificationReceiver != null) {
             LocalBroadcastManager.getInstance(context).unregisterReceiver(notificationReceiver);
         }
-
+        notificationFactory = null;
     }
 
 
     public class NotificationReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context c, Intent intent) {
-            if (notification_switch) {
-                shownotification(context, intent);
-            }
+            shownotification(context, intent);
         }
     }
 
@@ -121,12 +126,11 @@ public class NotificationFactory {
             width = WindowManager.LayoutParams.WRAP_CONTENT;
         }
 
-        lp = new WindowManager.LayoutParams(width, WindowManager.LayoutParams.WRAP_CONTENT, 0, 0, PixelFormat.TRANSPARENT);
-
+        lp = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT, 0, 0, PixelFormat.TRANSPARENT);
         lp.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         lp.gravity = Gravity.LEFT | Gravity.TOP;
         lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
-        lp.x = left;
+        lp.x = 0;
         lp.y = 0;
         lp.windowAnimations = R.style.anim_notification;
 
@@ -183,6 +187,7 @@ public class NotificationFactory {
 
         Common.setBgRadius(v_notification_panel, 50);
         //add
+        Common.setMargin(v_notification_panel, left, 0, 0, 0);
         wm.addView(panel, lp);
         if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("play_ringtone", false)) {
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -192,19 +197,12 @@ public class NotificationFactory {
             Log.i("Volume", Float.toString(volume));
             r.setAudioAttributes(new AudioAttributes.Builder()
                     .setFlags(AudioAttributes.USAGE_UNKNOWN | AudioAttributes.USAGE_ALARM | AudioAttributes.CONTENT_TYPE_SONIFICATION)
+//                    .setFlags(AudioAttributes.USAGE_MEDIA)
                     .build());
             r.play();
         }
 
 
-    }
-
-    public void setLeft(int left) {
-        this.left = left;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
     }
 }
 

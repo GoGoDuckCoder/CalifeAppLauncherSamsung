@@ -60,7 +60,7 @@
     <Preference
         android:title="应用兼容模式"
         android:dependency="pro"
-        app:fragment="com.carlifeapplauncher.activity.SettingsActivity$SettingsAdaptiveModeFragment"
+        app:fragment="com.carlifeapplauncher.adapter.FakeStartFragment"
         app:iconSpaceReserved="false"
         app:summary="尝试以友商车机适配模式启动应用以适配横屏显示" />
 

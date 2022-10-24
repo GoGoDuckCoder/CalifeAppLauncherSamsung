@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.banqu.samsung.music.HomeActivity;
+import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.adapter.MyFragmentDisplayer;
 import com.banqu.samsung.music.R;
 import com.banqu.samsung.music.SettingsActivity;
@@ -33,6 +34,7 @@ public class IntroducttoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityManager.getInstance().add(this);
         NightMode.setCustomNightModeSetting(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -42,6 +44,12 @@ public class IntroducttoryActivity extends AppCompatActivity {
         initAdapter();
         initStart();
 
+    }
+    @Override
+    protected void onDestroy()
+    {
+        ActivityManager.getInstance().remove(this);
+        super.onDestroy();
     }
 
     /**
@@ -101,7 +109,7 @@ public class IntroducttoryActivity extends AppCompatActivity {
 
                 if(!Common.isIgnoringBatteryOptimizations(getApplicationContext()))
                 {
-                    Common.requestIgnoreBatteryOptimizations(getApplicationContext());
+                    Common.requestIgnoreBatteryOptimizations(IntroducttoryActivity.this);
                 }
                 else
                 {

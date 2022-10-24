@@ -3,12 +3,15 @@ package com.carlifeapplauncher;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
+
+import com.carlifeapplauncher.adapter.Common;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,7 +26,7 @@ public class NotificationListener extends NotificationListenerService {
 
     private static String TAG = "NotificationListenerService";
 
-    private static boolean task_notification;
+    private boolean task_notification;
 
     private static NotificationListener instance;
     private static boolean isReady;
@@ -51,17 +54,15 @@ public class NotificationListener extends NotificationListenerService {
 
     public static void ensureConnection(Context context) {
         if (isReady()) {
-//            Log.i(TAG, "ensureConnection: 已运行,返回");
+            Log.i(TAG, "ensureConnection: 已运行,返回");
         } else {
-//            Log.i(TAG, "ensureConnection: 未运行，重连");
-
+            Log.i(TAG, "ensureConnection: 未运行，重连");
             PackageManager pm = context.getPackageManager();
             pm.setComponentEnabledSetting(new ComponentName(context.getApplicationContext(), NotificationListener.class),
                     PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
             pm.setComponentEnabledSetting(new ComponentName(context.getApplicationContext(), NotificationListener.class),
                     PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
 //            NotificationListener.requestRebind(new ComponentName(context, NotificationListener.class));
-
         }
     }
 //    public void toggleNotificationListenerService() {
@@ -85,9 +86,10 @@ public class NotificationListener extends NotificationListenerService {
     public void killConnection(Context context) {
         //clear all task
         if (isReady()) {
-//            Log.i(TAG, "killConnection: kill");
+            Log.i(TAG, "killConnection: kill");
             isReady = false;
             task_notification = false;
+
 //            task_music = false;
 //            focus = null;
 //            title = null;
@@ -110,9 +112,10 @@ public class NotificationListener extends NotificationListenerService {
 
     @Override
     public void onListenerConnected() {
-//        Log.i(TAG, "onListenerConnected: 服务已连接");
+        Log.i(TAG, "onListenerConnected: 服务已连接");
         isReady = true;
-        task_notification = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("notification_switch", false);
+        task_notification = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("notification_switch", false)
+                || PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("notification_switch_auto", false);
         whitelist = getwhitelist();
     }
 
@@ -120,14 +123,13 @@ public class NotificationListener extends NotificationListenerService {
     public void onListenerDisconnected() {
         task_notification = false;
         isReady = false;
-//        Log.i(TAG, "onListenerDisconnected: 服务已断开");
+        Log.i(TAG, "onListenerDisconnected: 服务已断开");
     }
 
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
         if (task_notification) {
-            
             if (!whitelist.contains(sbn.getPackageName())) {
                 return;
             }
@@ -150,7 +152,25 @@ public class NotificationListener extends NotificationListenerService {
     private ArrayList<String> getwhitelist() {
         Set<String> set = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getStringSet("notification_whitelist", new HashSet<>());
         ArrayList<String> temp = new ArrayList<String>();
-        temp.addAll(set);
+        boolean lost = false;
+        for(String pkg : set)
+        {
+            if(Common.isInstalled(getApplicationContext(),pkg))
+            {
+                temp.add(pkg);
+            }
+            else
+            {
+                lost = true;
+            }
+        }
+
+        if(lost)
+        {
+            SharedPreferences.Editor ed  = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
+            ed.putStringSet("notification_whitelist",new HashSet<>(temp));
+            ed.apply();
+        }
         return temp;
     }
 

@@ -20,12 +20,14 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.databinding.ActivityMainBinding;
 import com.carlifeapplauncher.NotificationListener;
 import com.carlifeapplauncher.adapter.Common;
 import com.carlifeapplauncher.adapter.FakeStart;
 import com.carlifeapplauncher.adapter.NavBar;
 import com.carlifeapplauncher.adapter.NightMode;
+import com.carlifeapplauncher.adapter.NotificationFactory;
 import com.carlifeapplauncher.adapter.TouchAssistant;
 import com.carlifeapplauncher.alive.Alive;
 import com.carlifeapplauncher.apps.AppsUI;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean phone_godmode;
     private boolean phone_ta;
     private boolean phone_music;
+    private boolean phone_noti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +81,12 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        ActivityManager.getInstance().add(this);
 
 //        WindowInsetsController controller = getWindow().getInsetsController();
 //        controller.hide(WindowInsets.Type.statusBars());
 
-        jump();
+
 
 
 //        CarViewInit = true;
@@ -144,6 +148,12 @@ public class MainActivity extends AppCompatActivity {
 //        blackScreen.show();
         phone_godmode = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("godmode", false);
         phone_ta = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("touchassistant", false);
+        phone_music = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("music_mirror", false);
+        phone_noti = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notification_switch", false);
+
+        if (phone_music || phone_noti) {
+            NotificationListener.ensureConnection(getApplicationContext());
+        }
 
         if (phone_godmode) {
             if (NavBar.getInstance() == null) {
@@ -157,12 +167,19 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-       phone_music= PreferenceManager.getDefaultSharedPreferences(this).getBoolean("music_mirror", false);
         if (phone_music) {
             musicServiceOperator = MediaSessionConnectionOperator.getInstance(getApplicationContext());
-//            musicServiceOperator = MediaSessionConnectionOperator.getInstance(this);
             musicServiceOperator.connect();
         }
+
+        if (phone_noti) {
+            if(NotificationFactory.getInstance()==null)
+            {
+                NotificationFactory.createInstance(this);
+            }
+        }
+
+        jump();
     }
 
 
@@ -207,9 +224,9 @@ public class MainActivity extends AppCompatActivity {
 //        godMode.onDestroy();
 //        nf.onDestroy();
 
-        if (NotificationListener.isReady()) {
-            NotificationListener.getInstance().killConnection(this);
-        }
+//        if (NotificationListener.isReady()) {
+//            NotificationListener.getInstance().killConnection(this);
+//        }
 
         Alive a = new Alive(this);
         a.onDestroy();
@@ -238,9 +255,21 @@ public class MainActivity extends AppCompatActivity {
             musicServiceOperator.disconnect();
         }
 
+        if (phone_noti) {
+            if(NotificationFactory.getInstance()!=null)
+            {
+                NotificationFactory.getInstance().onDestroy();
+            }
+            if (NotificationListener.isReady()) {
+                NotificationListener.getInstance().killConnection(this);
+            }
+        }
+
+
 
         mainActivity = null;
 
+        ActivityManager.getInstance().remove(this);
         super.onDestroy();
     }
 
@@ -259,30 +288,29 @@ public class MainActivity extends AppCompatActivity {
         boolean jump = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("jump", false);
         if (jump) {
             String jump_pkg = PreferenceManager.getDefaultSharedPreferences(this).getString("jump_pkg_lp", "false");
-            boolean close = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("close_after_jump", false);
-            if (close) {
-                startJump(jump_pkg);
-                finish();
-            } else {
-                int delay = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("jump_delay", "2"));
-                if (delay == 0) {
-                    startJump(jump_pkg);
-                } else {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Thread.sleep(delay * 1000);
-                                startJump(jump_pkg);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }).start();
-                }
-            }
-
-
+//            boolean close = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("close_after_jump", false);
+//            if (close) {
+//                startJump(jump_pkg);
+//                finish();
+//            } else {
+//                int delay = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("jump_delay", "2"));
+//                if (delay == 0) {
+//                    startJump(jump_pkg);
+//                } else {
+//                    new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            try {
+//                                Thread.sleep(delay * 1000);
+//                                startJump(jump_pkg);
+//                            } catch (InterruptedException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    }).start();
+//                }
+//            }
+            startJump(jump_pkg);
         }
     }
 

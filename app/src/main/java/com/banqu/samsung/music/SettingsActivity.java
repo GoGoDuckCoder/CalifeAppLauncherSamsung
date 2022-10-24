@@ -20,8 +20,6 @@ import android.text.style.ImageSpan;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.banqu.samsung.music.MainActivity;
-import com.banqu.samsung.music.R;
 import com.carlifeapplauncher.MyAccessibilityService;
 import com.carlifeapplauncher.NotificationListener;
 import com.carlifeapplauncher.adapter.AppInfo;
@@ -130,35 +128,35 @@ public class SettingsActivity extends AppCompatActivity implements
 
     }
 
-    public static class SettingsJumpFragment extends PreferenceFragmentCompat {
-        @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            setPreferencesFromResource(R.xml.root_jump_preferences, rootKey);
-
-
-            ListPreference pref_jump_lp = findPreference("jump_pkg_lp");
-            String pkg = pref_jump_lp.getValue();
-            if (!Common.isInstalled(requireContext(), pkg)) {
-                pref_jump_lp.setValue("false");
-            }
-
-            ArrayList<SpannableString> entries = new ArrayList<SpannableString>();
-            ArrayList<String> values = new ArrayList<String>();
-            ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
-            for (AppInfo app : all_app) {
-                entries.add(createEntrie(app.label.toString(), app.icon));
-                values.add(app.packageName.toString());
-            }
-            entries.add(0, new SpannableString("关闭"));
-            values.add(0, "false");
-
-            pref_jump_lp.setEntries(entries.toArray(new SpannableString[entries.size()]));
-            pref_jump_lp.setEntryValues(values.toArray(new String[values.size()]));
-
-
-        }
-
-    }
+//    public static class SettingsJumpFragment extends PreferenceFragmentCompat {
+//        @Override
+//        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+//            setPreferencesFromResource(R.xml.root_jump_preferences, rootKey);
+//
+//
+//            ListPreference pref_jump_lp = findPreference("jump_pkg_lp");
+//            String pkg = pref_jump_lp.getValue();
+//            if (!Common.isInstalled(requireContext(), pkg)) {
+//                pref_jump_lp.setValue("false");
+//            }
+//
+//            ArrayList<SpannableString> entries = new ArrayList<SpannableString>();
+//            ArrayList<String> values = new ArrayList<String>();
+//            ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
+//            for (AppInfo app : all_app) {
+//                entries.add(createEntrie(app.label.toString(), app.icon));
+//                values.add(app.packageName.toString());
+//            }
+//            entries.add(0, new SpannableString("关闭"));
+//            values.add(0, "false");
+//
+//            pref_jump_lp.setEntries(entries.toArray(new SpannableString[entries.size()]));
+//            pref_jump_lp.setEntryValues(values.toArray(new String[values.size()]));
+//
+//
+//        }
+//
+//    }
 
     public static class SettingsEXPFragment extends PreferenceFragmentCompat {
         @Override
@@ -166,21 +164,7 @@ public class SettingsActivity extends AppCompatActivity implements
             setPreferencesFromResource(R.xml.root_exp_preferences, rootKey);
             SwitchPreference exp_autolockbyphone = findPreference("exp_autolockbyphone");
 //
-            SwitchPreference exp_autostart = findPreference("exp_autostart");
-            exp_autostart.setOnPreferenceChangeListener(
-                    new Preference.OnPreferenceChangeListener() {
-                        @Override
-                        public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
-                            if ((Boolean) newValue) {
-                                if (!Common.checkAccessibilityPermission(getContext(), MyAccessibilityService.class)) {
-                                    Common.requestAccessibilityPermission(getContext());
-                                    return false;
-                                }
-                            }
-                            return true;
-                        }
-                    }
-            );
+
 
             SwitchPreference exp_autolock = findPreference("exp_autolock");
             exp_autolock.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -198,56 +182,6 @@ public class SettingsActivity extends AppCompatActivity implements
                     return true;
                 }
             });
-            exp_autostart.setOnPreferenceChangeListener(
-                    new Preference.OnPreferenceChangeListener() {
-                        @Override
-                        public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
-                            if ((Boolean) newValue) {
-//                                god2.setChecked(false);
-
-                                if (!Common.checkAccessibilityPermission(getContext(), MyAccessibilityService.class)) {
-                                    Common.requestAccessibilityPermission(getContext());
-                                    return false;
-                                }
-
-                            }
-                            return true;
-                        }
-                    }
-            );
-
-            ListPreference pref_jump_lp = findPreference("exp_package");
-            String pkg = pref_jump_lp.getValue();
-            if (!Common.isInstalled(requireContext(), pkg)) {
-                pref_jump_lp.setValue("false");
-            }
-
-            ArrayList<SpannableString> entries = new ArrayList<SpannableString>();
-            ArrayList<String> values = new ArrayList<String>();
-            ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
-            for (AppInfo app : all_app) {
-                if (!app.packageName.toString().equals("com.banqu.samsung.music")) {
-                    entries.add(createEntrie(app.label.toString(), app.icon));
-                    values.add(app.packageName.toString());
-                }
-            }
-            entries.add(0, new SpannableString("关闭"));
-            values.add(0, "false");
-
-            pref_jump_lp.setEntries(entries.toArray(new SpannableString[entries.size()]));
-            pref_jump_lp.setEntryValues(values.toArray(new String[values.size()]));
-
-            Preference p1 = findPreference("exp_delay");
-            p1.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
-                    if (is_numeric((String) newValue, 1, 999999)) {
-                        return true;
-                    }
-                    return false;
-                }
-            });
-
 
             exp_autolockbyphone.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -639,6 +573,25 @@ public class SettingsActivity extends AppCompatActivity implements
 //            Preference pref_touchassistant8 = findPreference("ta_radius");
 //            pref_touchassistant8.setOnPreferenceChangeListener(this);
 
+            ListPreference pref_jump_lp = findPreference("ta_favo_app");
+            String pkg = pref_jump_lp.getValue();
+            if (!Common.isInstalled(requireContext(), pkg)) {
+                pref_jump_lp.setValue("false");
+            }
+
+            ArrayList<SpannableString> entries = new ArrayList<SpannableString>();
+            ArrayList<String> values = new ArrayList<String>();
+            ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
+            for (AppInfo app : all_app) {
+                entries.add(createEntrie(app.label.toString(), app.icon));
+                values.add(app.packageName.toString());
+            }
+            entries.add(0, new SpannableString("关闭"));
+            values.add(0, "false");
+
+            pref_jump_lp.setEntries(entries.toArray(new SpannableString[entries.size()]));
+            pref_jump_lp.setEntryValues(values.toArray(new String[values.size()]));
+
         }
 
 
@@ -709,13 +662,85 @@ public class SettingsActivity extends AppCompatActivity implements
         }
     }
 
-    public static class SettingsNotificationFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
+    public static class SettingsBootFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
+
+        @Override
+        public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+            setPreferencesFromResource(R.xml.root_boot_preferences, rootKey);
+
+            SwitchPreference exp_autostart = findPreference("exp_autostart");
+            exp_autostart.setOnPreferenceChangeListener(
+                    new Preference.OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
+                            if ((Boolean) newValue) {
+                                if (!Common.checkAccessibilityPermission(getContext(), MyAccessibilityService.class)) {
+                                    Common.requestAccessibilityPermission(getContext());
+                                    return false;
+                                }
+                            }
+                            return true;
+                        }
+                    }
+            );
+
+            ListPreference pref_jump_lp = findPreference("exp_package");
+
+
+            String pkg = pref_jump_lp.getValue();
+
+            if (!Common.isInstalled(requireContext(), pkg)) {
+                pref_jump_lp.setValue("false");
+            }
+
+            ArrayList<SpannableString> entries = new ArrayList<SpannableString>();
+            ArrayList<String> values = new ArrayList<String>();
+            ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
+            for (AppInfo app : all_app) {
+//                if (!app.packageName.toString().equals("com.banqu.samsung.music")) {
+                    entries.add(createEntrie(app.label.toString(), app.icon));
+                    values.add(app.packageName.toString());
+//                }
+            }
+            entries.add(0, new SpannableString("关闭"));
+            values.add(0, "false");
+
+            pref_jump_lp.setEntries(entries.toArray(new SpannableString[entries.size()]));
+            pref_jump_lp.setEntryValues(values.toArray(new String[values.size()]));
+
+
+            ListPreference pref_jump_lp_real = findPreference("jump_pkg_lp");
+
+            String pkg2 = pref_jump_lp_real.getValue();
+
+            if (!Common.isInstalled(requireContext(), pkg2)) {
+                pref_jump_lp_real.setValue("false");
+            }
+            pref_jump_lp_real.setEntries(entries.toArray(new SpannableString[entries.size()]));
+            pref_jump_lp_real.setEntryValues(values.toArray(new String[values.size()]));
+
+
+        }
+
+
+        @Override
+        public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
+            return false;
+        }
+    }
+
+        public static class SettingsNotificationFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
+        SwitchPreference pref_touchassistant;
+        SwitchPreference pref_touchassistant_auto;
+
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_notification_preferences, rootKey);
 
-            Preference pref_touchassistant = findPreference("notification_switch");
+            pref_touchassistant = findPreference("notification_switch");
             pref_touchassistant.setOnPreferenceChangeListener(this);
+            pref_touchassistant_auto = findPreference("notification_switch_auto");
+            pref_touchassistant_auto.setOnPreferenceChangeListener(this);
 
             Preference pref_touchassistant1 = findPreference("notification_display_seconds");
             pref_touchassistant1.setOnPreferenceChangeListener(this);
@@ -746,18 +771,42 @@ public class SettingsActivity extends AppCompatActivity implements
         public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
             switch (preference.getKey()) {
                 case "notification_switch":
-                    if (!NotificationListener.isEnabled(getContext())) {
-                        startActivity(new Intent(
-                                "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
-                        return false;
-                    } else {
-                        if (Common.checkFloatPermission(getContext())) {
-                            return true;
-                        } else {
-                            Common.requestFloatPermission(getContext());
+                    if ((boolean) newValue) {
+                        if (!Common.checkFloatPermission(requireContext())) {
+                            Common.requestFloatPermission(requireContext());
                             return false;
                         }
+                        if (!NotificationListener.isEnabled(requireContext())) {
+                            startActivity(new Intent(
+                                    "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
+                            return false;
+                        }
+                        if (pref_touchassistant_auto.isChecked()) {
+                            pref_touchassistant_auto.setChecked(false);
+                        }
                     }
+                    return true;
+                case "notification_switch_auto":
+
+                    if ((boolean) newValue) {
+                        if (!Common.checkFloatPermission(requireContext())) {
+                            Common.requestFloatPermission(requireContext());
+                            return false;
+                        }
+                        if (!NotificationListener.isEnabled(requireContext())) {
+                            startActivity(new Intent(
+                                    "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
+                            return false;
+                        }
+                        if (!Common.checkAccessibilityPermission(requireContext(), MyAccessibilityService.class)) {
+                            Common.requestAccessibilityPermission(requireContext());
+                            return false;
+                        }
+                        if (pref_touchassistant.isChecked()) {
+                            pref_touchassistant.setChecked(false);
+                        }
+                    }
+                    return true;
                 case "notification_display_seconds":
                 case "notification_opacity":
                 case "play_ringtone_volume":
@@ -820,10 +869,10 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<String> values = new ArrayList<String>();
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
-                if (!app.packageName.equals("com.banqu.samsung.music")) {
+//                if (!app.packageName.equals("com.banqu.samsung.music")) {
                     entries.add(createEntrie(app.label.toString(), app.icon));
                     values.add(app.packageName.toString());
-                }
+//                }
             }
             entries.add(0, new SpannableString("关闭"));
             values.add(0, "false");

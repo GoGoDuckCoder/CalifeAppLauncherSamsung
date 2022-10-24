@@ -3,17 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
         android:title="通知助手"
-        app:iconSpaceReserved="false">
+        app:iconSpaceReserved="false"
+        app:summary="在车机上显示应用通知，重启应用生效。">
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="notification_switch"
-            android:title="通知助手"
+            android:title="随车联助手启动"
             app:iconSpaceReserved="false"
-            app:summary="在车机上显示通知，重启应用生效。注意需要在车机上显示通知，需要每一次连接车机后在车机端启动一次车联助手方可在车机显示通知" />
+            app:summary="随车联助手启动：启动车联助手主界面时，启动通知助手" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="notification_switch_auto"
+            android:title="随Carlife启动"
+            app:iconSpaceReserved="false"
+            app:summary="随Carlife启动：启动车机连接Carlife时，自动后台启动通知助手。权限要求：无障碍 版本要求：车联服务 1.5以上"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="其他设置"
+        app:iconSpaceReserved="false">
         <EditTextPreference
-            app:dependency="notification_switch"
             android:defaultValue="5"
             android:key="notification_display_seconds"
             android:selectAllOnFocus="true"
@@ -22,7 +34,6 @@
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
         <EditTextPreference
-            app:dependency="notification_switch"
             android:defaultValue="100"
             android:key="notification_opacity"
             android:selectAllOnFocus="true"
@@ -31,7 +42,6 @@
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
         <MultiSelectListPreference
-            app:dependency="notification_switch"
             android:defaultValue="@array/reply_values"
             android:entries="@array/reply_values"
             android:entryValues="@array/reply_entries"
@@ -39,7 +49,6 @@
             android:title="通知白名单"
             app:iconSpaceReserved="false" />
         <SwitchPreference
-            app:dependency="notification_switch"
             android:defaultValue="false"
             android:key="play_ringtone"
             android:title="播放提示音"

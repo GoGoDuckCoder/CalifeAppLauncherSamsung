@@ -14,29 +14,22 @@ import android.net.Uri;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 public class Common {
 
@@ -91,8 +84,17 @@ public class Common {
     public static ArrayList<String> get_favorite_list(Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         String set = sp.getString("favorite_apps", "[]");
-        return new ArrayList<>(new Gson().fromJson(set, new TypeToken<ArrayList<String>>() {
+        ArrayList<String> list = new ArrayList<>(new Gson().fromJson(set, new TypeToken<ArrayList<String>>() {
         }.getType()));
+        ArrayList<String> result = new ArrayList<>();
+        for (String pkg : list) {
+            if (isInstalled(context, pkg)) {
+                result.add(pkg);
+            } else {
+                remove_from_favorite_list_new(context, pkg);
+            }
+        }
+        return result;
     }
 
 
@@ -113,30 +115,19 @@ public class Common {
     public static ArrayList<String> get_adapt_list(Context context) {
         ArrayList<String> temp = new ArrayList<String>();
         ArrayList<String> res = new ArrayList<String>();
-//        ArrayList<String> temp = new ArrayList<String>();
         temp.addAll(get_favorite_list(context));
-        addifnotexist(temp, PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_1", "false"));
-        addifnotexist(temp, PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_2", "false"));
-        addifnotexist(temp, PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_3", "false"));
-        addifnotexist(temp, PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_4", "false"));
-        addifnotexist(temp, PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_5", "false"));
+        temp.add( PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_1", "false"));
+        temp.add( PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_2", "false"));
+        temp.add( PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_3", "false"));
+        temp.add( PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_4", "false"));
+        temp.add( PreferenceManager.getDefaultSharedPreferences(context).getString("godmode_slot_5", "false"));
 
         for (String pkg : temp) {
-            if (isInstalled(context, pkg)) {
+            if (isInstalled(context, pkg)&&!res.contains(pkg)) {
                 res.add(pkg);
             }
         }
-
         return res;
-    }
-
-    private static void addifnotexist(ArrayList<String> root, String obj) {
-        if (obj.equals("false") || obj.equals("back") || obj.equals("home")) {
-            return;
-        }
-        if (!root.contains(obj)) {
-            root.add(obj);
-        }
     }
 
     public static boolean isInstalled(Context context, String packageName) {
@@ -156,7 +147,7 @@ public class Common {
     }
 
     public static void add_to_favorite_list_new(Context context, String pkgname) {
-        ArrayList<String> list = get_adapt_list(context);
+        ArrayList<String> list = get_favorite_list(context);
         if (!list.contains(pkgname)) {
             list.add(pkgname);
             SharedPreferences.Editor ed = PreferenceManager.getDefaultSharedPreferences(context).edit();
@@ -167,8 +158,7 @@ public class Common {
 
     public static void remove_from_favorite_list_new(Context context, String pkgname) {
 
-        ArrayList<String> list = get_adapt_list(context);
-
+        ArrayList<String> list = get_favorite_list(context);
         if (list.contains(pkgname)) {
             list.remove(pkgname);
             SharedPreferences.Editor ed = PreferenceManager.getDefaultSharedPreferences(context).edit();

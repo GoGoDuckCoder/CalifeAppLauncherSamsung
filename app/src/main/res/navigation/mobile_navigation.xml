@@ -46,7 +46,7 @@
         tools:layout="@layout/settings_activity" />
     <fragment
         android:id="@+id/nav_boot"
-        android:name="com.banqu.samsung.music.SettingsActivity$SettingsEXPFragment"
+        android:name="com.banqu.samsung.music.SettingsActivity$SettingsBootFragment"
         android:label="@string/menu_boot"
         tools:layout="@layout/settings_activity" />
 

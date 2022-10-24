@@ -63,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
 //        binding.appBarHome.fab.setVisibility(View.GONE);
         AppAnnouncement.run(this);
     }

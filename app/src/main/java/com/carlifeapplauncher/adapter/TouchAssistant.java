@@ -147,10 +147,15 @@ public class TouchAssistant {
         int length = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString("ta_icon_size", "0"));
         if (length == 0) {
             length = (int) (insets.left * 0.55);
+            SharedPreferences.Editor ed  = PreferenceManager.getDefaultSharedPreferences(context).edit();
             if(length==0)
             {
-                length = 100;
+                ed.putString("ta_icon_size","100");
+            }else
+            {
+                ed.putString("ta_icon_size",length+"");
             }
+            ed.apply();
         }
 
         int radius = (int) (length * 0.35);
@@ -267,12 +272,12 @@ public class TouchAssistant {
         ta_app.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String jump_pkg = PreferenceManager.getDefaultSharedPreferences(context).getString("jump_pkg_lp", "null");
+                String jump_pkg = PreferenceManager.getDefaultSharedPreferences(context).getString("ta_favo_app", "false");
                 if (jump_pkg != null && !jump_pkg.equals("false") && !jump_pkg.equals("1")) {
                     Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(jump_pkg);
                     context.startActivity(launchIntent);
                 } else {
-                    Toast.makeText(context, "请设置 设置->启动设置->选定应用", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "请设置 设置->小白点助手->最爱应用", Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -468,6 +473,7 @@ public class TouchAssistant {
             try {
                 wm.removeView(ta_view);
                 isShown = false;
+                touchAssistant=null;
             } catch (Exception e) {
 
             }

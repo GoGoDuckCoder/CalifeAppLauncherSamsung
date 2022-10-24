@@ -54,83 +54,57 @@ public class MusicUI implements MusicUIInterface {
             musicService.setMusicUIInterface(this);
 
 
-            binding.LastMusic.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    musicService.previous();
-                }
-            });
+            binding.LastMusic.setOnClickListener(view -> musicService.previous());
             binding.LastMusic.setFocusable(false);
 
-            binding.NextMusic.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    musicService.next();
-                }
-            });
+            binding.NextMusic.setOnClickListener(view -> musicService.next());
             binding.NextMusic.setFocusable(false);
 
-            binding.Play.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    musicService.play();
-                }
-            });
+            binding.Play.setOnClickListener(view -> musicService.play());
             binding.Play.setFocusable(false);
 
-            binding.Pause.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    musicService.pause();
-                }
-            });
+            binding.Pause.setOnClickListener(view -> musicService.pause());
             binding.Pause.setFocusable(false);
 //        binding.Pause.setVisibility(View.GONE);
 
 
-            binding.SwitchSource.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //view
-                    View pop_playerlist_view = View.inflate(context, R.layout.playerpopwindows, null);
-                    Common.setBgRadius(pop_playerlist_view, 50);
+            binding.SwitchSource.setOnClickListener(view -> {
+                //view
+                View pop_playerlist_view = View.inflate(context, R.layout.playerpopwindows, null);
+                Common.setBgRadius(pop_playerlist_view, 50);
 
 
-                    pop_playerlist_view.setBackgroundColor(context.getColor(R.color.normal_panel));
-                    RecyclerView plyerlist_rec = pop_playerlist_view.findViewById(R.id.playerlist_rec);
-                    ((TextView) pop_playerlist_view.findViewById(R.id.textView2)).setTextColor(context.getColor(R.color.text_color));
+                pop_playerlist_view.setBackgroundColor(context.getColor(R.color.normal_panel));
+                RecyclerView plyerlist_rec = pop_playerlist_view.findViewById(R.id.playerlist_rec);
+                ((TextView) pop_playerlist_view.findViewById(R.id.textView2)).setTextColor(context.getColor(R.color.text_color));
 
-                    //LayoutManager
-                    LinearLayoutManager lm = new LinearLayoutManager(context);
-                    lm.setOrientation(LinearLayoutManager.HORIZONTAL);
-                    plyerlist_rec.setLayoutManager(lm);
+                //LayoutManager
+                LinearLayoutManager lm = new LinearLayoutManager(context);
+                lm.setOrientation(LinearLayoutManager.HORIZONTAL);
+                plyerlist_rec.setLayoutManager(lm);
 
-                    //Set Adapter
-                    MediaAppListAdapter maa = new MediaAppListAdapter(context);
-                    plyerlist_rec.setAdapter(maa);
+                //Set Adapter
+                MediaAppListAdapter maa = new MediaAppListAdapter(context);
+                plyerlist_rec.setAdapter(maa);
 
-                    //Set PopWindows
-                    PopupWindow playerlist = new PopupWindow(pop_playerlist_view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
-                    playerlist.getContentView().measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-                    playerlist.setHeight(playerlist.getContentView().getMeasuredHeight());
-                    playerlist.setOutsideTouchable(true);
+                //Set PopWindows
+                PopupWindow playerlist = new PopupWindow(pop_playerlist_view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+                playerlist.getContentView().measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+                playerlist.setHeight(playerlist.getContentView().getMeasuredHeight());
+                playerlist.setOutsideTouchable(true);
 //                playerlist.setBackgroundDrawable(new ColorDrawable(Color.argb(255, 0, 0, 0)));
 
-                    playerlist.showAsDropDown(view);
-                    maa.linkpop(playerlist);
-                }
+                playerlist.showAsDropDown(view);
+                maa.linkpop(playerlist);
             });
             binding.SwitchSource.setFocusable(false);
 
-            binding.labels.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (pkgName != null) {
-                        try {
-                            FakeStart.Start(context, pkgName);
-                        } catch (Exception e) {
+            binding.labels.setOnClickListener(v -> {
+                if (pkgName != null) {
+                    try {
+                        FakeStart.Start(context, pkgName);
+                    } catch (Exception e) {
 
-                        }
                     }
                 }
             });
