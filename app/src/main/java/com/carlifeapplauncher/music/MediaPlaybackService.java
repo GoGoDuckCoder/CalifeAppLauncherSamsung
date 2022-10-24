@@ -120,11 +120,6 @@ public class MediaPlaybackService extends MediaBrowserServiceCompat implements M
             musicServiceShutdownReceiver = null;
         }
 
-        if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("pause_when_close", true)) {
-            if (musicService != null) {
-                musicService.pause();
-            }
-        }
 
         mediaSession.setActive(false);
         mediaSession.release();

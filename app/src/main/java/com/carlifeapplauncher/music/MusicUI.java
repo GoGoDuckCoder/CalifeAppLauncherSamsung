@@ -143,7 +143,6 @@ public class MusicUI implements MusicUIInterface {
         }
 
 
-
         int musk = context.getResources().getColor(R.color.Album_musk, context.getTheme());
         int red = (musk & 0xff0000) >> 16;
         int green = (musk & 0x00ff00) >> 8;
@@ -165,9 +164,7 @@ public class MusicUI implements MusicUIInterface {
 //        }
 
         if (musicService != null) {
-//            if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("pause_when_close", true)) {
-//                musicService.pause();
-//            }
+            musicService.pause();
             musicService.removeMusicUIInterface();
         }
 

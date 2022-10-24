@@ -17,12 +17,6 @@
             android:title="控制模式-线控兼容模式"
             app:iconSpaceReserved="false"
             app:summary="以线控的方式控制当前播放器，以兼容更老的播放器。无法控制时尝试开启。默认关闭" />
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="pause_when_close"
-            android:title="自动暂停"
-            app:iconSpaceReserved="false"
-            app:summary="断开Carlife时-暂停当前控制的播放器" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="播放器锁定"

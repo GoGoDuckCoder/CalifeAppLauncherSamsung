@@ -45,7 +45,6 @@
 
         <SwitchPreference
             android:defaultValue="false"
-            app:isPreferenceVisible="false"
             android:key="ta_vertical"
             android:title="模式-垂直模式"
             app:iconSpaceReserved="false"
