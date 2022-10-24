@@ -27,7 +27,7 @@
             android:key="lock_music_player"
             android:title="通用服务-锁定的播放器"
             app:iconSpaceReserved="false"
-            app:summary="锁定播放器后，无法自动切换播放器焦点，需手动切换:设置中切换或通过播放控制器音乐按钮切换" />
+            app:summary="锁定播放器后，无法自动切换播放器焦点，需手动切换:设置中切换或通过在主界面中添加音乐助手，通过按钮切换" />
         <ListPreference
             android:defaultValue="false"
             android:entries="@array/reply_entries"
