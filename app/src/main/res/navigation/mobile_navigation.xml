@@ -14,57 +14,42 @@
     <fragment
         android:id="@+id/nav_ui"
         android:name="com.banqu.samsung.music.SettingsActivity$SettingsUIFragment"
-        android:label="@string/menu_ui"
-        tools:layout="@layout/settings_activity" />
+        android:label="@string/menu_ui" />
 
 
     <fragment
         android:id="@+id/nav_appDrawer"
         android:name="com.banqu.samsung.music.SettingsActivity$SettingsAppDrawerFragment"
-        android:label="@string/menu_appDrawer"
-        tools:layout="@layout/settings_activity" />
+        android:label="@string/menu_appDrawer"/>
 
     <fragment
         android:id="@+id/nav_musicHelper"
         android:name="com.banqu.samsung.music.SettingsActivity$SettingsMusicFragment"
-        android:label="@string/menu_musicHelper"
-        tools:layout="@layout/settings_activity" />
+        android:label="@string/menu_musicHelper" />
     <fragment
         android:id="@+id/nav_navbarHelper"
         android:name="com.banqu.samsung.music.SettingsActivity$SettingsGodFragment"
-        android:label="@string/menu_navbarHelper"
-        tools:layout="@layout/settings_activity" />
+        android:label="@string/menu_navbarHelper" />
     <fragment
         android:id="@+id/nav_floatHelper"
         android:name="com.banqu.samsung.music.SettingsActivity$SettingsTaFragment"
-        android:label="@string/menu_floatHelper"
-        tools:layout="@layout/settings_activity" />
+        android:label="@string/menu_floatHelper" />
     <fragment
         android:id="@+id/nav_notificationHelper"
         android:name="com.banqu.samsung.music.SettingsActivity$SettingsNotificationFragment"
-        android:label="@string/menu_notificationHelper"
-        tools:layout="@layout/settings_activity" />
+        android:label="@string/menu_notificationHelper" />
     <fragment
         android:id="@+id/nav_boot"
         android:name="com.banqu.samsung.music.SettingsActivity$SettingsBootFragment"
-        android:label="@string/menu_boot"
-        tools:layout="@layout/settings_activity" />
+        android:label="@string/menu_boot" />
 
     <fragment
         android:id="@+id/nav_experiment"
         android:name="com.banqu.samsung.music.SettingsActivity$SettingsEXPFragment"
-        android:label="@string/menu_experiment"
-        tools:layout="@layout/settings_activity" />
+        android:label="@string/menu_experiment" />
+    <fragment
+        android:id="@+id/menu_fs"
+        android:name="com.banqu.samsung.music.SettingsActivity$SettingsFsFragment"
+        android:label="@string/menu_fs" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/nav_dev"-->
-<!--        android:name="com.banqu.samsung.music.ui.dev.DevFragment"-->
-<!--        android:label="@string/menu_dev"-->
-<!--        tools:layout="@layout/fragment_dev" />-->
-
-        <activity
-            android:id="@+id/nav_dev"
-            android:name="com.banqu.samsung.music.SettingsActivity"
-            android:label="@string/menu_dev"
-            tools:layout="@layout/settings_activity" />
 </navigation>

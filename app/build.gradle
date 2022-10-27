@@ -17,8 +17,8 @@ android {
         applicationId "com.banqu.samsung.music"
         minSdk 31
         targetSdk 31
-        versionCode 20000
-        versionName "1.0"
+        versionCode 11000000
+        versionName "1.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -68,7 +68,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'org.greenrobot:eventbus:3.3.1'
     implementation 'androidx.draganddrop:draganddrop:1.0.0'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'org.jsoup:jsoup:1.10.3'
     implementation 'com.google.code.gson:gson:2.8.9'
 }

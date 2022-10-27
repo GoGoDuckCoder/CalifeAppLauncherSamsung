@@ -6,7 +6,8 @@ import androidx.preference.PreferenceManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.carlifeapplauncher.music.MediaSessionConnectionOperator;
+import com.banqu.samsung.music.adapter.ActivityManager;
+import com.banqu.samsung.music.carlifeapplauncher.music.MediaSessionConnectionOperator;
 
 public class MusicServiceDeepLink extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class MusicServiceDeepLink extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityManager.getInstance().add(this);
 
         Log.i(TAG, " 服务被调用！");
         if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("music_mirror", false)) {
@@ -22,6 +24,14 @@ public class MusicServiceDeepLink extends AppCompatActivity {
         } else {
             // Toast.makeText(this, "请在设置中启动音乐镜像服务，再尝试！", Toast.LENGTH_LONG).show();
         }
+
         finish();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        ActivityManager.getInstance().remove(this);
+        super.onDestroy();
     }
 }

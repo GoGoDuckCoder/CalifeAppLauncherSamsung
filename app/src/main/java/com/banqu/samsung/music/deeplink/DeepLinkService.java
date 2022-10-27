@@ -2,14 +2,16 @@ package com.banqu.samsung.music.deeplink;
 
 import android.os.Bundle;
 
+import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.log.xLog;
-import com.carlifeapplauncher.MyAccessibilityService;
-import com.carlifeapplauncher.NotificationListener;
-import com.carlifeapplauncher.adapter.FakeStart;
-import com.carlifeapplauncher.adapter.NavBar;
-import com.carlifeapplauncher.adapter.NightMode;
-import com.carlifeapplauncher.adapter.NotificationFactory;
-import com.carlifeapplauncher.adapter.TouchAssistant;
+import com.banqu.samsung.music.carlifeapplauncher.MyAccessibilityService;
+import com.banqu.samsung.music.carlifeapplauncher.NotificationListener;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.FakeStart;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NavBar;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NotificationFactory;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.TouchAssistant;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
@@ -23,16 +25,19 @@ public class DeepLinkService extends AppCompatActivity {
     public boolean auto_godmode;
     public boolean auto_ta;
     public boolean auto_noti;
+    public boolean auto_fs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         NightMode.setCustomNightModeSetting(this);
         super.onCreate(savedInstanceState);
+        ActivityManager.getInstance().add(this);
         deepLinkService = this;
 
         auto_godmode = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("godmode_auto", false);
         auto_ta = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("touchassistant_auto", false);
         auto_noti = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notification_switch_auto", false);
+        auto_fs = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("fs_auto", false);
 
         if (auto_godmode) {
             if (NavBar.getInstance() == null) {
@@ -69,6 +74,10 @@ public class DeepLinkService extends AppCompatActivity {
                 FakeStart.Start(this,pkg);
             }
         }
+        if(auto_fs)
+        {
+            Common.immersive_on(getApplicationContext());
+        }
 
 
         moveTaskToBack(true);
@@ -86,6 +95,7 @@ public class DeepLinkService extends AppCompatActivity {
             MyAccessibilityService.getInstance().setConnection(false);
         }
         deepLinkService = null;
+        ActivityManager.getInstance().remove(this);
         super.onDestroy();
     }
 
@@ -108,6 +118,10 @@ public class DeepLinkService extends AppCompatActivity {
             if (NotificationListener.isReady()) {
                 NotificationListener.getInstance().killConnection(this);
             }
+        }
+        if(auto_fs)
+        {
+            Common.immersive_off(getApplicationContext());
         }
     }
 

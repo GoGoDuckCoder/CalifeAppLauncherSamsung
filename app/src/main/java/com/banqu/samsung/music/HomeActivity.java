@@ -8,8 +8,8 @@ import android.view.View;
 
 import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.databinding.ActivityHomeBinding;
-import com.carlifeapplauncher.adapter.AppAnnouncement;
-import com.carlifeapplauncher.adapter.NightMode;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.AppAnnouncement;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

@@ -8,9 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.banqu.samsung.music.adapter.MyFragmentDisplayer;
-import com.carlifeapplauncher.adapter.Common;
-import com.carlifeapplauncher.adapter.NightMode;
-import com.carlifeapplauncher.apps.AppsUI;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
+import com.banqu.samsung.music.carlifeapplauncher.apps.AppsUI;
 
 import androidx.appcompat.app.AppCompatActivity;
 

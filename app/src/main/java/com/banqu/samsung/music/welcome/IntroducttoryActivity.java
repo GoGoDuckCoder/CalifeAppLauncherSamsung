@@ -1,9 +1,11 @@
 package com.banqu.samsung.music.welcome;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,8 +21,10 @@ import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.adapter.MyFragmentDisplayer;
 import com.banqu.samsung.music.R;
 import com.banqu.samsung.music.SettingsActivity;
-import com.carlifeapplauncher.adapter.Common;
-import com.carlifeapplauncher.adapter.NightMode;
+import com.banqu.samsung.music.carlifeapplauncher.NotificationListener;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.FavoFragment;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +49,17 @@ public class IntroducttoryActivity extends AppCompatActivity {
         initStart();
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(music!=null&&NotificationListener.isEnabled(getApplicationContext()))
+        {
+            music.setText("已授权");
+            music.setEnabled(false);
+        }
+    }
+
     @Override
     protected void onDestroy()
     {
@@ -55,6 +70,8 @@ public class IntroducttoryActivity extends AppCompatActivity {
     /**
      * viewPager和4个引导
      */
+
+    Button music;
     private void initView() {
         mViewPage=findViewById(R.id.introductory_viewPager);
         viewList=new ArrayList<>();
@@ -85,20 +102,30 @@ public class IntroducttoryActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"请添加应用!完成后返回",Toast.LENGTH_LONG).show();
                 Intent i = new Intent();
                 i.setClassName(getPackageName(), MyFragmentDisplayer.class.getName());
-                i.putExtra("className", SettingsActivity.SettingsAppDrawerFragment.class.getName());
+                i.putExtra("className", FavoFragment.class.getName());
                 startActivity(i);
+//                Intent i = new Intent();
+//                i.setClassName(getPackageName(), MyFragmentDisplayer.class.getName());
+//                i.putExtra("className", SettingsActivity.SettingsAppDrawerFragment.class.getName());
+//                startActivity(i);
             }
         });
 
-        Button music = pageC.findViewById(R.id.setup_music);
+        music= pageC.findViewById(R.id.setup_music);
         music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"请开启音乐镜像服务并打开权限！完成后返回",Toast.LENGTH_LONG).show();
-                Intent i = new Intent();
-                i.setClassName(getPackageName(), MyFragmentDisplayer.class.getName());
-                i.putExtra("className", SettingsActivity.SettingsMusicFragment.class.getName());
-                startActivity(i);
+
+                if(!NotificationListener.isEnabled(getApplicationContext()))
+                {
+                    startActivity(new Intent(
+                            "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
+                }
+                //                Intent i = new Intent();
+//                i.setClassName(getPackageName(), MyFragmentDisplayer.class.getName());
+//                i.putExtra("className", SettingsActivity.SettingsMusicFragment.class.getName());
+//                startActivity(i);
             }
         });
 
@@ -116,10 +143,14 @@ public class IntroducttoryActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
                     editor.putBoolean("FirstStartFlag",false);
                     editor.apply();
-                    Toast.makeText(getApplicationContext(),"设置完成！请在Carlife应用管理中添加车联助手以在车机使用助手！",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"设置完成！可通过‘车机预览’查看并配置助手。",Toast.LENGTH_LONG).show();
+
+
                     Intent i = new Intent();
                     i.setClassName(getPackageName(), HomeActivity.class.getName());
                     startActivity(i);
+
+                    finish();
                 }
 
 

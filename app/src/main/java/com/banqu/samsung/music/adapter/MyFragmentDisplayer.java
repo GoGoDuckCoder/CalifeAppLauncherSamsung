@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.banqu.samsung.music.R;
-import com.carlifeapplauncher.adapter.NightMode;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
 
 public class MyFragmentDisplayer extends AppCompatActivity {
 
@@ -20,6 +20,7 @@ public class MyFragmentDisplayer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityManager.getInstance().add(this);
         NightMode.setCustomNightModeSetting(this);
         setContentView(R.layout.activity_fragment_displayer);
 
@@ -54,6 +55,13 @@ public class MyFragmentDisplayer extends AppCompatActivity {
     public void getValue(){
         Intent intent =getIntent();
         className =  intent.getExtras().getString("className");
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        ActivityManager.getInstance().remove(this);
+        super.onDestroy();
     }
 
 }

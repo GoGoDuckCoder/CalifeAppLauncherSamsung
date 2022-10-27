@@ -22,18 +22,18 @@ import android.widget.Toast;
 
 import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.databinding.ActivityMainBinding;
-import com.carlifeapplauncher.NotificationListener;
-import com.carlifeapplauncher.adapter.Common;
-import com.carlifeapplauncher.adapter.FakeStart;
-import com.carlifeapplauncher.adapter.NavBar;
-import com.carlifeapplauncher.adapter.NightMode;
-import com.carlifeapplauncher.adapter.NotificationFactory;
-import com.carlifeapplauncher.adapter.TouchAssistant;
-import com.carlifeapplauncher.alive.Alive;
-import com.carlifeapplauncher.apps.AppsUI;
-import com.carlifeapplauncher.music.MediaSessionConnectionOperator;
-import com.carlifeapplauncher.music.MusicUI;
-import com.carlifeapplauncher.widget.LauncherAppWidgetHost;
+import com.banqu.samsung.music.carlifeapplauncher.NotificationListener;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.FakeStart;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NavBar;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NotificationFactory;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.TouchAssistant;
+import com.banqu.samsung.music.carlifeapplauncher.alive.Alive;
+import com.banqu.samsung.music.carlifeapplauncher.apps.AppsUI;
+import com.banqu.samsung.music.carlifeapplauncher.music.MediaSessionConnectionOperator;
+import com.banqu.samsung.music.carlifeapplauncher.music.MusicUI;
+import com.banqu.samsung.music.carlifeapplauncher.widget.LauncherAppWidgetHost;
 
 import java.io.File;
 import java.io.ObjectInputStream;
@@ -69,11 +69,13 @@ public class MainActivity extends AppCompatActivity {
     private boolean phone_ta;
     private boolean phone_music;
     private boolean phone_noti;
+    private boolean phone_fs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainActivity = this;
+        ActivityManager.getInstance().add(this);
         Log.i("APPUI", "onCreate: ");
         NightMode.setCustomNightModeSetting(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -81,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ActivityManager.getInstance().add(this);
 
 //        WindowInsetsController controller = getWindow().getInsetsController();
 //        controller.hide(WindowInsets.Type.statusBars());
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         phone_ta = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("touchassistant", false);
         phone_music = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("music_mirror", false);
         phone_noti = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notification_switch", false);
+        phone_fs = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("fs", false);
 
         if (phone_music || phone_noti) {
             NotificationListener.ensureConnection(getApplicationContext());
@@ -177,6 +179,10 @@ public class MainActivity extends AppCompatActivity {
             {
                 NotificationFactory.createInstance(this);
             }
+        }
+        if(phone_fs)
+        {
+          Common.immersive_on(getApplicationContext());
         }
 
         jump();
@@ -265,24 +271,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
+        if(phone_fs)
+        {
+            Common.immersive_off(getApplicationContext());
+        }
 
         mainActivity = null;
 
         ActivityManager.getInstance().remove(this);
         super.onDestroy();
     }
-
-//    @Override
-//    public void onWindowFocusChanged(boolean has_focus) {
-//        super.onWindowFocusChanged(has_focus);
-//        Rect tt = new Rect();
-//        getWindow().getDecorView().getWindowVisibleDisplayFrame(tt);
-////        nf.setLeft(tt.left);
-////        nf.setWidth(tt.width());
-////        godMode.setGodParameter(tt);
-//    }
-
 
     private void jump() {
         boolean jump = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("jump", false);

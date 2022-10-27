@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">车联助手 X</string>
-    <string name="about_version">1.0</string>
+    <string name="about_version">1.1.0</string>
     <string name="app_intro">酷安 @高东假</string>
     <string name="about">
         【使用即默认同意并遵守以下条款】
@@ -18,7 +18,7 @@
         \n本次改动代码过大，升级请务必重新安装！
         \n【全新助手上线】
         \n1.更加直观易用、使用更友好
-        \n2.添加说明书、常见问题、版本显示等
+        \n2.添加说明书(待编辑)、常见问题、版本显示等
         \n3.服务界面完全分离。
         \n4.核心代码重构，清理无用代码资源，优化内存使用，省电优化
         \n5.解决无数bug，提高稳定性，包括不限于无障碍
@@ -278,10 +278,13 @@
     <string name="menu_floatHelper">小白点助手</string>
     <string name="menu_notificationHelper">通知助手</string>
     <string name="menu_boot">启动设置</string>
+    <string name="menu_fs">全屏助手</string>
     <string name="menu_experiment">实验室功能</string>
     <string name="menu_dev">开发者设置</string>
     <string name="menu_update">检查更新</string>
     <string name="menu_donate">捐赠支持</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank1 fragment</string>
 
 
 </resources>

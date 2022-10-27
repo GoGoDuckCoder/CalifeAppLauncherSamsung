@@ -31,9 +31,9 @@ public class ActivityManager {
         }
     }
 
-    public void clear() {
+    public void clearOnScreen() {
         for (Activity activity : activities) {
-            if (activity.getDisplay().getDisplayId() == 0) {
+            if (activity != null && activity.getDisplay().getDisplayId() == 0) {
                 activity.finish();
             }
         }
@@ -41,8 +41,11 @@ public class ActivityManager {
 
     public void clearAll() {
         for (Activity activity : activities) {
-            activity.finish();
+            if (activity != null) {
+                activity.finish();
+            }
         }
+        activities.clear();
     }
 
 }

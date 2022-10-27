@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="全屏助手"
+        app:iconSpaceReserved="false">
+        <SwitchPreference
+            app:isPreferenceVisible="true"
+            android:defaultValue="false"
+            android:key="fs"
+            android:title="随车联助手启动"
+            app:iconSpaceReserved="false"
+            app:summary="随车联助手启动：启动车联助手主界面时，自动运行强制全屏所有应用指令。" />
+        <SwitchPreference
+            app:isPreferenceVisible="true"
+            android:defaultValue="false"
+            android:key="fs_auto"
+            android:title="随Carlife启动"
+            app:iconSpaceReserved="false"
+            app:summary="随Carlife启动：启动车机连接Carlife时，自动运行强制全屏所有应用指令。权限要求：无障碍 版本要求：车联服务 1.5以上" />
+        <Preference
+            android:layout="@layout/settings_illustration_layout"
+            android:title="使用说明"
+            app:summary="在使用Carlife时，使所有应用支持全屏显示，您可能需要配合助手其他功能使用。如小白点助手，侧栏助手。
+            \n授权说明：\n1.电脑下载网盘全屏助手授权包.zip并解压。\n2.确保电脑有三星usb驱动，如没有请运行并安装SAMSUNG_USB_Driver_for_Mobile_Phones。\n3.双击运行‘授权.bat’\n4.注：会操作adb的直接使用以下代码即可：adb shell pm grant com.banqu.samsung.music android.permission.WRITE_SECURE_SETTINGS"/>
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

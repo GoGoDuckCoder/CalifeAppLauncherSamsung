@@ -8,7 +8,6 @@
     android:canPerformGestures="true"
     android:notificationTimeout="100"
     android:packageNames="com.baidu.carlife"
-
     />
 
     <!--    android:accessibilityFeedbackType="feedbackGeneric"-->

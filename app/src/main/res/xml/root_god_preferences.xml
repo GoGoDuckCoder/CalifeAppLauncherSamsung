@@ -24,7 +24,7 @@
         <!--            app:dependency="godmode"-->
         <!--            android:title="添加侧栏应用"-->
         <!--            app:iconSpaceReserved="false"-->
-        <!--            app:fragment="com.carlifeapplauncher.adapter.AppSelectFragment"/>-->
+        <!--            app:fragment="com.banqu.samsung.music.carlifeapplauncher.adapter.AppSelectFragment"/>-->
         <!--        <EditTextPreference-->
         <!--            app:iconSpaceReserved="false"-->
         <!--            android:defaultValue="0"-->
@@ -37,14 +37,6 @@
     <PreferenceCategory
         android:title="界面设置"
         app:iconSpaceReserved="false">
-        <EditTextPreference
-            android:defaultValue="0"
-            android:key="godmodeiconsize"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
-            android:title="图标大小"
-            app:iconSpaceReserved="false"
-            app:summary="设置侧栏图标大小(px)，设置为0，则软件自适应大小。" />
         <ListPreference
             android:defaultValue="false"
             android:entries="@array/godmode_slot_entries"
@@ -85,7 +77,14 @@
             android:title="位置5"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-
+        <EditTextPreference
+            android:defaultValue="0"
+            android:key="godmodeiconsize"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="图标大小"
+            app:iconSpaceReserved="false"
+            app:summary="设置侧栏图标大小(px)，设置为0，则软件自适应大小。" />
 
     </PreferenceCategory>
     <PreferenceCategory
@@ -141,5 +140,28 @@
     <!--            app:summary="自动挂断延时号码"-->
     <!--            />-->
     <!--    </PreferenceCategory>-->
+
+    <PreferenceCategory
+        android:title="界面设置"
+        app:iconSpaceReserved="false">
+        <EditTextPreference
+            android:defaultValue="100"
+            android:key="godmode_opacity"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="透明度（%）"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:defaultValue="55#55#55"
+            android:key="godmode_rgb"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="背景色"
+            app:iconSpaceReserved="false"
+            app:summary="背景色为RGB模式，格式为：R#G#B ，请参照格式输入，输入错误不生效！温馨提示：Carlife三星版 侧栏颜色为：55#55#55 "
+            app:useSimpleSummaryProvider="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

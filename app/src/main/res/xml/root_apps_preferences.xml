@@ -9,7 +9,7 @@
 
         <Preference
             android:title="添加应用"
-            app:fragment="com.carlifeapplauncher.adapter.FavoFragment"
+            app:fragment="com.banqu.samsung.music.carlifeapplauncher.adapter.FavoFragment"
             app:iconSpaceReserved="false"
             app:summary="添加需要在主页应用抽屉显示的应用，添加后可在应用抽屉中长按图标以更改顺序。" />
 

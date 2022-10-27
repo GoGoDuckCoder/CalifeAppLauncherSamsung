@@ -14,9 +14,8 @@ import androidx.fragment.app.Fragment;
 import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.databinding.FragmentHomeBinding;
 import com.banqu.samsung.music.MainActivity;
-import com.carlifeapplauncher.adapter.AppAnnouncement;
-import com.carlifeapplauncher.adapter.Common;
-import com.carlifeapplauncher.adapter.OpenProvider;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.AppAnnouncement;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
 
 public class HomeFragment extends Fragment {
 
@@ -43,6 +42,7 @@ public class HomeFragment extends Fragment {
         binding.guide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(requireContext(),"说明加载中",Toast.LENGTH_SHORT).show();
                 AppAnnouncement.runGuide(requireContext());
             }
         });

@@ -1,5 +1,6 @@
 package com.banqu.samsung.music;
 
+import android.Manifest;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -20,15 +21,15 @@ import android.text.style.ImageSpan;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.carlifeapplauncher.MyAccessibilityService;
-import com.carlifeapplauncher.NotificationListener;
-import com.carlifeapplauncher.adapter.AppInfo;
-import com.carlifeapplauncher.adapter.BitmapOperator;
-import com.carlifeapplauncher.adapter.Common;
-import com.carlifeapplauncher.adapter.CopyFileByUri;
-import com.carlifeapplauncher.adapter.NightMode;
-import com.carlifeapplauncher.phone.phone;
-import com.carlifeapplauncher.widget.LauncherAppWidgetHost;
+import com.banqu.samsung.music.carlifeapplauncher.MyAccessibilityService;
+import com.banqu.samsung.music.carlifeapplauncher.NotificationListener;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.AppInfo;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.BitmapOperator;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.CopyFileByUri;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
+import com.banqu.samsung.music.carlifeapplauncher.phone.phone;
+import com.banqu.samsung.music.carlifeapplauncher.widget.LauncherAppWidgetHost;
 
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ import java.util.regex.Pattern;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.ListPreference;
 import androidx.preference.MultiSelectListPreference;
@@ -59,12 +61,12 @@ public class SettingsActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         NightMode.setCustomNightModeSetting(this);
         setContentView(R.layout.settings_activity);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.settings, new SettingsFragment())
-                    .commit();
-        }
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.settings, new SettingsFragment())
+//                    .commit();
+//        }
 
     }
 
@@ -90,24 +92,24 @@ public class SettingsActivity extends AppCompatActivity implements
         super.onStop();
     }
 
-    public static class SettingsFragment extends PreferenceFragmentCompat {
-        @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            setPreferencesFromResource(R.xml.root_preferences, rootKey);
-
-//            Preference go = findPreference("layoutilasddass");
-//            go.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-//                @Override
-//                public boolean onPreferenceClick(@NonNull Preference preference) {
-//                    Intent intent = new Intent(Intent.ACTION_VIEW);
-//                    intent.setData(Uri.parse("https://pan.baidu.com/s/1dcSRUyaK7LwVvEObSxWTPQ?pwd=8888"));
-//                    startActivity(intent);
-//                    return false;
-//                }
-//            });
-        }
-
-    }
+//    public static class SettingsFragment extends PreferenceFragmentCompat {
+//        @Override
+//        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+//            setPreferencesFromResource(R.xml.root_preferences, rootKey);
+//
+////            Preference go = findPreference("layoutilasddass");
+////            go.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+////                @Override
+////                public boolean onPreferenceClick(@NonNull Preference preference) {
+////                    Intent intent = new Intent(Intent.ACTION_VIEW);
+////                    intent.setData(Uri.parse("https://pan.baidu.com/s/1dcSRUyaK7LwVvEObSxWTPQ?pwd=8888"));
+////                    startActivity(intent);
+////                    return false;
+////                }
+////            });
+//        }
+//
+//    }
 
     public static class SettingsAdaptiveModeFragment extends PreferenceFragmentCompat {
         @Override
@@ -698,8 +700,8 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
 //                if (!app.packageName.toString().equals("com.banqu.samsung.music")) {
-                    entries.add(createEntrie(app.label.toString(), app.icon));
-                    values.add(app.packageName.toString());
+                entries.add(createEntrie(app.label.toString(), app.icon));
+                values.add(app.packageName.toString());
 //                }
             }
             entries.add(0, new SpannableString("关闭"));
@@ -729,7 +731,7 @@ public class SettingsActivity extends AppCompatActivity implements
         }
     }
 
-        public static class SettingsNotificationFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
+    public static class SettingsNotificationFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
         SwitchPreference pref_touchassistant;
         SwitchPreference pref_touchassistant_auto;
 
@@ -854,6 +856,10 @@ public class SettingsActivity extends AppCompatActivity implements
             god9.setOnPreferenceChangeListener(this);
             Preference god10 = findPreference("godmode_slot_5");
             god10.setOnPreferenceChangeListener(this);
+            Preference god11 = findPreference("godmode_opacity");
+            god10.setOnPreferenceChangeListener(this);
+            Preference god12 = findPreference("godmode_rgb");
+            god10.setOnPreferenceChangeListener(this);
 
 //            Preference god11 = findPreference("min_height");
 //            god11.setOnPreferenceChangeListener(this);
@@ -870,8 +876,8 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
 //                if (!app.packageName.equals("com.banqu.samsung.music")) {
-                    entries.add(createEntrie(app.label.toString(), app.icon));
-                    values.add(app.packageName.toString());
+                entries.add(createEntrie(app.label.toString(), app.icon));
+                values.add(app.packageName.toString());
 //                }
             }
             entries.add(0, new SpannableString("关闭"));
@@ -954,10 +960,31 @@ public class SettingsActivity extends AppCompatActivity implements
                     }
                     break;
                 case "godmodephonenumbertictok":
+                case "godmode_opacity":
                     if (is_numeric((String) newValue, 0, 999999)) {
                         return true;
                     }
                     break;
+                case "godmode_rgb":
+                    String rgb_string = newValue.toString();
+                    String[] rgb_array = rgb_string.split("#");
+                    if (rgb_array.length != 3) {
+                        Toast.makeText(getContext(), "请按照正确的格式输入背景色", Toast.LENGTH_LONG).show();
+                        return false;
+                    }
+                    for (int i = 0; i < rgb_array.length; i++) {
+                        try {
+                            int digit = Integer.parseInt(rgb_array[i]);
+                            if (digit > 255 || digit < 0) {
+                                Toast.makeText(getContext(), "请按照正确的格式输入背景色", Toast.LENGTH_LONG).show();
+                                return false;
+                            }
+                        } catch (Exception e) {
+                            Toast.makeText(getContext(), "请按照正确的格式输入背景色", Toast.LENGTH_LONG).show();
+                            return false;
+                        }
+                    }
+                    return true;
                 case "godmodephone":
                     return phone.ensurePermission(getContext());
                 case "godmode_slot_1":
@@ -977,13 +1004,6 @@ public class SettingsActivity extends AppCompatActivity implements
         }
     }
 
-    public void restartApp(Context context) {
-        //启动页
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-        android.os.Process.killProcess(android.os.Process.myPid());
-    }
 
     @Override
     public boolean onPreferenceStartFragment(@NonNull PreferenceFragmentCompat caller, @NonNull Preference pref) {
@@ -1052,24 +1072,6 @@ public class SettingsActivity extends AppCompatActivity implements
     }
 
 
-    private void whitelist() {
-        boolean showpop = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("whitelistpopup", true);
-        if (showpop) {
-            if (!isIgnoringBatteryOptimizations()) {
-                requestIgnoreBatteryOptimizations();
-            }
-            SharedPreferences.Editor ed = PreferenceManager.getDefaultSharedPreferences(this).edit();
-            ed.putBoolean("whitelistpopup", false);
-            ed.apply();
-        }
-    }
-
-    public static void askwhitelist(Context context) {
-        if (!isIgnoringBatteryOptimizations(context)) {
-            requestIgnoreBatteryOptimizations(context);
-        }
-    }
-
     private static boolean isIgnoringBatteryOptimizations(Context context) {
         boolean isIgnoring = false;
         PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -1120,5 +1122,55 @@ public class SettingsActivity extends AppCompatActivity implements
         } catch (Exception e) {
         }
 
+    }
+
+    public static class SettingsFsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
+        @Override
+        public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
+            switch (preference.getKey()) {
+                case "fs":
+                    if ((boolean) newValue) {
+                        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_SECURE_SETTINGS) != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(requireContext(), "请参照说明授权后，方可开启", Toast.LENGTH_LONG).show();
+                            return false;
+                        }
+                        if(fs_auto.isChecked())
+                        {
+                            fs_auto.setChecked(false);
+                        }
+                    }
+                    return true;
+                case "fs_auto":
+                    if ((boolean) newValue) {
+                        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_SECURE_SETTINGS) != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(requireContext(), "请参照说明授权后，方可开启", Toast.LENGTH_LONG).show();
+                            return false;
+                        }
+                        if(!Common.checkAccessibilityPermission(requireContext(),MyAccessibilityService.class))
+                        {
+                            Common.requestAccessibilityPermission(requireContext());
+                            return false;
+                        }
+                        if(fs.isChecked())
+                        {
+                            fs.setChecked(false);
+                        }
+                    }
+                    return true;
+            }
+            return true;
+        }
+
+        private SwitchPreference fs_auto;
+        private SwitchPreference fs;
+
+        @Override
+        public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
+            setPreferencesFromResource(R.xml.root_fs_preferences, rootKey);
+            fs_auto = findPreference("fs_auto");
+            fs_auto.setOnPreferenceChangeListener(this);
+            fs = findPreference("fs");
+            fs.setOnPreferenceChangeListener(this);
+        }
     }
 }
