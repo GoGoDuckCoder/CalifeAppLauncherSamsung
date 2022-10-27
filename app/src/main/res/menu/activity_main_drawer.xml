@@ -56,5 +56,9 @@
             android:icon="@drawable/android_fill"
             android:title="@string/menu_dev"
             android:visible="false"/>
+        <item
+            android:checkable="false"
+            android:enabled="false"
+            android:title="更改设置后请重启应用或清理后台" />
     </group>
 </menu>

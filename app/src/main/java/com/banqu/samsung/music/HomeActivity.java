@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.databinding.ActivityHomeBinding;
@@ -12,6 +14,7 @@ import com.banqu.samsung.music.carlifeapplauncher.adapter.AppAnnouncement;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -49,7 +52,12 @@ public class HomeActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//               super.select
+//            }
+//        });
 
 
         binding.appBarHome.fab.setOnClickListener(new View.OnClickListener() {

@@ -4,15 +4,29 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_about.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_black_screen.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_deeplink.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_donation.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_fragment_displayer.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_full_app_list.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_main.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_remote_control.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/app_bar_home.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/app_select.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/black_screen_button.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/content_home.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/empty_mask.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/favorite.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_dev.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_fs.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_home.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_notifications.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_slideshow.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/godmod.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/godmode_cell.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/introductory_a.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/nav_header_home.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/settings_illustration_layout.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/menu/activity_main_drawer.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_adaptivemode_preferences.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_apps_preferences.xml" value="0.10989583333333333" />

@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 //    private NotificationFactory nf;
     private MusicUI musicUI;
     private MediaSessionConnectionOperator musicServiceOperator;
-    private boolean emptyview = false;
     private boolean has_widget = false;
 
     public static MainActivity mainActivity;
@@ -466,18 +465,18 @@ public class MainActivity extends AppCompatActivity {
             binding.right.setVisibility(View.GONE);
         }
 
-        if (s1 && s2 && s3) {
-//            finish();;
-            emptyview = true;
-        }
-        if (emptyview && !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("jump", false)) {
-            Toast.makeText(getBaseContext(), "请先通过手机打开助手设置在主界面后，再使用。界面参数以车机显示为准！", Toast.LENGTH_LONG).show();
-        }
-        if (emptyview && PreferenceManager.getDefaultSharedPreferences(this).getBoolean("jump", false)) {
-            if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("close_after_jump", false)) {
-                Toast.makeText(getBaseContext(), "请先通过手机打开助手设置在主界面后，再使用。界面参数以车机显示为准！", Toast.LENGTH_LONG).show();
-            }
-        }
+//        if (s1 && s2 && s3) {
+////            finish();;
+//            emptyview = true;
+//        }
+//        if (emptyview && !PreferenceManager.getDefaultSharedPreferences(this).getBoolean("jump", false)) {
+//            Toast.makeText(getBaseContext(), "请先通过手机打开助手设置在主界面后，再使用。界面参数以车机显示为准！", Toast.LENGTH_LONG).show();
+//        }
+//        if (emptyview && PreferenceManager.getDefaultSharedPreferences(this).getBoolean("jump", false)) {
+//            if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("close_after_jump", false)) {
+//                Toast.makeText(getBaseContext(), "请先通过手机打开助手设置在主界面后，再使用。界面参数以车机显示为准！", Toast.LENGTH_LONG).show();
+//            }
+//        }
 
         int margin = Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString("margin", "15"));
         Common.setMargin(binding.containerA, margin, margin, margin, margin);
@@ -825,7 +824,7 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(intent);
 //    }
 
-    public void call_new() {
+//    public void call_new() {
 //        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("exp_autolockbyphone", false)) {
 //            if (MyAccessibilityService.isServiceRunning()) {
 //                if (OpenProvider.isConnected(this) && getDisplay().getDisplayId() != 0) {
@@ -840,5 +839,5 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(this, "无障碍权限丢失", Toast.LENGTH_LONG).show();
 //            }
 //        }
-    }
+//    }
 }

@@ -56,7 +56,7 @@
             app:summary="（不建议开启）以兼容模式启动应用。如软件为固定品牌做了特殊优化则伪装启动方式。对应用抽屉-侧栏助手中已添加的应用生效。兼容模式使用需自查兼容或群里询问：如百度地图手机版可以使三星兼容模式，宝宝巴士可使用三星vivo两个模式，乐听可使用vivo模式。兼容模式启动失败会使用默认模式启动（无提示）！！" />
         <Preference
             android:title="配置兼容模式"
-            app:fragment="com.carlifeapplauncher.adapter.FakeStartFragment"
+            app:fragment="com.banqu.samsung.music.carlifeapplauncher.adapter.FakeStartFragment"
             app:iconSpaceReserved="false"
             app:summary="尝试以友商车机适配模式启动应用以适配横屏显示" />
     </PreferenceCategory>
