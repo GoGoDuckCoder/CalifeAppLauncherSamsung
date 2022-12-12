@@ -3,4 +3,21 @@
         <attr name="fullscreenBackgroundColor" format="color" />
         <attr name="fullscreenTextColor" format="color" />
     </declare-styleable>
+
+
+    <declare-styleable name="RadiusCardView">
+        <!--        左上圆角大小-->
+        <attr name="rcv_topLeftRadiu" format="dimension" />
+        <!--        右上圆角大小-->
+        <attr name="rcv_topRightRadiu" format="dimension" />
+        <!--        右下圆角大小-->
+        <attr name="rcv_bottomRightRadiu" format="dimension" />
+        <!--        左下圆角大小-->
+        <attr name="rcv_bottomLeftRadiu" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="oneui">
+        <attr name="icon_background" format="color"/>
+    </declare-styleable>
 </resources>

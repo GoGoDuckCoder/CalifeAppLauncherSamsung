@@ -1,12 +1,12 @@
 <resources>
 
     <style name="Widget.Theme.CalifeAppLauncherSamsung.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@color/black_overlay</item>
+        <item name="android:background">@color/OneUI_BackgroundColor</item>
 
     </style>
 
     <style name="Widget.Theme.CalifeAppLauncherSamsung.ButtonBar.Fullscreen" parent="">
-        <item name="android:background">@color/black_overlay</item>
+        <item name="android:background">@color/OneUI_BackgroundColor</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
 
     </style>

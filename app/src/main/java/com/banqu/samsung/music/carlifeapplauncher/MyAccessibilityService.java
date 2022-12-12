@@ -23,6 +23,8 @@ public class MyAccessibilityService extends AccessibilityService {
     public static final int BACK = 1;
     public static final int HOME = 2;
     public static final int TASK = 3;
+    public static final int SPLIT = 4;
+
     private static final String TAG = "MyAccessibilityService";
 
 
@@ -159,16 +161,14 @@ public class MyAccessibilityService extends AccessibilityService {
 
 
         String pkgName = accessibilityEvent.getPackageName().toString();
-        int eventType = accessibilityEvent.getEventType();
-        Log.i(TAG, "eventType: " + AccessibilityEvent.eventTypeToString(eventType) + " pkgName: " + pkgName);
+//        int eventType = accessibilityEvent.getEventType();
+//        Log.i(TAG, "eventType: " + AccessibilityEvent.eventTypeToString(eventType) + " pkgName: " + pkgName);
 
         if (pkgName.equals("com.baidu.carlife")) {
             lifeCycle();
             autolock();
 //            autostart();
             //phone
-
-
         }
 
 
@@ -240,6 +240,9 @@ public class MyAccessibilityService extends AccessibilityService {
             case TASK:
                 performGlobalAction(AccessibilityService.GLOBAL_ACTION_RECENTS);
                 break;
+            case SPLIT:
+                performGlobalAction(AccessibilityService.GLOBAL_ACTION_TOGGLE_SPLIT_SCREEN);
+                break;
         }
     }
 
@@ -290,12 +293,12 @@ public class MyAccessibilityService extends AccessibilityService {
 //        setServiceInfo(serviceInfo);
 //    }
 
-    public void add_CallPackage() {
-        AccessibilityServiceInfo serviceInfo = getServiceInfo();
-        serviceInfo.packageNames = new String[]{"com.baidu.carlife", "com.samsung.android.incallui"};
-        setServiceInfo(serviceInfo);
-        Log.i(TAG, "add_CallPackage: ");
-    }
+//    public void add_CallPackage() {
+//        AccessibilityServiceInfo serviceInfo = getServiceInfo();
+//        serviceInfo.packageNames = new String[]{"com.baidu.carlife", "com.samsung.android.incallui"};
+//        setServiceInfo(serviceInfo);
+//        Log.i(TAG, "add_CallPackage: ");
+//    }
 
 
 

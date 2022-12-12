@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.banqu.samsung.music.HomeActivity;
+import com.banqu.samsung.music.OneUiHomeActivity;
 import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
 
@@ -24,12 +24,11 @@ public class StartActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"欢迎使用车联助手三星版",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(StartActivity.this, IntroducttoryActivity.class));
             } else {
-                //跳转到引导页
                 Toast.makeText(this, "当前系统不支持三星Carlife定制版及车联助手插件！", Toast.LENGTH_LONG).show();
             }
         } else {
             //直接进入首页
-            startActivity(new Intent(StartActivity.this, HomeActivity.class));
+            startActivity(new Intent(StartActivity.this, OneUiHomeActivity.class));
         }
         finish();
     }

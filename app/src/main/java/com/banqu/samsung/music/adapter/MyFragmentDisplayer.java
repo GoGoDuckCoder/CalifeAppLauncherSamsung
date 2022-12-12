@@ -1,12 +1,16 @@
 package com.banqu.samsung.music.adapter;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.banqu.samsung.music.R;
@@ -21,7 +25,7 @@ public class MyFragmentDisplayer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityManager.getInstance().add(this);
-        NightMode.setCustomNightModeSetting(this);
+        NightMode.setCustomNightModeSetting(getWindow(),this);
         setContentView(R.layout.activity_fragment_displayer);
 
         init();//初始化
@@ -41,9 +45,25 @@ public class MyFragmentDisplayer extends AppCompatActivity {
             }catch(Exception e){
 //                Logger.error("##############", e, "class error");
             }
-
-
         }
+
+        Toolbar tb = findViewById(R.id.toolbar2);
+        setSupportActionBar(tb);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if(item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void init(){

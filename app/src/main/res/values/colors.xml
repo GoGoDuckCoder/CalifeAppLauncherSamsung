@@ -13,7 +13,7 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
-
+    <color name="transparent">#00000000</color>
 
 
     <color name="background_color">#B8B8B8</color>
@@ -45,5 +45,26 @@
 
     <!--    HomePage-->
     <color name="HomePage_ToolBarBackground">#000000</color>
+
+
+
+    <!--OneUITheme-->
+    <color name="OneUI_BackgroundColor">#F6F6F6</color>
+    <color name="OneUI_Button_BackgroundColor">#FCFCFC</color>
+    <color name="OneUI_Button_Text_Color">#8C8C8C</color>
+    <color name="OneUI_Button_Title_TextColor">#010101</color>
+    <color name="OneUI_Icon_Color">#000000</color>
+    <color name="OneUI_Primary">#010101</color>
+    <color name="OneUI_Variant">#0381FD</color>
+    <color name="OneUI_colorAccent">#8C8C8C</color>
+
+    <color name="OneUI_colorControlNormal">#DEDEDE</color>
+    <color name="OneUI_colorControlActivated">#0381FD</color>
+    <color name="OneUI_colorAccent_colorControlHighlight">@color/OneUI_Button_BackgroundColor</color>
+
+
+<!--    Theme-->
+
+
 </resources>
 

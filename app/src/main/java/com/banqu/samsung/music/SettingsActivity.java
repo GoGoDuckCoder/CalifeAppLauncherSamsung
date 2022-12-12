@@ -21,12 +21,15 @@ import android.text.style.ImageSpan;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.banqu.samsung.music.adapter.MyFragmentDisplayer;
 import com.banqu.samsung.music.carlifeapplauncher.MyAccessibilityService;
 import com.banqu.samsung.music.carlifeapplauncher.NotificationListener;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.AppInfo;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.BitmapOperator;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.CopyFileByUri;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.FakeStartFragment;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.FavoFragment;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
 import com.banqu.samsung.music.carlifeapplauncher.phone.phone;
 import com.banqu.samsung.music.carlifeapplauncher.widget.LauncherAppWidgetHost;
@@ -441,6 +444,17 @@ public class SettingsActivity extends AppCompatActivity implements
             p2.setOnPreferenceChangeListener(this);
             Preference p3 = findPreference("launcher_font_size");
             p3.setOnPreferenceChangeListener(this);
+            Preference p4 = findPreference("launcher_addapp");
+            p4.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(@NonNull Preference preference) {
+                    Intent i = new Intent();
+                    i.setClassName(requireContext().getPackageName(), MyFragmentDisplayer.class.getName());
+                    i.putExtra("className", FavoFragment.class.getName());
+                    startActivity(i);
+                    return true;
+                }
+            });
         }
 
         @Override
@@ -468,7 +482,7 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<String> values = new ArrayList<String>();
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
-                entries.add(createEntrie(app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
             }
             entries.add(0, new SpannableString("关闭"));
@@ -585,7 +599,7 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<String> values = new ArrayList<String>();
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
-                entries.add(createEntrie(app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
             }
             entries.add(0, new SpannableString("关闭"));
@@ -670,6 +684,17 @@ public class SettingsActivity extends AppCompatActivity implements
         public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
             setPreferencesFromResource(R.xml.root_boot_preferences, rootKey);
 
+            Preference configure = findPreference("fake_start_configure");
+            configure.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(@NonNull Preference preference) {
+                    Intent i = new Intent();
+                    i.setClassName(requireContext().getPackageName(), MyFragmentDisplayer.class.getName());
+                    i.putExtra("className", FakeStartFragment.class.getName());
+                    startActivity(i);
+                    return true;
+                }
+            });
             SwitchPreference exp_autostart = findPreference("exp_autostart");
             exp_autostart.setOnPreferenceChangeListener(
                     new Preference.OnPreferenceChangeListener() {
@@ -700,7 +725,7 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
 //                if (!app.packageName.toString().equals("com.banqu.samsung.music")) {
-                entries.add(createEntrie(app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
 //                }
             }
@@ -754,7 +779,7 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<String> values = new ArrayList<String>();
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
-                entries.add(createEntrie(app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
             }
 
@@ -876,7 +901,7 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
 //                if (!app.packageName.equals("com.banqu.samsung.music")) {
-                entries.add(createEntrie(app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
 //                }
             }
@@ -1023,11 +1048,11 @@ public class SettingsActivity extends AppCompatActivity implements
 
 
     //helper functions
-    private static SpannableString createEntrie(String str, Drawable drawable) {
+    private static SpannableString createEntrie(Context context,String str, Drawable drawable) {
         String replacedStr = "i";
         final SpannableString spannableString = new SpannableString(replacedStr + "  " + str);
-        drawable.setBounds(0, 0,
-                100, 100);
+        int size =context.getResources().getDimensionPixelSize(R.dimen.span_icon_size);
+        drawable.setBounds(0, 0,size,size);
         CenteredImageSpan span = new CenteredImageSpan(drawable);
         spannableString.setSpan(span, 0, 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         return spannableString;

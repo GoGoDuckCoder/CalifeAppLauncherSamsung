@@ -1,0 +1,110 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.banqu.samsung.music.ui.ui.OneUIMainTitlePreference
+        android:key="layoutils"
+        app:icon="@drawable/car"
+        android:layout="@layout/oneui_preference_layout"
+        app:allowDividerAbove="false"
+        app:allowDividerBelow="false"
+        app:iconSpaceReserved="false"
+        android:title="reserved"/>
+
+    <!--    <PreferenceCategory-->
+    <!--        app:iconSpaceReserved="false"-->
+    <!--        app:title="界面分区说明">-->
+    <!--        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference-->
+    <!--            android:icon="@drawable/car_front"-->
+    <!--            app:allowDividerAbove="false"-->
+    <!--            app:allowDividerBelow="true"-->
+    <!--            app:key="attachmeasnt"-->
+    <!--            app:summaryOff="@string/attachment_summary_off"-->
+    <!--            app:summaryOn="@string/attachment_summary_on"-->
+    <!--            app:title="asd" />-->
+    <!--        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference-->
+    <!--            android:icon="@drawable/car_front"-->
+    <!--            app:allowDividerAbove="true"-->
+    <!--            app:allowDividerBelow="true"-->
+    <!--            app:key="attachmeasnt2"-->
+    <!--            app:summaryOff="@string/attachment_summary_off"-->
+    <!--            app:summaryOn="@string/attachment_summary_on"-->
+    <!--            app:title="asd" />-->
+    <!--        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference-->
+
+    <!--            app:iconSpaceReserved="false"-->
+    <!--            app:allowDividerAbove="true"-->
+    <!--            app:allowDividerBelow="false"-->
+    <!--            app:key="attachmeasnt3"-->
+    <!--            app:summaryOff="@string/attachment_summary_off"-->
+    <!--            app:summaryOn="@string/attachment_summary_on"-->
+    <!--            app:title="asd" />-->
+    <!--    </PreferenceCategory>-->
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="快捷访问">
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/cursor"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_instruction"
+            app:summary="@string/oneui_shortcut_instruction_summary"
+            app:title="@string/oneui_shortcut_instruction_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/car_front"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_preview"
+            app:summary="@string/oneui_shortcut_preview_summary"
+            app:title="@string/oneui_shortcut_preview_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/grid"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_app"
+            app:summary="@string/oneui_shortcut_app_summary"
+            app:title="@string/oneui_shortcut_app_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/music"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_music"
+            app:summary="@string/oneui_shortcut_music_summary"
+            app:title="@string/oneui_shortcut_music_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/arrow_counterclockwise"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
+            app:key="oneui_shortcut_close"
+            app:summary="@string/oneui_shortcut_close_summary"
+            app:title="@string/oneui_shortcut_close_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/display"
+            app:isPreferenceVisible="false"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
+            app:key="oneui_shortcut_update"
+            app:summary="@string/oneui_shortcut_update_summary"
+            app:title="@string/oneui_shortcut_update_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="@string/oneui_shortcut_settings_title">
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/ic_gear"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_settings"
+            app:summary="@string/oneui_shortcut_settings_summary"
+            app:title="@string/oneui_shortcut_settings_title"/>
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/emoji_kiss"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
+            app:key="oneui_shortcut_donation"
+            app:summary="@string/oneui_shortcut_donation_summary"
+            app:title="@string/oneui_shortcut_donation_title" />
+    </PreferenceCategory>
+</PreferenceScreen>

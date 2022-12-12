@@ -2,29 +2,32 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory
-        app:iconSpaceReserved="false"
-        app:title="界面分区说明">
+
         <Preference
+            android:icon="@drawable/layoutins"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
             android:key="layoutils"
             android:layout="@layout/settings_illustration_layout"
-            android:icon="@drawable/layoutins"
             android:title="设置说明"
             app:iconSpaceReserved="false"
             app:summary="主界面分区包含两个大分区：A,BC，为左右结构，BC分区包含两个小分区：B,C，为上下结构，,每个分区可自定义需要的插件，如不设置插件剩余分区插件会自动填充空置区域。小组件点击添加，长按移除。界面所有自定义均按照车机显示为准" />
-    </PreferenceCategory>
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:title="界面分区设置">
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
             android:defaultValue="music"
             android:entries="@array/ui_plugin_entries"
             android:entryValues="@array/ui_plugin_values"
             android:key="areaA"
             android:title="分区A"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="app"
             android:entries="@array/ui_plugin_entries"
             android:entryValues="@array/ui_plugin_values"
@@ -32,7 +35,9 @@
             android:title="分区B"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="false"
             android:entries="@array/ui_plugin_entries"
             android:entryValues="@array/ui_plugin_values"
@@ -41,17 +46,21 @@
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
+    <Preference
+        app:allowDividerAbove="false"
+        app:allowDividerBelow="false"
+        android:key="layoutweights"
+        android:layout="@layout/summary"
+        android:title=""
+        app:iconSpaceReserved="false"
+        app:summary="A区域与BC区域作为一个比例分区，总占份为10，按照比例划分宽度。B区域与C区域作为一个比例分区，总占份为10，按照比例划分高度。如需隐藏，不添加小组件或者插件即可，会自动隐藏并填充剩余空间。" />
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:title="界面分区比例设置">
-        <Preference
-            android:key="layoutweights"
-            android:layout="@layout/summary"
-            android:title=""
-            app:iconSpaceReserved="false"
-            app:summary="A区域与BC区域作为一个比例分区，总占份为10，按照比例划分宽度。B区域与C区域作为一个比例分区，总占份为10，按照比例划分高度。如需隐藏，不添加小组件或者插件即可，会自动隐藏并填充剩余空间。" />
-        <EditTextPreference
+         <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="6"
             android:key="weightA"
             android:selectAllOnFocus="true"
@@ -59,7 +68,9 @@
             android:title="A区域占份"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="4"
             android:key="weightRight"
             android:selectAllOnFocus="true"
@@ -67,7 +78,9 @@
             android:title="BC区域占份"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="4"
             android:key="weightB"
             android:selectAllOnFocus="true"
@@ -75,7 +88,9 @@
             android:title="B区域占份"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="6"
             android:key="weightC"
             android:selectAllOnFocus="true"
@@ -88,7 +103,9 @@
     <PreferenceCategory
         android:title="其他设置"
         app:iconSpaceReserved="false">
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="dark"
             android:entries="@array/ui_modes_entries"
             android:entryValues="@array/ui_modes_values"
@@ -97,14 +114,18 @@
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
 
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:key="cusbackground"
             android:title="自定义背景"
             app:iconSpaceReserved="false"
             app:summary="图片自适应,如切换了壁纸之后出现闪退，请关闭此选项，重试。" />
 
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="60"
             android:key="cardopacity"
             android:selectAllOnFocus="true"
@@ -112,7 +133,9 @@
             android:title="主界面卡片透明度（%）"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="50"
             android:key="radius"
             android:selectAllOnFocus="true"
@@ -120,7 +143,9 @@
             android:title="主界面卡片圆角半径"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="15"
             android:key="margin"
             android:selectAllOnFocus="true"

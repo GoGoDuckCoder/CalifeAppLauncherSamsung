@@ -4,12 +4,13 @@
 
     <PreferenceCategory
         android:title="应用抽屉"
-        app:iconSpaceReserved="false"
-        app:summary="请在主界面中自定义区域设置应用抽屉插件">
+        app:iconSpaceReserved="false">
 
-        <Preference
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
+            android:key="launcher_addapp"
             android:title="添加应用"
-            app:fragment="com.banqu.samsung.music.carlifeapplauncher.adapter.FavoFragment"
             app:iconSpaceReserved="false"
             app:summary="添加需要在主页应用抽屉显示的应用，添加后可在应用抽屉中长按图标以更改顺序。" />
 
@@ -17,7 +18,9 @@
     <PreferenceCategory
         android:title="抽屉界面"
         app:iconSpaceReserved="false">
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="3"
             android:key="launcher_col"
             android:selectAllOnFocus="true"
@@ -25,7 +28,9 @@
             android:title="应用列表列数"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="120"
             android:key="launcher_icon_size"
             android:selectAllOnFocus="true"
@@ -33,7 +38,9 @@
             android:title="启动器图标大小"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="30"
             android:key="launcher_font_size"
             android:selectAllOnFocus="true"
@@ -41,7 +48,9 @@
             android:title="启动器标签字体大小"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="false"
             android:key="showlabel"
             android:title="显示应用标签"

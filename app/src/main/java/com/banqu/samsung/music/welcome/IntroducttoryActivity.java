@@ -1,11 +1,9 @@
 package com.banqu.samsung.music.welcome;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,11 +14,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.banqu.samsung.music.HomeActivity;
+import com.banqu.samsung.music.OneUiHomeActivity;
 import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.adapter.MyFragmentDisplayer;
 import com.banqu.samsung.music.R;
-import com.banqu.samsung.music.SettingsActivity;
 import com.banqu.samsung.music.carlifeapplauncher.NotificationListener;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.FavoFragment;
@@ -147,7 +144,7 @@ public class IntroducttoryActivity extends AppCompatActivity {
 
 
                     Intent i = new Intent();
-                    i.setClassName(getPackageName(), HomeActivity.class.getName());
+                    i.setClassName(getPackageName(), OneUiHomeActivity.class.getName());
                     startActivity(i);
 
                     finish();

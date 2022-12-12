@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/OneUI_BackgroundColor"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
@@ -10,7 +11,7 @@
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5">
+        android:layout_weight="3">
 
 
         <LinearLayout
@@ -25,7 +26,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/ic_launcher"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -33,8 +35,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/app_name"
-                android:textSize="48sp"
-                android:textStyle="bold" />
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -68,12 +71,13 @@
         android:id="@+id/userpanel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5">
+        android:layout_weight="7">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -199,6 +203,81 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/OneUI_Button_BackgroundColor"
+                    app:cardCornerRadius="@dimen/oneui_radius"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/OneUI_Button_BackgroundColor"
+                            android:paddingHorizontal="30dp"
+                            android:paddingVertical="10dp">
+
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="车机预览"
+                                android:textColor="@color/OneUI_Button_Text_Color"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:layout_editor_absoluteX="51dp" />
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="在手机上测试并打开车机界面"
+                                android:textColor="@color/OneUI_Button_Text_Color"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/textView3"
+                                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cardView"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                app:cardBackgroundColor="#4B819A"
+                                app:cardCornerRadius="10dp"
+                                app:cardUseCompatPadding="false"
+                                app:contentPadding="5dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/car_front" />
+                            </androidx.cardview.widget.CardView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

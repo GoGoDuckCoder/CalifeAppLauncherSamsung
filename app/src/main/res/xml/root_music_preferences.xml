@@ -2,7 +2,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <SwitchPreference
+    <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        app:allowDividerAbove="false"
+        app:allowDividerBelow="false"
         android:defaultValue="false"
         android:title="镜像服务"
         app:iconSpaceReserved="false"
@@ -11,7 +13,9 @@
     <PreferenceCategory
         android:title="播放控制"
         app:iconSpaceReserved="false">
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
             android:defaultValue="false"
             android:key="switch_preference_1"
             android:title="控制模式-线控兼容模式"
@@ -22,13 +26,17 @@
         android:title="播放器锁定"
         app:iconSpaceReserved="false">
 
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:key="lock_music_player"
             android:title="通用服务-锁定的播放器"
             app:iconSpaceReserved="false"
             app:summary="锁定播放器后，无法自动切换播放器焦点，需手动切换:设置中切换或通过在主界面中添加音乐助手，通过按钮切换" />
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="false"
             android:entries="@array/reply_entries"
             android:entryValues="@array/reply_values"
@@ -48,13 +56,17 @@
     <PreferenceCategory
         android:title="专辑封面"
         app:iconSpaceReserved="false">
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="true"
             android:key="showalbum"
             android:title="播放控制器-显示专辑封面"
             app:iconSpaceReserved="false"
             app:summary="是否在播放控制器中显示专辑封面（如果播放器支持的话）" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="80"
             android:key="album_musk_alpha"
             android:selectAllOnFocus="true"

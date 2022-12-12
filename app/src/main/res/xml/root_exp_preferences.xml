@@ -3,23 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:title="自动覆盖侧栏助手（适用于：OneUI4.1+车联服务1.5，OneUI5.0不需要卡直接覆盖）两种方式互不兼容"
+        android:title="@string/oneui_shortcut_lab_title"
         app:iconSpaceReserved="false">
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
             app:isPreferenceVisible="true"
             android:defaultValue="false"
             android:key="exp_autolock"
             android:title="打开Carlife自动锁屏"
             app:iconSpaceReserved="false"
-            app:summary="开启后，会在Carlife启动时候自动锁屏以达到在低版本覆盖侧栏限制。开启后会导致无法手机上启动Carlife界面。关闭即可再次启动" />
-        <SwitchPreference
+            app:summary="开启后，会在Carlife启动时候自动锁屏以达到在低版本覆盖侧栏限制。开启后会导致无法手机上启动Carlife界面。关闭即可再次启动.自动覆盖侧栏助手（适用于：OneUI4.1+车联服务1.5，OneUI5.0不需要卡直接覆盖）两种方式互不兼容" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="hide"
+        app:isPreferenceVisible="false"
+        app:iconSpaceReserved="false">
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            android:defaultValue="false"
+            android:key="exp_autoblackscreen"
+            android:title="黑屏按钮"
+            app:iconSpaceReserved="false"
+            app:summary="在车机打开助手后，会自动在手机显示模拟锁屏按钮，双击即可黑屏，双击退出黑屏。请自行打开悬浮窗权限。" />
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
             app:isPreferenceVisible="false"
             android:defaultValue="false"
             android:key="exp_autolockbyphone"
             android:title="连接Carlife自动拨打电话卡BUG"
             app:iconSpaceReserved="false"
             app:summary="开启后，会在Carlife联机后，启动助手的时候，自动拨打电话以达到在低版本覆盖侧栏限制。请将所有设置设置完成之后再启动该项目。" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
             app:isPreferenceVisible="false"
             android:defaultValue="10086"
             android:key="exp_autolockbyphone_number"
@@ -30,18 +44,6 @@
             app:iconSpaceReserved="false"
             app:summary="拨打号码"
             app:useSimpleSummaryProvider="true" />
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="模拟黑屏"
-        app:isPreferenceVisible="false"
-        app:iconSpaceReserved="false">
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="exp_autoblackscreen"
-            android:title="黑屏按钮"
-            app:iconSpaceReserved="false"
-            app:summary="在车机打开助手后，会自动在手机显示模拟锁屏按钮，双击即可黑屏，双击退出黑屏。请自行打开悬浮窗权限。" />
     </PreferenceCategory>
 
 

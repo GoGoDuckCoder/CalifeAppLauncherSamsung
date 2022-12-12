@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.banqu.samsung.music.ui.ui.RadiusCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
+        app:rcv_topLeftRadiu="@dimen/oneui_icon_radius"
+        app:rcv_topRightRadiu="@dimen/oneui_icon_radius">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DC0000">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/oneui_margin_h"
+                android:layout_marginVertical="@dimen/oneui_margin_v">
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CheckBox" />
+
+                <ImageView
+                    android:id="@+android:id/icon"
+                    android:layout_width="@dimen/oneui_icon_size"
+                    android:layout_height="@dimen/oneui_icon_size"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:srcCompat="@drawable/application_two"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="411dp" />
+
+                <TextView
+                    android:id="@+android:id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/OneUI_Button_Title_TextColor"
+                    tools:layout_conversion_absoluteHeight="19dp"
+                    tools:layout_conversion_absoluteWidth="411dp" />
+
+                <TextView
+                    android:id="@+android:id/summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:textColor="@color/OneUI_Button_Text_Color"
+                    tools:layout_conversion_absoluteHeight="19dp"
+                    tools:layout_conversion_absoluteWidth="411dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+    </com.banqu.samsung.music.ui.ui.RadiusCardView>
+
+
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        app:cardCornerRadius="20dp"-->
+    <!--        app:cardElevation="0dp"-->
+    <!--        app:cardMaxElevation="0dp"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:background="@color/OneUI_Button_BackgroundColor"-->
+    <!--                android:paddingHorizontal="30dp"-->
+    <!--                android:paddingVertical="10dp">-->
+
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/textView3"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    tools:layout_editor_absoluteX="51dp"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="车机预览"-->
+    <!--                    android:textColor="@color/OneUI_Button_Text_Color" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/textView4"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintStart_toStartOf="@+id/textView3"-->
+    <!--                    app:layout_constraintTop_toBottomOf="@+id/textView3"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="在手机上测试并打开车机界面"-->
+    <!--                    android:textColor="@color/OneUI_Button_Text_Color" />-->
+
+    <!--                <androidx.cardview.widget.CardView-->
+    <!--                    android:id="@+id/cardView"-->
+    <!--                    app:cardBackgroundColor="#4B819A"-->
+    <!--                    app:cardCornerRadius="10dp"-->
+    <!--                    app:cardUseCompatPadding="false"-->
+    <!--                    app:contentPadding="5dp"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    android:layout_width="30dp"-->
+    <!--                    android:layout_height="30dp">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:id="@+id/imageView6"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="match_parent"-->
+    <!--                        android:src="@drawable/car_front" />-->
+    <!--                </androidx.cardview.widget.CardView>-->
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--        </LinearLayout>-->
+
+    <!--    </androidx.cardview.widget.CardView>-->
+
+</FrameLayout>

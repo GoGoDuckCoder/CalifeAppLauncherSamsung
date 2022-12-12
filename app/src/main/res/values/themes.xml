@@ -2,16 +2,29 @@
     <!-- Base application theme. -->
     <style name="Theme.CalifeAppLauncherSamsung" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_700</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/OneUI_Primary</item>
+        <item name="colorPrimaryVariant">@color/OneUI_Variant</item>
+        <item name="colorOnPrimary">@color/OneUI_Button_Text_Color</item>
+
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="colorSecondary">@color/OneUI_Primary</item>
+        <item name="colorSecondaryVariant">@color/OneUI_Variant</item>
+        <item name="colorOnSecondary">@color/OneUI_Variant</item>
+
         <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/OneUI_BackgroundColor</item>
+        <item name="android:windowBackground">@color/OneUI_BackgroundColor</item>
+        <item name="android:colorAccent">@color/OneUI_colorAccent</item>
+        <item name="android:activatedBackgroundIndicator">@color/OneUI_Variant</item>
+        <item name="android:colorControlNormal">@color/OneUI_colorControlNormal</item>
+        <item name="android:colorControlActivated">@color/OneUI_colorControlActivated</item>
+        <item name="android:colorControlHighlight">@color/OneUI_colorAccent_colorControlHighlight</item>
+
+
+
+        <item name="android:textColorPrimary">@color/OneUI_Button_Title_TextColor</item>
+        <item name="android:textColorSecondary">@color/OneUI_Button_Text_Color</item>
+
     </style>
 
     <style name="Theme.CalifeAppLauncherSamsung.NoActionBar">
@@ -28,12 +41,14 @@
     </style>
 
     <style name="ThemeOverlay.CalifeAppLauncherSamsung.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
-        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+        <item name="fullscreenBackgroundColor">@color/OneUI_BackgroundColor</item>
+        <item name="fullscreenTextColor">@color/OneUI_BackgroundColor</item>
     </style>
 
     <style name="Theme.CalifeAppLauncherSamsung.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.CalifeAppLauncherSamsung.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+<!--    <style name="Theme.CalifeAppLauncherSamsung.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>-->
+
+
 
 </resources>

@@ -42,4 +42,22 @@
 
     <!--    HomePage-->
     <color name="HomePage_ToolBarBackground">#FFFFFF</color>
+
+
+    <!--OneUITheme-->
+    <color name="OneUI_BackgroundColor">#010101</color>
+    <color name="OneUI_Button_BackgroundColor">#171717</color>
+    <color name="OneUI_Button_Text_Color">#999999</color>
+    <color name="OneUI_Button_Title_TextColor">#FAFAFA</color>
+    <color name="OneUI_Icon_Color">#000000</color>
+    <color name="OneUI_Primary">#F6F6F6</color>
+    <color name="OneUI_Variant">#0381FD</color>
+    <color name="OneUI_colorAccent">#999999</color>
+
+
+    <color name="OneUI_colorControlNormal">#595959</color>
+    <color name="OneUI_colorControlActivated">#0381FD</color>
+    <color name="OneUI_colorAccent_colorControlHighlight">@color/OneUI_Button_BackgroundColor</color>
+
+
 </resources>

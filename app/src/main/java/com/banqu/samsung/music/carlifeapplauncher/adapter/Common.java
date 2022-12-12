@@ -9,6 +9,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.graphics.Outline;
 import android.net.Uri;
 import android.os.PowerManager;
@@ -26,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -354,8 +356,69 @@ public class Common {
         //layoutContent.setElevation(10);
         //设置圆角裁切
         layoutContent.setClipToOutline(true);
-
     }
+
+    public static void setBgRadiusTops(View layoutContent, int radius) {
+        //设置圆角大小
+        layoutContent.setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                //设置矩形
+                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight() + radius, radius);
+                // 可以指定圆形，矩形，圆角矩形，path
+                //outline.setOval(0, 0, view.getWidth(), view.getHeight()
+            }
+        });
+        //设置阴影
+        //layoutContent.setElevation(10);
+        //设置圆角裁切
+        layoutContent.setClipToOutline(true);
+    }
+
+    public static void setBgRadiusBottoms(View layoutContent, int radius) {
+        //设置圆角大小
+        layoutContent.setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                //设置矩形
+                outline.setRoundRect(0, 0 - radius, view.getWidth(), view.getHeight(), radius);
+                // 可以指定圆形，矩形，圆角矩形，path
+                //outline.setOval(0, 0, view.getWidth(), view.getHeight()
+            }
+        });
+        //设置阴影
+        //layoutContent.setElevation(10);
+        //设置圆角裁切
+        layoutContent.setClipToOutline(true);
+    }
+
+//    public static void setBgRadius(View layoutContent,int l,int t, int r,int b) {
+//        //设置圆角大小
+//        layoutContent.setOutlineProvider(new ViewOutlineProvider() {
+//            @Override
+//            public void getOutline(View view, Outline outline) {
+//                //设置矩形
+//
+//                RectF rectF = getRectF();
+//                float[] readius = {tlRadiu,tlRadiu,trRadiu,trRadiu,brRadiu,brRadiu,blRadiu,blRadiu};
+//                path.addRoundRect(rectF,readius,Path.Direction.CW);
+//                canvas.clipPath(path, Region.Op.INTERSECT);
+//                super.onDraw(canvas);
+//
+//                Path path = new Path();
+//                outline.setPath();
+//                outline.setRoundRect(l, t, view.getWidth(), view.getHeight(), radius);
+//                // 可以指定圆形，矩形，圆角矩形，path
+//                //outline.setOval(0, 0, view.getWidth(), view.getHeight()
+//            }
+//        });
+//        //设置阴影
+//        //layoutContent.setElevation(10);
+//        //设置圆角裁切
+//        layoutContent.setClipToOutline(true);
+//
+//    }
+
 
     public static void setBgRadiusOval(View layoutContent) {
         //设置圆角大小
@@ -399,13 +462,12 @@ public class Common {
     public static void immersive_on(Context context) {
         try {
             String code = "";
-            for(String pkg : get_adapt_list(context))
-            {
-                code+=pkg+",";
+            for (String pkg : get_adapt_list(context)) {
+                code += pkg + ",";
             }
-            code+= "com.baidu.carlife,";
-            code+= context.getPackageName();
-            Settings.Global.putString(context.getContentResolver(), "policy_control", "immersive.navigation="+code);
+            code += "com.baidu.carlife,";
+            code += context.getPackageName();
+            Settings.Global.putString(context.getContentResolver(), "policy_control", "immersive.navigation=" + code);
         } catch (Exception e) {
 
         }
@@ -420,4 +482,57 @@ public class Common {
         }
     }
 
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     */
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
+    private static int[] cl = {
+            Color.parseColor("#58B7F5"),
+            Color.parseColor("#5BA6FB"),
+            Color.parseColor("#36BAAA"),
+            Color.parseColor("#FC8D80"),
+            Color.parseColor("#A4D826"),
+            Color.parseColor("#71BD67"),
+            Color.parseColor("#5C7BE3"),
+            Color.parseColor("#5BA6FB"),
+            Color.parseColor("#FDBD4F"),
+            Color.parseColor("#36BAAA"),
+            Color.parseColor("#F37B9D"),
+            Color.parseColor("#4772E5"),
+            Color.parseColor("#9991FE"),
+            Color.parseColor("#ED7567"),
+            Color.parseColor("#FC8D80"),
+            Color.parseColor("#7B84FF"),
+            Color.parseColor("#8B8B8B"),
+            Color.parseColor("#F37B9D"),
+            Color.parseColor("#58B7F5"),
+            Color.parseColor("#5BA6FB"),
+            Color.parseColor("#5BA6FB"),
+            Color.parseColor("#5C7BE3"),
+            Color.parseColor("#A4D826"),
+            Color.parseColor("#9991FE"),
+            Color.parseColor("#ED7567"),
+            Color.parseColor("#71BD67"),
+            Color.parseColor("#FDBD4F"),
+            Color.parseColor("#7B84FF"),
+            Color.parseColor("#8B8B8B"),
+            Color.parseColor("#4772E5")
+    };
+
+    public static int getRandomColor() {
+        int min = 0;
+        int max = cl.length - 1;
+        Random random = new Random();
+        int num = random.nextInt(max) % (max - min + 1) + min;
+        return cl[num];
+    }
 }

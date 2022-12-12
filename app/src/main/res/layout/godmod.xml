@@ -10,11 +10,12 @@
         android:id="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="12dp"
+        android:paddingVertical="8dp"
         android:text="time"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:textSize="16sp"
+        android:textStyle="normal" />
 
     <LinearLayout
         android:id="@+id/godmodelist"

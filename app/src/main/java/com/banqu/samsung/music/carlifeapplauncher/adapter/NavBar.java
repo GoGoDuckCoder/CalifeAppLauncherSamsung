@@ -345,6 +345,7 @@ public class NavBar {
             @Override
             public void onClick(View v) {
                 if (Common.checkAccessibilityPermission(context, MyAccessibilityService.class)) {
+//                    EventBus.getDefault().post(MyAccessibilityService.BACK);
                     EventBus.getDefault().post(MyAccessibilityService.BACK);
                 } else {
                     Common.requestAccessibilityPermission(context);

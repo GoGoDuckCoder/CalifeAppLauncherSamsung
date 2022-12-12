@@ -11,7 +11,9 @@ import android.view.View;
 
 import com.banqu.samsung.music.R;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 
 import org.jsoup.Connection;
@@ -150,6 +152,41 @@ public class AppAnnouncement {
                                     @Override
                                     public void onClick(View view) {
                                         showupdate(context,version, updatenote);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                    Log.i("TTTT", "jsoup:" + e);
+                }
+//                Looper.loop();
+            }
+        }).start();
+    }
+
+    public static  void runUpdate(Context context, Preference v)
+    {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+//                Looper.prepare();
+                try {
+                    String url = "https://gogofactory.gitee.io/carlinkhelper/";
+                    Connection connect = Jsoup.connect(url);//获取连接对象
+                    Document document = connect.get();//获取url页面的内容并解析成document对象
+                    String version = document.getElementById("version").text();
+                    String updatenote = document.getElementById("updatenote").text().replace("#", "\n");
+
+                    if (!version.equals(context.getString(R.string.about_version))) {
+                        ((Activity)context).runOnUiThread(new Runnable() {
+                            public void run() {
+                                v.setVisible(true);
+                                v.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                                    @Override
+                                    public boolean onPreferenceClick(@NonNull Preference preference) {
+                                        showupdate(context,version, updatenote);
+                                        return true;
                                     }
                                 });
                             }

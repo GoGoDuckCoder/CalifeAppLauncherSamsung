@@ -3,17 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
         android:title="通知助手"
-        app:iconSpaceReserved="false"
-        app:summary="在车机上显示应用通知，重启应用生效。">
+        app:iconSpaceReserved="false">
 
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:key="notification_switch"
             android:title="随车联助手启动"
             app:iconSpaceReserved="false"
             app:summary="随车联助手启动：启动车联助手主界面时，启动通知助手" />
 
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="false"
             android:key="notification_switch_auto"
             android:title="随Carlife启动"
@@ -25,7 +28,9 @@
     <PreferenceCategory
         android:title="其他设置"
         app:iconSpaceReserved="false">
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="5"
             android:key="notification_display_seconds"
             android:selectAllOnFocus="true"
@@ -33,7 +38,9 @@
             android:title="通知显示秒数"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="100"
             android:key="notification_opacity"
             android:selectAllOnFocus="true"
@@ -41,20 +48,26 @@
             android:title="通知透明度"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <MultiSelectListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIMultiSelectPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="@array/reply_values"
             android:entries="@array/reply_values"
             android:entryValues="@array/reply_entries"
             android:key="notification_whitelist"
             android:title="通知白名单"
             app:iconSpaceReserved="false" />
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:key="play_ringtone"
             android:title="播放提示音"
             app:iconSpaceReserved="false"
             app:summary="在收到通知的时候，在车机端播放默认的提示音" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             app:dependency="play_ringtone"
             android:defaultValue="100"
             android:key="play_ringtone_volume"

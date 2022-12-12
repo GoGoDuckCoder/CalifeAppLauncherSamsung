@@ -15,6 +15,17 @@
     <dimen name="preview_cell_size">96dip</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 
+
+<!--    OneUI-->
+    <dimen name="oneui_radius">20dp</dimen>
+    <dimen name="oneui_icon_size">30dp</dimen>
+    <dimen name="oneui_icon_radius">12dp</dimen>
+    <dimen name="oneui_icon_padding">6dp</dimen>
+    <dimen name="oneui_margin_h">20dp</dimen>
+    <dimen name="oneui_margin_v">20dp</dimen>
+    <dimen name="span_icon_size">18sp</dimen>
 </resources>

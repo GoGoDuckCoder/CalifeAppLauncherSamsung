@@ -52,9 +52,7 @@ public class MediaSessionConnectionOperator {
 
         serviceReady = false;
         connecting = false;
-
         musicServiceIntent = new Intent(context, MediaPlaybackService.class);
-
     }
 
     public static MediaSessionConnectionOperator getInstance(Context context) {
@@ -74,6 +72,8 @@ public class MediaSessionConnectionOperator {
         if (serviceReady) {
             return;
         }
+        Log.i("asdaksdjkasd","connecting:"+connecting+" ready:"+serviceReady);
+//        Log.i("asdaksdjkasd",connecting+"");
         connecting = true;
         context.startForegroundService(musicServiceIntent);
     }
@@ -81,8 +81,9 @@ public class MediaSessionConnectionOperator {
     public void disconnect() {
         try {
             Log.i(TAG, "disconnect: 杀进程");
+            connecting =true;
             context.stopService(musicServiceIntent);
-            serviceReady = false;
+//            serviceReady = false;
             mediaSessionConnectionOperator = null;
         } catch (Exception e) {
 

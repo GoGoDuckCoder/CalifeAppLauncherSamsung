@@ -1,0 +1,96 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <PreferenceCategory
+        android:title="@string/oneui_shortcut_settings_close"
+        app:iconSpaceReserved="false">
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/arrow_counterclockwise"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
+            app:key="oneui_shortcut_close"
+            app:summary="@string/oneui_shortcut_close_summary"
+            app:title="@string/oneui_shortcut_close_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/oneui_shortcut_settings_basic"
+        app:iconSpaceReserved="false">
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/car_front"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_ui"
+            app:summary="@string/oneui_shortcut_carui_summary"
+            app:title="@string/oneui_shortcut_carui_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/grid"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_app"
+            app:summary="@string/oneui_shortcut_app_summary"
+            app:title="@string/oneui_shortcut_app_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/music"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
+            app:key="oneui_shortcut_music"
+            app:summary="@string/oneui_shortcut_music_summary"
+            app:title="@string/oneui_shortcut_music_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/oneui_shortcut_settings_pro"
+        app:iconSpaceReserved="false">
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/compass_4_fill"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_float"
+            app:summary="@string/oneui_shortcut_float_summary"
+            app:title="@string/oneui_shortcut_float_title" />
+
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/fullscreen_line"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_fullscreen"
+            app:summary="@string/oneui_shortcut_fullscreen_summary"
+            app:title="@string/oneui_shortcut_fullscreen_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/side_bar_fill"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_navbar"
+            app:summary="@string/oneui_shortcut_navbar_summary"
+            app:title="@string/oneui_shortcut_navbar_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/message_3_fill"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_notification"
+            app:summary="@string/oneui_shortcut_notification_summary"
+            app:title="@string/oneui_shortcut_notification_title" />
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/rocket_2_fill2"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
+            app:key="oneui_shortcut_launch"
+            app:summary="@string/oneui_shortcut_launch_summary"
+            app:title="@string/oneui_shortcut_launch_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/oneui_shortcut_settings_exp"
+        app:iconSpaceReserved="false">
+        <com.banqu.samsung.music.ui.ui.OneUIPreference
+            android:icon="@drawable/flask_fill"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
+            app:key="oneui_shortcut_lab"
+            app:summary="@string/oneui_shortcut_lab_summary"
+            app:title="@string/oneui_shortcut_lab_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

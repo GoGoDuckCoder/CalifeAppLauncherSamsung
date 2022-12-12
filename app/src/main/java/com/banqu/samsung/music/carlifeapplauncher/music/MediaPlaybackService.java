@@ -80,10 +80,6 @@ public class MediaPlaybackService extends MediaBrowserServiceCompat implements M
             startForeground(31415926, mirror_service);
         }
 
-        if (MediaSessionConnectionOperator.getInstance(null) != null) {
-            MediaSessionConnectionOperator.getInstance(null).set_Connecting(false);
-            MediaSessionConnectionOperator.getInstance(null).set_serviceReady(true);
-        }
 
 
 //        if (adapt) {
@@ -110,6 +106,12 @@ public class MediaPlaybackService extends MediaBrowserServiceCompat implements M
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
         this.registerReceiver(musicServiceShutdownReceiver, intentFilter);
 
+
+        if (MediaSessionConnectionOperator.getInstance(null) != null) {
+            MediaSessionConnectionOperator.getInstance(null).set_Connecting(false);
+            MediaSessionConnectionOperator.getInstance(null).set_serviceReady(true);
+        }
+
     }
 
     @Override
@@ -119,12 +121,19 @@ public class MediaPlaybackService extends MediaBrowserServiceCompat implements M
             musicServiceShutdownReceiver = null;
         }
 
+        if (musicService!=null) {
+            musicService.pause();
+        }
+
+
 
         mediaSession.setActive(false);
         mediaSession.release();
         notificationManager.cancel(31415926);
 
+
         if (MediaSessionConnectionOperator.getInstance(null) != null) {
+            MediaSessionConnectionOperator.getInstance(null).set_Connecting(false);
             MediaSessionConnectionOperator.getInstance(null).set_serviceReady(false);
         }
 

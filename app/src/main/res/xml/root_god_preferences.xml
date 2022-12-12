@@ -4,16 +4,19 @@
 
     <PreferenceCategory
         android:title="导航栏助手"
-        app:iconSpaceReserved="false"
-        app:summary="覆盖原车机系统左侧侧栏。收起隐藏：点击侧栏时间">
+        app:iconSpaceReserved="false">
 
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:key="godmode"
             android:title="随车联助手启动"
             app:iconSpaceReserved="false"
             app:summary="随车联助手启动：启动车联助手主界面时，自动启动导航栏助手。要求：OneUI5.0，OneUI4.1需通过卡锁屏或者拨打电话生效。" />
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="false"
             android:key="godmode_auto"
             android:title="随Carlife启动"
@@ -37,7 +40,9 @@
     <PreferenceCategory
         android:title="界面设置"
         app:iconSpaceReserved="false">
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:entries="@array/godmode_slot_entries"
             android:entryValues="@array/godmode_slot_values"
@@ -45,7 +50,9 @@
             android:title="位置1"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:entries="@array/godmode_slot_entries"
             android:entryValues="@array/godmode_slot_values"
@@ -53,7 +60,9 @@
             android:title="位置2"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:entries="@array/godmode_slot_entries"
             android:entryValues="@array/godmode_slot_values"
@@ -61,7 +70,9 @@
             android:title="位置3"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:entries="@array/godmode_slot_entries"
             android:entryValues="@array/godmode_slot_values"
@@ -69,7 +80,9 @@
             android:title="位置4"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <ListPreference
+        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:entries="@array/godmode_slot_entries"
             android:entryValues="@array/godmode_slot_values"
@@ -77,7 +90,9 @@
             android:title="位置5"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="0"
             android:key="godmodeiconsize"
             android:selectAllOnFocus="true"
@@ -90,13 +105,17 @@
     <PreferenceCategory
         android:title="自动隐藏"
         app:iconSpaceReserved="false">
-        <SwitchPreference
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="false"
             android:key="godmodeautohide"
             android:title="自动隐藏"
             app:iconSpaceReserved="false"
             app:summary="自动隐藏侧栏：如开启，打开后默认隐藏，点击时间显示" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="3"
             android:key="godmodeautohidetime"
             android:selectAllOnFocus="true"
@@ -144,7 +163,9 @@
     <PreferenceCategory
         android:title="界面设置"
         app:iconSpaceReserved="false">
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
             android:defaultValue="100"
             android:key="godmode_opacity"
             android:selectAllOnFocus="true"
@@ -152,7 +173,9 @@
             android:title="透明度（%）"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <EditTextPreference
+        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
             android:defaultValue="55#55#55"
             android:key="godmode_rgb"
             android:selectAllOnFocus="true"

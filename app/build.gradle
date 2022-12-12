@@ -3,6 +3,9 @@ plugins {
 }
 
 android {
+
+
+
     signingConfigs {
         debug {
             storeFile file('C:\\Users\\Yichao\\test.jks')
@@ -17,8 +20,8 @@ android {
         applicationId "com.banqu.samsung.music"
         minSdk 31
         targetSdk 31
-        versionCode 11000000
-        versionName "1.1.0"
+        versionCode 12300000
+        versionName "1.2.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -70,4 +73,6 @@ dependencies {
     implementation 'androidx.draganddrop:draganddrop:1.0.0'
     implementation 'org.jsoup:jsoup:1.10.3'
     implementation 'com.google.code.gson:gson:2.8.9'
+    //noinspection GradleCompatible,GradleCompatible
+    implementation "androidx.cardview:cardview:1.0.0"
 }

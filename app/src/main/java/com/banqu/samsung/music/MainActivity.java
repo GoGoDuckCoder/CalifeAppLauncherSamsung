@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     //    private NavBar godMode;
 //    private NotificationFactory nf;
     private MusicUI musicUI;
-    private MediaSessionConnectionOperator musicServiceOperator;
+    private static MediaSessionConnectionOperator musicServiceOperator;
     private boolean has_widget = false;
 
     public static MainActivity mainActivity;
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("asdalsdlasjldk","onc:");
         mainActivity = this;
         ActivityManager.getInstance().add(this);
         Log.i("APPUI", "onCreate: ");

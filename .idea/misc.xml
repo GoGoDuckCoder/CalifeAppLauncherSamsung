@@ -3,42 +3,79 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Yichao/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout-watch/preference_material.xml" value="0.2" />
+        <entry key="..\:/Users/Yichao/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/preference_category.xml" value="0.1" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/android_fill.xml" value="0.121" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/car_front.xml" value="0.1735" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/compass_4_fill.xml" value="0.156" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/flask_fill.xml" value="0.156" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/fullscreen_line.xml" value="0.156" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/message_3_fill.xml" value="0.156" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/music.xml" value="0.129" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/music_note.xml" value="0.129" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/musicplayer_mask.xml" value="0.129" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/rocket_2_fill2.xml" value="0.156" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/drawable/side_bar_fill.xml" value="0.156" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.1" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_about.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_black_screen.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_deepinkfake.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_deeplink.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_donation.xml" value="0.12037037037037036" />
-        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_fragment_displayer.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_fragment_displayer.xml" value="0.2" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_full_app_list.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_home.xml" value="0.11980749746707194" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_main.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_notouch.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_one_ui_home.xml" value="0.1" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_phone.xml" value="0.875" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/activity_remote_control.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/app_bar_home.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/app_bar_home.xml" value="0.1" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/app_select.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/black_screen_button.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/content_home.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/content_scrolling.xml" value="0.1" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/empty_mask.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/favorite.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_dev.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_donate.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_fs.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_home.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_notifications.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/fragment_slideshow.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/godmod.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/godmode_cell.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/introductory_a.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/nav_header_home.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/oneui_background.xml" value="0.1" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/oneui_home.xml" value="0.1" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/oneui_preference_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/oneui_theme_setting_layout_tab.xml" value="0.3" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/oneui_theme_setting_layout_tabholder.xml" value="0.12107396149949341" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/setting_tab.xml" value="0.12107396149949341" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/settings_activity.xml" value="0.1" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/settings_illustration_layout.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/ta_cell.xml" value="0.14673913043478262" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/temply.xml" value="0.14673913043478262" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/layout/test.xml" value="0.14673913043478262" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/menu/activity_main_drawer.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/menu/menu_fragmentdisplayer_actionbar.xml" value="0.1" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/menu/menu_one_ui_home.xml" value="0.1824074074074074" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/menu/menu_phone.xml" value="0.1824074074074074" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.169" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_adaptivemode_preferences.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_apps_preferences.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_boot_preferences.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_exp_preferences.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_floatmenu_preferences.xml" value="0.1" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_fs_preferences.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_god_preferences.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_jump_preferences.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_music_preferences.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_notification_preferences.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_notouch_preferences.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_preferences.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_preferences.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_settings_preferences.xml" value="0.1" />
         <entry key="..\:/Users/Yichao/OnlineProject/CalifeAppLauncherSamsung/app/src/main/res/xml/root_ui_preferences.xml" value="0.12158054711246201" />
       </map>
     </option>
