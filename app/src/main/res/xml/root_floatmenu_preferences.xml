@@ -32,7 +32,7 @@
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="false"
-            android:title="模式-小圆点模式"
+            android:title="圆点模式"
             app:iconSpaceReserved="false"
             app:key="ta_dot_mode"
             app:summary="以小圆点模式启动悬浮助手" />
@@ -44,10 +44,10 @@
             android:key="ta_dot_autohide_time"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="圆点模式-自动隐藏时间"
+            android:title="折叠时间"
             app:dependency="ta_dot_mode"
             app:iconSpaceReserved="false"
-            app:summary="圆点模式-自动隐藏时间"
+            app:summary="自动折叠时间"
             app:useSimpleSummaryProvider="true" />
         <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
@@ -63,7 +63,7 @@
             app:allowDividerBelow="false"
             android:defaultValue="false"
             android:key="ta_vertical"
-            android:title="模式-垂直模式"
+            android:title="垂直模式"
             app:iconSpaceReserved="false"
             app:summary="垂直显示悬浮助手" />
 

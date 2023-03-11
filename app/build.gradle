@@ -8,7 +8,7 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\Yichao\\test.jks')
+            storeFile file('D:\\Dev\\Android\\开发密钥\\test.jks')
             storePassword 'testtest'
             keyAlias 'key0-testtest'
             keyPassword 'testtest'
@@ -20,8 +20,8 @@ android {
         applicationId "com.banqu.samsung.music"
         minSdk 31
         targetSdk 31
-        versionCode 12300000
-        versionName "1.2.3"
+        versionCode 22000000
+        versionName "2.2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -55,6 +55,7 @@ android {
 dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     implementation files('libs\\Carlife_android_platformsdk.jar')
+    implementation files('libs\\Baidu_Mtj_android_4.0.10.5.jar')
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     implementation("androidx.media:media:1.6.0")
     implementation "androidx.viewpager2:viewpager2:1.0.0"
@@ -75,4 +76,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     //noinspection GradleCompatible,GradleCompatible
     implementation "androidx.cardview:cardview:1.0.0"
+
 }

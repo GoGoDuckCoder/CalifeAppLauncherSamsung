@@ -24,7 +24,7 @@ public class StartActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"欢迎使用车联助手三星版",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(StartActivity.this, IntroducttoryActivity.class));
             } else {
-                Toast.makeText(this, "当前系统不支持三星Carlife定制版及车联助手插件！", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "非最新国行系统:不支持三星Carlife定制版,请升级。", Toast.LENGTH_LONG).show();
             }
         } else {
             //直接进入首页

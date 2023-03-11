@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowInsetsController;
 import android.widget.Toast;
 
+import com.baidu.mobstat.StatService;
 import com.banqu.samsung.music.adapter.ActivityManager;
 import com.banqu.samsung.music.adapter.MyFragmentDisplayer;
 import com.banqu.samsung.music.carlifeapplauncher.MyAccessibilityService;
@@ -21,6 +22,7 @@ import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
 import com.banqu.samsung.music.databinding.ActivityOneUiHomeBinding;
 import com.banqu.samsung.music.ui.donate.DonateFragment;
+import com.banqu.samsung.music.ui.group.GroupFragment;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -43,14 +45,13 @@ public class OneUiHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         NightMode.setCustomNightModeSetting(getWindow(), this);
         binding = ActivityOneUiHomeBinding.inflate(getLayoutInflater());
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        getWindow().setStatusBarColor(R.color.setting_background_color);
-
-//        getWindow().setStatusBarColor(getResources().getColor(R.color.white));//设置状态栏颜色
-
-
         setContentView(binding.getRoot());
+
+        //BAIDU STATIC
+        StatService.init(getApplicationContext(),"2621824db8","GDJ");
+        StatService.setAuthorizedState(getApplicationContext(),true);
+        StatService.autoTrace(getApplicationContext());
+
 
         ActivityManager.getInstance().add(this);
 
@@ -60,63 +61,12 @@ public class OneUiHomeActivity extends AppCompatActivity {
                     .replace(R.id.settings, new ShortcutsFragment())
                     .commit();
         }
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//        }
 
-//        Window window = getWindow();
-//
-//        View decorView = window.getDecorView();
-////        option=option | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;//
-//        window.setStatusBarColor(Color.TRANSPARENT);//
-//        int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-//        option=option | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-//        decorView.setSystemUiVisibility(option);
-//        w.setStatusBarColor(Color.BLACK);//白字黑底
-//        getWindow().setStatusBarColor(R.color.white);
         WindowInsetsController wc = getWindow().getInsetsController();
-//        wc.setSystemBarsAppearance(WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS, WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS);
-
 
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
-//        toolBarLayout.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
-//        {
-//            @SuppressLint("RestrictedApi")
-//            @Override
-//            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom)
-//            {
-//                if (oldBottom == bottom)
-//                {
-//                    toolBarLayout.removeOnLayoutChangeListener(this);
-//                    try
-//                    {
-//                        // 请注意参数字符串‘collapsingTextHelper’，这里对应都是Android X版本中CollapsingToolbarLayout类中声明的CollapsingTextHelper类的变量名
-//                        // 由于collapsingTextHelper是不对外提供获取的，因此，这里需要用到反射来获取这个对象
-//                        Field field = toolBarLayout.getClass().getDeclaredField("collapsingTextHelper");
-//                        field.setAccessible(true);
-//                        CollapsingTextHelper collapsingTextHelper = (CollapsingTextHelper) field.get(toolBarLayout);
-//                        field.setAccessible(false);
-//                        // 请注意‘collapsedBounds’是CollapsingTextHelper类中声明的Rect的变量名
-//                        // 这里是要获取原collapsedBounds的边界数值
-//                        Field collapsedBoundsField = field.getType().getDeclaredField("collapsedBounds");
-//                        collapsedBoundsField.setAccessible(true);
-//                        // 获取到原collapsedBounds的边界数值
-//                        Rect oldRect = (Rect) collapsedBoundsField.get(collapsingTextHelper);
-//                        collapsedBoundsField.setAccessible(false);
-//                        // 设置新的边界数值
-//                        collapsingTextHelper.setCollapsedBounds(0, oldRect.top, right, oldRect.bottom);
-//                        collapsingTextHelper.recalculate();
-//                    } catch (NoSuchFieldException | IllegalAccessException e)
-//                    {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
 
         FloatingActionButton fab = binding.fab;
         fab.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +120,9 @@ public class OneUiHomeActivity extends AppCompatActivity {
             Preference donation = findPreference("oneui_shortcut_donation");
             donation.setOnPreferenceClickListener(this);
 
+            Preference group = findPreference("oneui_shortcut_group");
+            group.setOnPreferenceClickListener(this);
+
             Preference update = findPreference("oneui_shortcut_update");
             update.setOnPreferenceClickListener(this);
             AppAnnouncement.runUpdate(requireContext(), update);
@@ -215,6 +168,13 @@ public class OneUiHomeActivity extends AppCompatActivity {
                     i5.putExtra("className", DonateFragment.class.getName());
                     startActivity(i5);
                     break;
+
+                case "oneui_shortcut_group":
+                    Intent i6 = new Intent();
+                    i6.setClassName(requireContext().getPackageName(), MyFragmentDisplayer.class.getName());
+                    i6.putExtra("className", GroupFragment.class.getName());
+                    startActivity(i6);
+                    break;
             }
 
             return true;
@@ -231,6 +191,7 @@ public class OneUiHomeActivity extends AppCompatActivity {
         boolean phone_godmode = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("godmode", false);
         boolean phone_ta = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("touchassistant", false);
         boolean phone_music = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("music_mirror", false);
+        boolean phone_music_area = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("music_area_switch", false);
         boolean phone_noti = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notification_switch", false);
 //        boolean phone_fs = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("fs", false);
         boolean phone_fs = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("fs", false);
@@ -247,7 +208,7 @@ public class OneUiHomeActivity extends AppCompatActivity {
             }
         }
 
-        if (phone_music || phone_noti) {
+        if (phone_music ||phone_music_area|| phone_noti) {
             if (!NotificationListener.isEnabled(this)) {
                 startActivity(new Intent(
                         "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));

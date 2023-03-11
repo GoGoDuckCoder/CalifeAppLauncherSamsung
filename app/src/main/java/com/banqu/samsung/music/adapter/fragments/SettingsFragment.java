@@ -33,12 +33,12 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Prefer
         fullscreen.setOnPreferenceClickListener(this);
         Preference navbar = findPreference("oneui_shortcut_navbar");
         navbar.setOnPreferenceClickListener(this);
-        Preference notification = findPreference("oneui_shortcut_notification");
-        notification.setOnPreferenceClickListener(this);
         Preference launch = findPreference("oneui_shortcut_launch");
         launch.setOnPreferenceClickListener(this);
         Preference lab = findPreference("oneui_shortcut_lab");
         lab.setOnPreferenceClickListener(this);
+        Preference noti = findPreference("oneui_shortcut_notification");
+        noti.setOnPreferenceClickListener(this);
 
 
     }

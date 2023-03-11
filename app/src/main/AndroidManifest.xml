@@ -198,4 +198,52 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+
+    <meta-data
+        android:name="BaiduMobAd_STAT_ID"
+        android:value="2621824db8" />
+
+    <!-- 渠道商编号 -->
+    <meta-data
+        android:name="BaiduMobAd_CHANNEL"
+        android:value="GDJ" />
+
+    <!-- 是否开启错误日志统计，默认为false -->
+    <meta-data
+        android:name="BaiduMobAd_EXCEPTION_LOG"
+        android:value="false" />
+
+    <!-- 日志仅在wifi网络下发送，默认为false -->
+    <meta-data
+        android:name="BaiduMobAd_ONLY_WIFI"
+        android:value="false" />
+
+    <!-- 是否获取基站位置信息 ,默认为true -->
+    <meta-data
+        android:name="BaiduMobAd_CELL_LOCATION"
+        android:value="false" />
+
+    <!-- 是否获取GPS位置信息，默认为true -->
+    <meta-data
+        android:name="BaiduMobAd_GPS_LOCATION"
+        android:value="false" />
+
+    <!-- 是否获取WIFI位置信息，默认为true -->
+    <meta-data
+        android:name="BaiduMobAd_WIFI_LOCATION"
+        android:value="false" />
+
 </manifest>

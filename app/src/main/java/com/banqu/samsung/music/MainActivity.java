@@ -21,13 +21,14 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.banqu.samsung.music.adapter.ActivityManager;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.MsgBoxUI;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NotificationFactory;
 import com.banqu.samsung.music.databinding.ActivityMainBinding;
 import com.banqu.samsung.music.carlifeapplauncher.NotificationListener;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.FakeStart;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.NavBar;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
-import com.banqu.samsung.music.carlifeapplauncher.adapter.NotificationFactory;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.TouchAssistant;
 import com.banqu.samsung.music.carlifeapplauncher.alive.Alive;
 import com.banqu.samsung.music.carlifeapplauncher.apps.AppsUI;
@@ -51,14 +52,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ActivityMainBinding binding;
-    //    private TouchAssistant ta;
-    //    private NavBar godMode;
-//    private NotificationFactory nf;
+
     private MusicUI musicUI;
+    private MsgBoxUI msgBoxUI;
     private static MediaSessionConnectionOperator musicServiceOperator;
     private boolean has_widget = false;
 
     public static MainActivity mainActivity;
+
+    public  static NotificationFactory notificationFactory;
 
 //    private BlackScreen blackScreen;
 
@@ -66,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
     //plugin
     private boolean phone_godmode;
     private boolean phone_ta;
-    private boolean phone_music;
-    private boolean phone_noti;
+    private boolean phone_music_mirror;
     private boolean phone_fs;
+    private boolean phone_noti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,53 +111,16 @@ public class MainActivity extends AppCompatActivity {
             hostinit();
             loadWidgetConfig();
         }
-//        appWidgetHost.deleteHost();
-
 
         component();
 
-//        ta = new TouchAssistant(this);
-//        godMode = new NavBar(this);
-//        nf = new NotificationFactory(this);
-//        nf.onCreate();
 
-//        call();
-//        call_new();
-
-//        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("exp", false)) {
-//            Toast.makeText(this, "未注册：体验10分钟！体验结束后将自动退出！", Toast.LENGTH_LONG).show();
-//            Timer t = new Timer();
-//            t.schedule(new TimerTask() {
-//                @Override
-//                public void run() {
-//                    if (appWidgetHost != null) {
-//                        appWidgetHost.deleteHost();
-//                    }
-//                    SharedPreferences.Editor ed = PreferenceManager.getDefaultSharedPreferences(MainActivityFinal.this).edit();
-//                    ed.clear();
-//                    ed.commit();
-//                    android.os.Process.killProcess(android.os.Process.myPid());
-//                }
-//            }, 1000 * 11 * 59);
-//        }
-
-
-        ///test
-
-//        Detect.run(this);
-//        Intent service = new Intent(this, Detect.class);
-//        startForegroundService(service);
-//        blackScreen = new BlackScreen(this);
-//        blackScreen.show();
         phone_godmode = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("godmode", false);
         phone_ta = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("touchassistant", false);
-        phone_music = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("music_mirror", false);
-        phone_noti = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notification_switch", false);
+        phone_music_mirror = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("music_mirror", false);
         phone_fs = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("fs", false);
+        phone_noti = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notification_switch", false);
 
-        if (phone_music || phone_noti) {
-            NotificationListener.ensureConnection(getApplicationContext());
-        }
 
         if (phone_godmode) {
             if (NavBar.getInstance() == null) {
@@ -169,17 +134,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if (phone_music) {
-            musicServiceOperator = MediaSessionConnectionOperator.getInstance(getApplicationContext());
-            musicServiceOperator.connect();
-        }
-
-        if (phone_noti) {
-            if(NotificationFactory.getInstance()==null)
+        if (phone_music_mirror) {
+            if( NotificationListener.isEnabled(this))
             {
-                NotificationFactory.createInstance(this);
+                musicServiceOperator = MediaSessionConnectionOperator.getInstance(getApplicationContext());
+                musicServiceOperator.connect();
+            }else {
+                Toast.makeText(this,"请重新开启音乐控制器开关,并开启读取通知权限.",Toast.LENGTH_LONG).show();
             }
         }
+        if (phone_noti) {
+            if(NotificationListener.isEnabled(this))
+            {
+                notificationFactory=NotificationFactory.getInstance(this,getComponentName());
+            }else {
+                Toast.makeText(this,"请重新开启通知助手开关,并开启读取通知权限.",Toast.LENGTH_LONG).show();
+            }
+        }
+
         if(phone_fs)
         {
           Common.immersive_on(getApplicationContext());
@@ -206,6 +178,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+
+        //add on always jump
+        jump_always();
+
+
         Log.i("APPUI", "onResume: ");
     }
 
@@ -223,8 +200,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         Log.i("APPUI", "onDestroy: ");
+
+        if(notificationFactory!=null)
+        {
+            notificationFactory.onDestroy();
+        }
         if (musicUI != null) {
             musicUI.onDestroy();
+        }
+        if(msgBoxUI!=null)
+        {
+            msgBoxUI.onDestroy();
         }
 //        ta.onDestroy();
 //        godMode.onDestroy();
@@ -261,15 +247,6 @@ public class MainActivity extends AppCompatActivity {
             musicServiceOperator.disconnect();
         }
 
-        if (phone_noti) {
-            if(NotificationFactory.getInstance()!=null)
-            {
-                NotificationFactory.getInstance().onDestroy();
-            }
-            if (NotificationListener.isReady()) {
-                NotificationListener.getInstance().killConnection(this);
-            }
-        }
 
         if(phone_fs)
         {
@@ -286,28 +263,15 @@ public class MainActivity extends AppCompatActivity {
         boolean jump = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("jump", false);
         if (jump) {
             String jump_pkg = PreferenceManager.getDefaultSharedPreferences(this).getString("jump_pkg_lp", "false");
-//            boolean close = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("close_after_jump", false);
-//            if (close) {
-//                startJump(jump_pkg);
-//                finish();
-//            } else {
-//                int delay = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("jump_delay", "2"));
-//                if (delay == 0) {
-//                    startJump(jump_pkg);
-//                } else {
-//                    new Thread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            try {
-//                                Thread.sleep(delay * 1000);
-//                                startJump(jump_pkg);
-//                            } catch (InterruptedException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    }).start();
-//                }
-//            }
+            startJump(jump_pkg);
+        }
+    }
+
+
+    private void jump_always() {
+        boolean jump_always = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("jump_always", false);
+        if (jump_always) {
+            String jump_pkg = PreferenceManager.getDefaultSharedPreferences(this).getString("jump_pkg_lp", "false");
             startJump(jump_pkg);
         }
     }
@@ -362,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static boolean is_empty_A(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getString("areaA", "music").equals("false");
+        return PreferenceManager.getDefaultSharedPreferences(context).getString("areaA", "false").equals("false");
     }
 
     public static boolean is_empty_B(Context context) {
@@ -374,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static boolean has_weidget(Context context) {
-        if (PreferenceManager.getDefaultSharedPreferences(context).getString("areaA", "music").equals("widget") ||
+        if (PreferenceManager.getDefaultSharedPreferences(context).getString("areaA", "false").equals("widget") ||
                 PreferenceManager.getDefaultSharedPreferences(context).getString("areaB", "app").equals("widget") ||
                 PreferenceManager.getDefaultSharedPreferences(context).getString("areaC", "false").equals("widget")) {
             return true;
@@ -426,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
             String plugin = PreferenceManager.getDefaultSharedPreferences(this).getString(co, "false");
 
             if (co.equals("areaA")) {
-                plugin = PreferenceManager.getDefaultSharedPreferences(this).getString(co, "music");
+                plugin = PreferenceManager.getDefaultSharedPreferences(this).getString(co, "false");
             }
 
             if (co.equals("areaB")) {
@@ -443,6 +407,15 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case "widget":
                     setupWidgetUI(location_vg);
+                    break;
+                case "msgbox":
+                    if(NotificationListener.isEnabled(this))
+                    {
+                        notificationFactory=NotificationFactory.getInstance(this,getComponentName());
+                        msgBoxUI = new MsgBoxUI(this, getLayoutInflater(), location_vg);
+                    }else {
+                        Toast.makeText(this,"请重新开启消息盒子开关,并开启读取通知权限.",Toast.LENGTH_LONG).show();
+                    }
                     break;
             }
         }

@@ -1,8 +1,10 @@
 package com.banqu.samsung.music.deeplink;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.banqu.samsung.music.adapter.ActivityManager;
+import com.banqu.samsung.music.carlifeapplauncher.adapter.NotificationFactory;
 import com.banqu.samsung.music.log.xLog;
 import com.banqu.samsung.music.carlifeapplauncher.MyAccessibilityService;
 import com.banqu.samsung.music.carlifeapplauncher.NotificationListener;
@@ -10,7 +12,6 @@ import com.banqu.samsung.music.carlifeapplauncher.adapter.Common;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.FakeStart;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.NavBar;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.NightMode;
-import com.banqu.samsung.music.carlifeapplauncher.adapter.NotificationFactory;
 import com.banqu.samsung.music.carlifeapplauncher.adapter.TouchAssistant;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +22,13 @@ public class DeepLinkService extends AppCompatActivity {
     private static String TAG = "DeepLinkService";
     public static DeepLinkService deepLinkService;
 
+    public  static NotificationFactory notificationFactory;
 
     public boolean auto_godmode;
     public boolean auto_ta;
     public boolean auto_noti;
     public boolean auto_fs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class DeepLinkService extends AppCompatActivity {
         auto_ta = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("touchassistant_auto", false);
         auto_noti = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notification_switch_auto", false);
         auto_fs = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("fs_auto", false);
+        auto_noti = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("notification_switch_auto", false);
+
 
         if (auto_godmode) {
             if (NavBar.getInstance() == null) {
@@ -58,11 +63,14 @@ public class DeepLinkService extends AppCompatActivity {
         }
 
         if (auto_noti) {
-            NotificationListener.ensureConnection(getApplicationContext());
-            if (NotificationFactory.getInstance() == null) {
-                NotificationFactory.createInstance(this);
+            if(NotificationListener.isEnabled(this))
+            {
+                notificationFactory= NotificationFactory.getInstance(this,getComponentName());
+            }else {
+                Toast.makeText(this,"请重新开启通知助手开关,并开启读取通知权限.",Toast.LENGTH_LONG).show();
             }
         }
+
 
 
         //Boot
@@ -111,17 +119,13 @@ public class DeepLinkService extends AppCompatActivity {
                 TouchAssistant.getInstance().onDestroy();
             }
         }
-        if (auto_noti) {
-            if (NotificationFactory.getInstance() != null) {
-                NotificationFactory.getInstance().onDestroy();
-            }
-            if (NotificationListener.isReady()) {
-                NotificationListener.getInstance().killConnection(this);
-            }
-        }
         if(auto_fs)
         {
             Common.immersive_off(getApplicationContext());
+        }
+        if(auto_noti && notificationFactory!=null)
+        {
+            notificationFactory.onDestroy();
         }
     }
 

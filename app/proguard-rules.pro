@@ -196,3 +196,7 @@
 -keep public class com.banqu.samsung.music.MainActivity
 
 -keep class org.jsoup.**
+
+
+-keep class com.baidu.bottom.** { *; }
+-keep class com.baidu.mobstat.** { *; }

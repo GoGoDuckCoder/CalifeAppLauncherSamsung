@@ -2,6 +2,7 @@ package com.banqu.samsung.music.carlifeapplauncher.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -20,11 +21,14 @@ import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.WindowMetrics;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.banqu.samsung.music.R;
+import com.banqu.samsung.music.carlifeapplauncher.NotificationListener;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -47,20 +51,19 @@ public class NotificationFactory {
     //Setting
     private int notification_display_seconds;
 
-
     private static NotificationFactory notificationFactory;
+    private static ArrayList<Msg> msgbox;
 
-    public static NotificationFactory getInstance() {
+    public static NotificationFactory getInstance(Context context, ComponentName cpn) {
+        if (notificationFactory == null) {
+            notificationFactory = new NotificationFactory(context, cpn);
+        }
         return notificationFactory;
     }
 
-    //require activity context
-    public static void createInstance(Context context) {
-        notificationFactory = new NotificationFactory(context);
-    }
-
-    public NotificationFactory(Context context) {
+    public NotificationFactory(Context context, ComponentName cpn) {
         this.context = context;
+        NotificationListener.requestRebind(cpn);
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         WindowMetrics windowMetrics = wm.getCurrentWindowMetrics();
         WindowInsets windowInsets = windowMetrics.getWindowInsets();
@@ -77,9 +80,13 @@ public class NotificationFactory {
         notification_background_color = ContextCompat.getColor(context, R.color.cus_notification_background_color);
         notification_background_color = ColorUtils.setAlphaComponent(notification_background_color, opacity);
         notification_text_color = ContextCompat.getColor(context, R.color.cus_notification_text_color);
+
+        msgbox = new ArrayList<>();
     }
 
     public void onDestroy() {
+//        msgbox.clear();
+        msgbox = null;
         if (notificationReceiver != null) {
             LocalBroadcastManager.getInstance(context).unregisterReceiver(notificationReceiver);
         }
@@ -90,30 +97,36 @@ public class NotificationFactory {
     public class NotificationReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context c, Intent intent) {
-            shownotification(context, intent);
+
+            Bundle bundle = intent.getExtras();
+            Log.i("TestNotification", bundle.toString());
+            if (bundle == null) {
+                return;
+            }
+            String label = bundle.get("label").toString();
+            String title = bundle.get("title").toString();
+            String text = bundle.get("text").toString();
+            String package_name = bundle.get("packagename").toString();
+
+            Msg msg = new Msg();
+            msg.label = label;
+            msg.title = title;
+            msg.text = text;
+            msg.icon = Common.loadAppInfo(context, package_name).icon;
+            msgbox.add(0,msg);
+
+
+            MsgBoxUI msgBoxUI =MsgBoxUI.isEnable();
+            if(msgBoxUI!=null)
+            {
+                msgBoxUI.update(msgbox);
+            }
+            shownotification(context, msg);
         }
     }
 
     @SuppressLint("ResourceAsColor")
-    private void shownotification(Context context, Intent intent) {
-        //dealwithdata
-
-        Bundle bundle = intent.getExtras();
-        Log.i("TestNotification", bundle.toString());
-        if (bundle == null) {
-            return;
-        }
-        //Customization
-
-        //Package
-//        String packagename = bundle.get("packagename").toString();
-//        if (!whitelist.contains(packagename)) {
-//            return;
-//        }
-
-        String label = bundle.get("label").toString();
-        String title = bundle.get("title").toString();
-        String text = bundle.get("text").toString();
+    private void shownotification(Context context, Msg msg) {
 
 
         //Init UI
@@ -147,9 +160,13 @@ public class NotificationFactory {
         TextView v_label = panel.findViewById(R.id.msg_label);
         TextView v_title = panel.findViewById(R.id.msg_title);
         TextView v_text = panel.findViewById(R.id.msg_text);
-        v_title.setText(title);
-        v_text.setText(text);
-        v_label.setText(label);
+        ImageView v_icon = panel.findViewById(R.id.msg_icon);
+
+        v_title.setText(msg.title);
+        v_text.setText(msg.text);
+        v_label.setText(msg.label);
+
+        v_icon.setImageDrawable(msg.icon);
 
         v_title.setTextColor(notification_text_color);
         v_text.setTextColor(notification_text_color);
@@ -200,8 +217,5 @@ public class NotificationFactory {
                     .build());
             r.play();
         }
-
-
     }
 }
-

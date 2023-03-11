@@ -4,13 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/setup_4">
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/setup_x_1" />
 
     <Button
         android:id="@+id/setup_done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="完成设置"
+        android:text="我同意"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

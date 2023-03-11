@@ -181,7 +181,7 @@ public class AppAnnouncement {
                     if (!version.equals(context.getString(R.string.about_version))) {
                         ((Activity)context).runOnUiThread(new Runnable() {
                             public void run() {
-                                v.setVisible(true);
+                                v.getParent().setVisible(true);
                                 v.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                                     @Override
                                     public boolean onPreferenceClick(@NonNull Preference preference) {

@@ -8,7 +8,7 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="请在手机开启助手，进入设置-应用抽屉-添加应用"
+        android:text="请在手机开启助手，添加需要启动的应用"
         android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="@+id/appdrawer"
         app:layout_constraintEnd_toEndOf="parent"

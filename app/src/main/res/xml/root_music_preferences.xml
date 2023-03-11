@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
-        app:allowDividerAbove="false"
-        app:allowDividerBelow="false"
-        android:defaultValue="false"
-        android:title="镜像服务"
-        app:iconSpaceReserved="false"
-        app:key="music_mirror"
-        app:summary="Carlife主页音频卡片适配：映射锁定的音乐播放器到系统（可实现方控）。如出现主页卡片被QQ音乐占用，或切歌卡片被占据，请卸载qq音乐并重新安装，使用qq音乐的时候，请不要授权Carlife qq音乐的读取权限，以保证镜像服务正常使用。" />
     <PreferenceCategory
-        android:title="播放控制"
+        android:title="音乐控制控制器"
         app:iconSpaceReserved="false">
         <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="false"
             android:defaultValue="false"
-            android:key="switch_preference_1"
-            android:title="控制模式-线控兼容模式"
+            android:title="音乐控制器"
             app:iconSpaceReserved="false"
-            app:summary="以线控的方式控制当前播放器，以兼容更老的播放器。无法控制时尝试开启。默认关闭" />
+            app:key="music_area_switch"
+            app:summary="添加-音乐控制器-至车机界面:\n在助手车机界面中添加用于显示及控制第三方音乐应用的音乐控制器插件。注：与映射服务独立。" />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="映射服务"
+        app:iconSpaceReserved="false">
+
+    <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        app:allowDividerAbove="false"
+        app:allowDividerBelow="false"
+        android:defaultValue="false"
+        android:title="映射服务"
+        app:iconSpaceReserved="false"
+        app:key="music_mirror"
+        app:summary="主页音频卡片适配：映射锁定的音乐播放器到系统（可实现方控）。测试需链接车机" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="播放控制"
+        app:iconSpaceReserved="false">
+
+        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
+            android:defaultValue="false"
+            android:key="switch_preference_1"
+            android:title="兼容模式"
+            app:iconSpaceReserved="false"
+            app:summary="模拟线控的方式控制当前播放器，以兼容更老的播放器。默认关闭，开启后可能导致较新的播放器无法控制。" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="播放器锁定"
@@ -31,9 +50,9 @@
             app:allowDividerBelow="true"
             android:defaultValue="false"
             android:key="lock_music_player"
-            android:title="通用服务-锁定的播放器"
+            android:title="锁定播放器"
             app:iconSpaceReserved="false"
-            app:summary="锁定播放器后，无法自动切换播放器焦点，需手动切换:设置中切换或通过在主界面中添加音乐助手，通过按钮切换" />
+            app:summary="锁定播放器后，无法自动切换播放器焦点，需手动切换:设置中切换或通过音乐控制器切换" />
         <com.banqu.samsung.music.ui.ui.OneUIListPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
@@ -41,17 +60,10 @@
             android:entries="@array/reply_entries"
             android:entryValues="@array/reply_values"
             android:key="lock_music_player_pkg"
-            android:title="当前锁定的播放器"
+            android:title="播放器"
             app:dependency="lock_music_player"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <!--        <SwitchPreference-->
-        <!--            app:dependency="music_mirror"-->
-        <!--            android:defaultValue="false"-->
-        <!--            android:key="music_mirror_autostart"-->
-        <!--            android:title="镜像服务-开机自启动"-->
-        <!--            app:iconSpaceReserved="false"-->
-        <!--            app:summary="镜像服务开机自启动，注：需手动打开系统中自启动，以及电量优化：不限制" />-->
     </PreferenceCategory>
     <PreferenceCategory
         android:title="专辑封面"
@@ -61,7 +73,7 @@
             app:allowDividerBelow="true"
             android:defaultValue="true"
             android:key="showalbum"
-            android:title="播放控制器-显示专辑封面"
+            android:title="专辑封面"
             app:iconSpaceReserved="false"
             app:summary="是否在播放控制器中显示专辑封面（如果播放器支持的话）" />
         <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
@@ -71,16 +83,9 @@
             android:key="album_musk_alpha"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="专辑图片透明度（0-255）"
+            android:title="透明度"
             app:iconSpaceReserved="false"
-            app:summary="设置播放控制器专辑封面蒙板透明度"
+            app:summary="设置播放控制器中专辑封面蒙板的透明度(0-255)"
             app:useSimpleSummaryProvider="true" />
-        <!--        <SwitchPreference-->
-        <!--            app:dependency="showalbum"-->
-        <!--            android:defaultValue="false"-->
-        <!--            android:key="album_catch"-->
-        <!--            android:title="通用服务-抓取未适配应用专辑封面"-->
-        <!--            app:iconSpaceReserved="false"-->
-        <!--            app:summary="请先关闭该服务，如无法显示专辑封面请再打开尝试。尝试从系统通知栏的音乐播放器抓取封面以适配，专辑封面会较为模糊。" />-->
     </PreferenceCategory>
 </PreferenceScreen>

@@ -356,11 +356,12 @@ public class SettingsActivity extends AppCompatActivity implements
         private boolean change(String location, String plugin) {
             boolean change = false;
 
-
+            //check if able to change
             if (plugin.equals("widget") || plugin.equals("false")) {
                 change = true;
             }
-            if (plugin.equals("app") || plugin.equals("music")) {
+
+            if (plugin.equals("app") || plugin.equals("music") || plugin.equals("msgbox")) {
                 if (!PreferenceManager.getDefaultSharedPreferences(getContext()).getString("areaA", "false").equals(plugin)
                         && !PreferenceManager.getDefaultSharedPreferences(getContext()).getString("areaB", "false").equals(plugin)
                         && !PreferenceManager.getDefaultSharedPreferences(getContext()).getString("areaC", "false").equals(plugin)) {
@@ -369,6 +370,7 @@ public class SettingsActivity extends AppCompatActivity implements
             }
 
 
+            //check with old and new value
             String oldvalue = PreferenceManager.getDefaultSharedPreferences(getContext()).getString(location, "false");
             if (oldvalue.equals("widget") && !plugin.equals("widget") && change) {
                 //remove id
@@ -400,13 +402,34 @@ public class SettingsActivity extends AppCompatActivity implements
                 }
             }
 
-            if (plugin.equals("music")) {
+            if (oldvalue.equals("music") && change) {
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
+                editor.putBoolean("music_area_switch", false);
+                editor.apply();
+            }
+
+            //new staff check permission
+            if (plugin.equals("music") && change) {
                 if (!NotificationListener.isEnabled(getContext())) {
                     startActivity(new Intent(
                             "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
                     change = false;
                 } else {
+                    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
+                    editor.putBoolean("music_area_switch", true);
+                    editor.apply();
                     change = true;
+                }
+            }
+            if (plugin.equals("msgbox") && change) {
+                if(!NotificationListener.isEnabled(getContext()))
+                {
+                    startActivity(new Intent(
+                            "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
+                    change = false;
+                }else
+                {
+                    Toast.makeText(getContext(), "请在通知助手中设置白名单！", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -482,13 +505,13 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<String> values = new ArrayList<String>();
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
-                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(), app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
             }
             entries.add(0, new SpannableString("关闭"));
             values.add(0, "false");
 
-            if (!isInstalled(lock_music_player_pkg.getValue())) {
+            if (!Common.isInstalled(getContext(), lock_music_player_pkg.getValue())) {
                 lock_music_player_pkg.setValue("false");
             }
 
@@ -501,31 +524,67 @@ public class SettingsActivity extends AppCompatActivity implements
             Preference p4 = findPreference("album_musk_alpha");
             p4.setOnPreferenceChangeListener(this);
 
-//            Preference p5 = findPreference("music_mirror_autostart");
-//            p5.setOnPreferenceChangeListener(this);
+            Preference p5 = findPreference("music_area_switch");
+            p5.setOnPreferenceChangeListener(this);
         }
 
-        private boolean isInstalled(String packageName) {
-            PackageManager packageManager = getContext().getPackageManager();// 获取packagemanager
-            List installedList = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
-            Iterator iterator = installedList.iterator();
-            PackageInfo info;
-            String name;
-            while (iterator.hasNext()) {
-                info = (PackageInfo) iterator.next();
-                name = info.packageName;
-                if (name.equals(packageName)) {
-                    return true;
-                }
-            }
-            return false;
-        }
 
         @Override
         public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
             switch (preference.getKey()) {
+                case "music_area_switch":
+                    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
+                    if ((boolean) newValue) {
+                        if (!NotificationListener.isEnabled(getContext())) {
+                            Toast.makeText(getContext(), "请同意权限后重新开启开关", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(
+                                    "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
+                            return false;
+                        }
+                        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getString("areaA", "false").equals("false")) {
+                            editor.putString("areaA", "music");
+                            editor.apply();
+                            Toast.makeText(getContext(), "已添加音乐控制器", Toast.LENGTH_LONG).show();
+                            return true;
+                        }
+                        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getString("areaB", "false").equals("false")) {
+                            editor.putString("areaB", "music");
+                            editor.apply();
+                            Toast.makeText(getContext(), "已添加音乐控制器", Toast.LENGTH_LONG).show();
+                            return true;
+                        }
+                        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getString("areaC", "false").equals("false")) {
+                            editor.putString("areaC", "music");
+                            editor.apply();
+                            Toast.makeText(getContext(), "已添加音乐控制器", Toast.LENGTH_LONG).show();
+                            return true;
+                        }
+                        Toast.makeText(getContext(), "已添加音乐控制器或无可用位置。", Toast.LENGTH_LONG).show();
+                        return false;
+                    } else {
+                        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getString("areaA", "false").equals("music")) {
+                            editor.putString("areaA", "false");
+                            editor.apply();
+                            Toast.makeText(getContext(), "已移除音乐控制器", Toast.LENGTH_LONG).show();
+                            return true;
+                        }
+                        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getString("areaB", "false").equals("music")) {
+                            editor.putString("areaB", "false");
+                            editor.apply();
+                            Toast.makeText(getContext(), "已移除音乐控制器", Toast.LENGTH_LONG).show();
+                            return true;
+                        }
+                        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getString("areaC", "false").equals("music")) {
+                            editor.putString("areaC", "false");
+                            editor.apply();
+                            Toast.makeText(getContext(), "已移除音乐控制器", Toast.LENGTH_LONG).show();
+                            return true;
+                        }
+                        return true;
+                    }
                 case "music_mirror":
                     if ((boolean) newValue == true && !NotificationListener.isEnabled(getContext())) {
+                        Toast.makeText(getContext(), "请同意权限后重新开启开关", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(
                                 "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
                         return false;
@@ -599,7 +658,7 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<String> values = new ArrayList<String>();
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
-                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(), app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
             }
             entries.add(0, new SpannableString("关闭"));
@@ -725,7 +784,7 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
 //                if (!app.packageName.toString().equals("com.banqu.samsung.music")) {
-                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(), app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
 //                }
             }
@@ -779,7 +838,7 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<String> values = new ArrayList<String>();
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
-                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(), app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
             }
 
@@ -901,7 +960,7 @@ public class SettingsActivity extends AppCompatActivity implements
             ArrayList<AppInfo> all_app = Common.getAllApps(requireContext());
             for (AppInfo app : all_app) {
 //                if (!app.packageName.equals("com.banqu.samsung.music")) {
-                entries.add(createEntrie(requireContext(),app.label.toString(), app.icon));
+                entries.add(createEntrie(requireContext(), app.label.toString(), app.icon));
                 values.add(app.packageName.toString());
 //                }
             }
@@ -1048,11 +1107,11 @@ public class SettingsActivity extends AppCompatActivity implements
 
 
     //helper functions
-    private static SpannableString createEntrie(Context context,String str, Drawable drawable) {
+    private static SpannableString createEntrie(Context context, String str, Drawable drawable) {
         String replacedStr = "i";
         final SpannableString spannableString = new SpannableString(replacedStr + "  " + str);
-        int size =context.getResources().getDimensionPixelSize(R.dimen.span_icon_size);
-        drawable.setBounds(0, 0,size,size);
+        int size = context.getResources().getDimensionPixelSize(R.dimen.span_icon_size);
+        drawable.setBounds(0, 0, size, size);
         CenteredImageSpan span = new CenteredImageSpan(drawable);
         spannableString.setSpan(span, 0, 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         return spannableString;
@@ -1159,8 +1218,7 @@ public class SettingsActivity extends AppCompatActivity implements
                             Toast.makeText(requireContext(), "请参照说明授权后，方可开启", Toast.LENGTH_LONG).show();
                             return false;
                         }
-                        if(fs_auto.isChecked())
-                        {
+                        if (fs_auto.isChecked()) {
                             fs_auto.setChecked(false);
                         }
                     }
@@ -1171,13 +1229,11 @@ public class SettingsActivity extends AppCompatActivity implements
                             Toast.makeText(requireContext(), "请参照说明授权后，方可开启", Toast.LENGTH_LONG).show();
                             return false;
                         }
-                        if(!Common.checkAccessibilityPermission(requireContext(),MyAccessibilityService.class))
-                        {
+                        if (!Common.checkAccessibilityPermission(requireContext(), MyAccessibilityService.class)) {
                             Common.requestAccessibilityPermission(requireContext());
                             return false;
                         }
-                        if(fs.isChecked())
-                        {
+                        if (fs.isChecked()) {
                             fs.setChecked(false);
                         }
                     }

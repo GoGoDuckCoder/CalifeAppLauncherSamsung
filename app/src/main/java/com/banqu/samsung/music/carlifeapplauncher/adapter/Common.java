@@ -307,7 +307,7 @@ public class Common {
 
     public static void requestIgnoreBatteryOptimizations(Context context) {
         try {
-            Toast.makeText(context, "为保证插件联机时后台运行!不使用则无后台。请放心开启！", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "为保证插件正常运行,请放心开启！", Toast.LENGTH_LONG).show();
             Timer t = new Timer();
             t.schedule(new TimerTask() {
                 @Override

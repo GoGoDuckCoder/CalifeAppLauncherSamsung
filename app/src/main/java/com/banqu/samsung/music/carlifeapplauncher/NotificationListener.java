@@ -26,21 +26,21 @@ public class NotificationListener extends NotificationListenerService {
 
     private static String TAG = "NotificationListenerService";
 
-    private boolean task_notification;
+//    private boolean task_notification =false;
 
-    private static NotificationListener instance;
-    private static boolean isReady;
+    //    private static NotificationListener instance;
+//    private static boolean isReady;
     private ArrayList<String> whitelist;
 
-    public NotificationListener() {
-        instance = this;
-        isReady = false;
-        task_notification = false;
-    }
+//    public NotificationListener() {
+//        instance = this;
+//        isReady = false;
+//        task_notification = false;
+//    }
 
-    public static NotificationListener getInstance() {
-        return instance;
-    }
+//    public static NotificationListener getInstance() {
+//        return instance;
+//    }
 
     public static boolean isEnabled(Context context) {
         return NotificationManagerCompat
@@ -48,23 +48,23 @@ public class NotificationListener extends NotificationListenerService {
                 .contains(context.getPackageName());
     }
 
-    public static boolean isReady() {
-        return instance != null && isReady;
-    }
+//    public static boolean isReady() {
+//        return instance != null && isReady;
+//    }
 
-    public static void ensureConnection(Context context) {
-        if (isReady()) {
-            Log.i(TAG, "ensureConnection: 已运行,返回");
-        } else {
-            Log.i(TAG, "ensureConnection: 未运行，重连");
-            PackageManager pm = context.getPackageManager();
-            pm.setComponentEnabledSetting(new ComponentName(context.getApplicationContext(), NotificationListener.class),
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-            pm.setComponentEnabledSetting(new ComponentName(context.getApplicationContext(), NotificationListener.class),
-                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-//            NotificationListener.requestRebind(new ComponentName(context, NotificationListener.class));
-        }
-    }
+//    public static void ensureConnection(Context context) {
+//        if (isReady()) {
+//            Log.i(TAG, "ensureConnection: 已运行,返回");
+//        } else {
+//            Log.i(TAG, "ensureConnection: 未运行，重连");
+//            PackageManager pm = context.getPackageManager();
+//            pm.setComponentEnabledSetting(new ComponentName(context.getApplicationContext(), NotificationListener.class),
+//                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+//            pm.setComponentEnabledSetting(new ComponentName(context.getApplicationContext(), NotificationListener.class),
+//                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+////            NotificationListener.requestRebind(new ComponentName(context, NotificationListener.class));
+//        }
+//    }
 //    public void toggleNotificationListenerService() {
 //        PackageManager pm = getPackageManager();
 //        pm.setComponentEnabledSetting(new ComponentName(getApplicationContext(), NotifyService.class),
@@ -85,90 +85,87 @@ public class NotificationListener extends NotificationListenerService {
 
     public void killConnection(Context context) {
         //clear all task
-        if (isReady()) {
-            Log.i(TAG, "killConnection: kill");
-            isReady = false;
-            task_notification = false;
-
-//            task_music = false;
-//            focus = null;
-//            title = null;
-//            try {
-//                task_music_timer.cancel();
-//            } catch (Exception e) {
+//        if (isReady()) {
+//            Log.i(TAG, "killConnection: kill");
+//            isReady = false;
+//            task_notification = false;
 //
-//            }
-//            task_music_timer = null;
-//            instance.requestUnbind();
-
-            PackageManager pm = context.getPackageManager();
-
-            pm.setComponentEnabledSetting(new ComponentName(context.getApplicationContext(), NotificationListener.class),
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-
-        }
+////            task_music = false;
+////            focus = null;
+////            title = null;
+////            try {
+////                task_music_timer.cancel();
+////            } catch (Exception e) {
+////
+////            }
+////            task_music_timer = null;
+////            instance.requestUnbind();
+//
+//            PackageManager pm = context.getPackageManager();
+//
+//            pm.setComponentEnabledSetting(new ComponentName(context.getApplicationContext(), NotificationListener.class),
+//                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+//
+//        }
     }
 
 
     @Override
     public void onListenerConnected() {
         Log.i(TAG, "onListenerConnected: 服务已连接");
-        isReady = true;
-        task_notification = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("notification_switch", false)
-                || PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("notification_switch_auto", false);
+//        task_notification = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("notification_switch", false)
+//                || PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("notification_switch_auto", false);
         whitelist = getwhitelist();
+        Log.i(TAG, "onListenerConnected: task_notification:");
     }
 
     @Override
     public void onListenerDisconnected() {
-        task_notification = false;
-        isReady = false;
+//        task_notification = false;
+        whitelist = null;
+//        isReady = false;
         Log.i(TAG, "onListenerDisconnected: 服务已断开");
     }
 
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
-        if (task_notification) {
-            if (!whitelist.contains(sbn.getPackageName())) {
-                return;
-            }
-            Log.i(TAG, "onNotificationPosted: got message");
-            Intent intent = new Intent();
-            Bundle bundle = new Bundle();
-            Log.i(TAG, sbn.getNotification().extras.toString());
-            Log.i(TAG, sbn.toString());
-            ApplicationInfo applicationInfo = (ApplicationInfo) sbn.getNotification().extras.get("android.appInfo");
-            bundle.putString("packagename", sbn.getPackageName());
-            bundle.putString("label", applicationInfo.loadLabel(getPackageManager()).toString());
-            bundle.putString("title", sbn.getNotification().extras.getString("android.title"));
-            bundle.putString("text", sbn.getNotification().extras.getString("android.text"));
-            intent.putExtras(bundle);
-            intent.setAction("GAODONGJIA.GetNotifications");
-            LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+//            Log.i(TAG, "onNotificationPosted: task_notification:"+task_notification);
+//        if (task_notification) {
+        if (!whitelist.contains(sbn.getPackageName())) {
+            return;
         }
+        Log.i(TAG, "onNotificationPosted: got message");
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        Log.i(TAG, sbn.getNotification().extras.toString());
+        Log.i(TAG, sbn.toString());
+        ApplicationInfo applicationInfo = (ApplicationInfo) sbn.getNotification().extras.get("android.appInfo");
+        bundle.putString("packagename", sbn.getPackageName());
+        bundle.putString("label", applicationInfo.loadLabel(getPackageManager()).toString());
+        bundle.putString("title", sbn.getNotification().extras.getString("android.title"));
+        bundle.putString("text", sbn.getNotification().extras.getString("android.text"));
+        intent.putExtras(bundle);
+        intent.setAction("GAODONGJIA.GetNotifications");
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+//        }
     }
 
     private ArrayList<String> getwhitelist() {
         Set<String> set = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getStringSet("notification_whitelist", new HashSet<>());
         ArrayList<String> temp = new ArrayList<String>();
         boolean lost = false;
-        for(String pkg : set)
-        {
-            if(Common.isInstalled(getApplicationContext(),pkg))
-            {
+        for (String pkg : set) {
+            if (Common.isInstalled(getApplicationContext(), pkg)) {
                 temp.add(pkg);
-            }
-            else
-            {
+            } else {
                 lost = true;
             }
         }
 
-        if(lost)
-        {
-            SharedPreferences.Editor ed  = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-            ed.putStringSet("notification_whitelist",new HashSet<>(temp));
+        if (lost) {
+            SharedPreferences.Editor ed = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
+            ed.putStringSet("notification_whitelist", new HashSet<>(temp));
             ed.apply();
         }
         return temp;
@@ -242,6 +239,3 @@ public class NotificationListener extends NotificationListenerService {
 //        }, 0, 500);
 //    }
 }
-
-
-

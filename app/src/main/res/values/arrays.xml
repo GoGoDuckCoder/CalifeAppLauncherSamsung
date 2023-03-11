@@ -30,6 +30,7 @@
         <item>应用抽屉</item>
         <item>音乐助手</item>
         <item>桌面小插件</item>
+        <item>消息盒子</item>
     </string-array>
 
     <string-array name="ui_plugin_values">
@@ -37,6 +38,7 @@
         <item>app</item>
         <item>music</item>
         <item>widget</item>
+        <item>msgbox</item>
     </string-array>
 
     <string-array name="ui_modes_entries">
