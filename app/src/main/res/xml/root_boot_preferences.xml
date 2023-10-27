@@ -4,8 +4,9 @@
 
     <PreferenceCategory
         android:title="前置启动"
-        app:iconSpaceReserved="false">
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false">
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -13,7 +14,7 @@
             android:title="随Carlife启动-指定应用"
             app:iconSpaceReserved="false"
             app:summary="在连接Calife时自动启动指定应用。要求：车联服务1.5以上" />
-        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:dependency="exp_autostart"
@@ -28,8 +29,9 @@
 
     <PreferenceCategory
         android:title="后置启动"
-        app:iconSpaceReserved="false">
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false">
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -37,7 +39,7 @@
             android:title="随车联助手启动-指定应用"
             app:iconSpaceReserved="false"
             app:summary="首次在车机上启动车联助手时，会直接跳转指定的应用并同时启动车联助手" />
-        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:dependency="jump"
@@ -48,7 +50,7 @@
             android:title="指定应用"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="false"
@@ -63,8 +65,8 @@
         android:title="兼容启动"
         app:iconSpaceReserved="false"
         app:summary="模拟其他品牌适配方式打开选取的应用"
-        app:isPreferenceVisible="false">
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        app:isPreferenceVisible="true">
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -72,7 +74,7 @@
             android:title="开关"
             app:iconSpaceReserved="false"
             app:summary="（不建议开启）以兼容模式启动应用。如软件为固定品牌做了特殊优化则伪装启动方式。对应用抽屉-侧栏助手中已添加的应用生效。兼容模式使用需自查兼容或群里询问：如百度地图手机版可以使三星兼容模式，宝宝巴士可使用三星vivo两个模式，乐听可使用vivo模式。兼容模式启动失败会使用默认模式启动（无提示）！！" />
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
             android:key="fake_start_configure"
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"

@@ -1,12 +1,14 @@
 <resources>
-    <string name="app_name">车联助手 X</string>
-    <string name="about_version">2.2.0</string>
+<!--    <string name="app_name">车联小窗</string>-->
+    <string name="about_version">3.5.1</string>
     <string name="app_intro">酷安 @高东假</string>
 
     <string name="title_activity_one_ui_home">酷安 @高东假</string>
     <string name="start_ass">无障碍辅助插件</string>
     <string name="ass_setting_label">助手设置</string>
     <string name="shortcut_start_music_service">启动音乐镜像服务(宏)</string>
+    <string name="xposed_description">车联助手xposed插件,未适配版本，请勿使用，暂未开放.后果自负</string>
+
     <string name="hello_blank_fragment"></string>
     <string name="about">
         【使用即默认同意并遵守以下条款】
@@ -41,16 +43,16 @@
 
     <!--    OneUI-->
     <string name="oneui_shortcut_instruction_title">使用说明</string>
-    <string name="oneui_shortcut_instruction_summary">车联助手x-三星版 使用说明</string>
-    <string name="oneui_shortcut_preview_title">车机界面</string>
-    <string name="oneui_shortcut_preview_summary">预览在车机上启动车联助手显示的用户界面</string>
+    <string name="oneui_shortcut_instruction_summary">车联助手(三星版) 使用说明</string>
+    <string name="oneui_shortcut_preview_title">助手界面预览</string>
+    <string name="oneui_shortcut_preview_summary">预览在车机中助手的用户界面</string>
     <string name="oneui_shortcut_app_title">添加应用</string>
     <string name="oneui_shortcut_app_summary">添加或删除应用抽屉中的应用</string>
     <string name="oneui_shortcut_music_title">音乐助手</string>
     <string name="oneui_shortcut_music_summary">设置音乐控制器及相关音乐映射服务</string>
 
-    <string name="oneui_shortcut_close_title">立即生效</string>
-    <string name="oneui_shortcut_close_summary">更改设置后下次启动生效或点击按钮立即生效</string>
+    <string name="oneui_shortcut_close_title">重启生效</string>
+    <string name="oneui_shortcut_close_summary">重启应用并应用更改的设置</string>
     <string name="oneui_shortcut_update_title">版本更新</string>
     <string name="oneui_shortcut_update_summary">发现版本更新</string>
     <string name="oneui_shortcut_settings_title">更多设置</string>
@@ -60,7 +62,7 @@
     <string name="oneui_shortcut_group_title">交流QQ群</string>
     <string name="oneui_shortcut_group_summary">一切与车相关的都可以来交流哦！</string>
     <string name="oneui_shortcut_settings_close">立即生效</string>
-    <string name="oneui_shortcut_settings_basic">基础玩法</string>
+    <string name="oneui_shortcut_settings_basic">基础功能</string>
     <string name="oneui_shortcut_carui_title">主界面</string>
     <string name="oneui_shortcut_carui_summary">自定义车联助手主界面</string>
     <string name="oneui_shortcut_settings_pro">专家玩机</string>
@@ -68,7 +70,7 @@
     <string name="oneui_shortcut_float_summary">深受喜爱的小白点帮您完成快捷操作</string>
     <string name="oneui_shortcut_fullscreen_title">全屏助手</string>
     <string name="oneui_shortcut_fullscreen_summary">隐藏车机导航栏</string>
-    <string name="oneui_shortcut_navbar_title">导航栏助手</string>
+    <string name="oneui_shortcut_navbar_title">侧栏助手</string>
     <string name="oneui_shortcut_navbar_summary">覆盖车机导航栏</string>
     <string name="oneui_shortcut_notification_title">通知助手</string>
     <string name="oneui_shortcut_notification_summary">收到通知时弹出悬浮通知栏</string>
@@ -78,4 +80,16 @@
     <string name="oneui_shortcut_settings_exp">实验测试</string>
     <string name="oneui_shortcut_lab_title">实验室功能</string>
     <string name="oneui_shortcut_lab_summary">更高级的功能不保证使用体验与Bug</string>
+    <string name="oneui_shortcut_settings_support">辅助功能</string>
+
+    <string name="oneui_shortcut_lockass_title">无障碍防脱</string>
+    <string name="oneui_shortcut_lockass_summary">一般不需要-特殊情况使用</string>
+
+    <string name="oneui_shortcut_notouch_title">非触屏版</string>
+    <string name="oneui_shortcut_notouch_summary">仅针对非触屏车机用户的助手</string>
+
+
+
+    <string name="provider_name_xc">com.baidu.baidumaps.oemdata.OemContentProvider</string>
+    <string name="provider_name_zs">com.banqu.samsung.OemContentProvider</string>
 </resources>

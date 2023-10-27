@@ -5,7 +5,6 @@ plugins {
 android {
 
 
-
     signingConfigs {
         debug {
             storeFile file('D:\\Dev\\Android\\开发密钥\\test.jks')
@@ -14,14 +13,16 @@ android {
             keyPassword 'testtest'
         }
     }
+
     compileSdk 31
 
+
     defaultConfig {
-        applicationId "com.banqu.samsung.music"
-        minSdk 31
+        applicationId "com.baidu.BaiduMap"
+        minSdk 30
         targetSdk 31
-        versionCode 22000000
-        versionName "2.2.0"
+        versionCode 35100000
+        versionName "3.5.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -34,11 +35,11 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -47,15 +48,29 @@ android {
     }
     buildFeatures {
         viewBinding true
-
+    }
+    flavorDimensions 'helper'
+    productFlavors {
+        xc {
+            dimension 'helper'
+            applicationId 'com.baidu.BaiduMap'
+            resValue "string","app_name","车联助手-小窗版"
+            manifestPlaceholders = [provider_name : "@string/provider_name_xc"]
+        }
+        zs {
+            dimension 'helper'
+            applicationId 'com.banqu.samsung.music'
+            resValue "string","app_name","车联助手"
+            manifestPlaceholders = [provider_name : "@string/provider_name_zs"]
+        }
     }
 
 }
 
 dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.2'
-    implementation files('libs\\Carlife_android_platformsdk.jar')
     implementation files('libs\\Baidu_Mtj_android_4.0.10.5.jar')
+    compileOnly files('libs\\api-82.jar')
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     implementation("androidx.media:media:1.6.0")
     implementation "androidx.viewpager2:viewpager2:1.0.0"

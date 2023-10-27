@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <PreferenceCategory
         android:title="通知助手"
         app:iconSpaceReserved="false">
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
+            android:defaultValue="false"
+            android:key="xc_notifications"
+            android:title="开启"
+            app:iconSpaceReserved="false"
+            app:summary="启动通知助手。仅连接后生效。" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="通知助手"
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false">
 
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -14,7 +28,7 @@
             app:iconSpaceReserved="false"
             app:summary="随车联助手启动：启动车联助手主界面时，启动通知助手" />
 
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="false"
@@ -28,7 +42,7 @@
     <PreferenceCategory
         android:title="其他设置"
         app:iconSpaceReserved="false">
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="5"
@@ -38,7 +52,7 @@
             android:title="通知显示秒数"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="100"
@@ -48,7 +62,7 @@
             android:title="通知透明度"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIMultiSelectPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIMultiSelectPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="@array/reply_values"
@@ -57,7 +71,7 @@
             android:key="notification_whitelist"
             android:title="通知白名单"
             app:iconSpaceReserved="false" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -65,9 +79,9 @@
             android:title="播放提示音"
             app:iconSpaceReserved="false"
             app:summary="在收到通知的时候，在车机端播放默认的提示音" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
-            app:allowDividerBelow="false"
+            app:allowDividerBelow="true"
             app:dependency="play_ringtone"
             android:defaultValue="100"
             android:key="play_ringtone_volume"
@@ -76,6 +90,46 @@
             android:title="提示音量(%)"
             app:iconSpaceReserved="false"
             app:summary="以当前声音大小为基准(100%)，请输入"
+            app:useSimpleSummaryProvider="true" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            android:defaultValue="120"
+            android:key="msg_box_icon_size"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="消息盒子：图标大小"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            android:defaultValue="12"
+            android:key="msg_box_font_size"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="消息盒子：字体大小"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            android:defaultValue="120"
+            android:key="msg_pop_icon_size"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="弹出通知：图标大小"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
+            android:defaultValue="12"
+            android:key="msg_pop_font_size"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="弹出通知：字体大小"
+            app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 </PreferenceScreen>

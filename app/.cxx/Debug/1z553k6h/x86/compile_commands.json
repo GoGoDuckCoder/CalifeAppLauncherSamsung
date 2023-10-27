@@ -1,7 +1,0 @@
-[
-{
-  "directory": "C:/Users/Yichao/Desktop/app/CalifeAppLauncherSamsung/app/.cxx/Debug/1z553k6h/x86",
-  "command": "C:\\Users\\Yichao\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=i686-none-linux-android28 --gcc-toolchain=C:/Users/Yichao/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Yichao/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dmusic_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC -o CMakeFiles\\music.dir\\music.cpp.o -c C:\\Users\\Yichao\\Desktop\\app\\CalifeAppLauncherSamsung\\app\\src\\main\\cpp\\music.cpp",
-  "file": "C:\\Users\\Yichao\\Desktop\\app\\CalifeAppLauncherSamsung\\app\\src\\main\\cpp\\music.cpp"
-}
-]

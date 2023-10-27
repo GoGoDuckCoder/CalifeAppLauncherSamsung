@@ -1,7 +1,0 @@
-# ninja log v5
-1	33	0	clean	3257382be9c7bb68
-3	253	680685810	CMakeFiles/music.dir/music.cpp.o	a763372ea33ebec5
-254	1472	680685812	C:/Users/Yichao/Desktop/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/build/intermediates/cxx/Debug/2vj2r4e3/obj/x86/libmusic.so	ed086aa50d242bd6
-0	10	0	clean	3257382be9c7bb68
-7	253	680713670	CMakeFiles/music.dir/music.cpp.o	a763372ea33ebec5
-253	455	680713670	C:/Users/Yichao/Desktop/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/build/intermediates/cxx/Debug/2vj2r4e3/obj/x86/libmusic.so	ed086aa50d242bd6

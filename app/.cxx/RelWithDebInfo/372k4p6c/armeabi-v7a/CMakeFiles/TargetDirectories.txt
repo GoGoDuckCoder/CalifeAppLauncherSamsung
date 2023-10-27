@@ -1,3 +1,0 @@
-C:/Users/Tang-/Desktop/WorkSpace/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/.cxx/RelWithDebInfo/372k4p6c/armeabi-v7a/CMakeFiles/music.dir
-C:/Users/Tang-/Desktop/WorkSpace/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/.cxx/RelWithDebInfo/372k4p6c/armeabi-v7a/CMakeFiles/edit_cache.dir
-C:/Users/Tang-/Desktop/WorkSpace/CalifeAppLauncherSamsung/CalifeAppLauncherSamsung/app/.cxx/RelWithDebInfo/372k4p6c/armeabi-v7a/CMakeFiles/rebuild_cache.dir

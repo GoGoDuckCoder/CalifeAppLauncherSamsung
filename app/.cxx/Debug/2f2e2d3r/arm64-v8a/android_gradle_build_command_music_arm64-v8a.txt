@@ -1,7 +1,0 @@
-Executable : C:\Users\Tang-\AppData\Local\Android\Sdk\cmake\3.18.1\bin\ninja.exe
-arguments : 
--C
-C:\Users\Tang-\Desktop\CalifeAppLauncherSamsung\CalifeAppLauncherSamsung\app\.cxx\Debug\2f2e2d3r\arm64-v8a
-music
-jvmArgs : 
-

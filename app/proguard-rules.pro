@@ -192,8 +192,8 @@
 #自定义
 -keep class * implements androidx.preference.PreferenceFragmentCompat
 -keep class * implements androidx.fragment.app.Fragment
--keep public class com.banqu.samsung.music.MainActivity
--keep public class com.banqu.samsung.music.MainActivity
+-keep public class com.baidu.BaiduMap.music.MainActivity
+-keep public class com.baidu.BaiduMap.music.MainActivity
 
 -keep class org.jsoup.**
 

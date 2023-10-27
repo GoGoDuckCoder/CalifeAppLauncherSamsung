@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.banqu.samsung.music.ui.ui.RadiusCardView
+    <com.baidu.BaiduMap.music.ui.ui.RadiusCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#00FFFFFF"
@@ -70,7 +70,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
-    </com.banqu.samsung.music.ui.ui.RadiusCardView>
+    </com.baidu.BaiduMap.music.ui.ui.RadiusCardView>
 
 
     <!--    <androidx.cardview.widget.CardView-->

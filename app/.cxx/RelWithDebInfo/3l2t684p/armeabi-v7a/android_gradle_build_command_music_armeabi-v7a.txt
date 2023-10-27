@@ -1,7 +1,0 @@
-Executable : C:\Users\Tang-\AppData\Local\Android\Sdk\cmake\3.18.1\bin\ninja.exe
-arguments : 
--C
-C:\Users\Tang-\Desktop\CalifeAppLauncherSamsung\CalifeAppLauncherSamsung\app\.cxx\RelWithDebInfo\3l2t684p\armeabi-v7a
-music
-jvmArgs : 
-

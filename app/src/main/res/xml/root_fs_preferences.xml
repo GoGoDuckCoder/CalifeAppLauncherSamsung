@@ -4,20 +4,21 @@
 
     <PreferenceCategory
         android:title="全屏助手"
-        app:iconSpaceReserved="false">
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false">
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
-            app:isPreferenceVisible="true"
+            app:isPreferenceVisible="false"
             android:defaultValue="false"
             android:key="fs"
             android:title="随车联助手启动"
             app:iconSpaceReserved="false"
             app:summary="随车联助手启动：启动车联助手主界面时，自动运行强制全屏所有应用指令。" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
-            app:isPreferenceVisible="true"
+            app:isPreferenceVisible="false"
             android:defaultValue="false"
             android:key="fs_auto"
             android:title="随Carlife启动"
@@ -26,10 +27,34 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="全屏助手"
+        app:iconSpaceReserved="false">
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
+            android:defaultValue="false"
+            android:key="xc_fs"
+            android:title="开启"
+            app:iconSpaceReserved="false"
+            app:summary="全屏显示选择的应用，隐藏车联自带侧栏，提示：可选择carlife，则主页也无侧栏。本功能可能导致问题。" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIMultiSelectPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
+            android:dependency="xc_fs"
+            android:defaultValue="@array/reply_values"
+            android:entries="@array/reply_values"
+            android:entryValues="@array/reply_entries"
+            android:key="xc_fs_list"
+            android:title="选择应用"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
     <Preference
+        app:key="fs_sum"
         android:layout="@layout/settings_illustration_layout"
         android:title="使用说明"
-        app:summary="在使用Carlife时，使所有应用支持全屏显示，您可能需要配合助手其他功能使用。如小白点助手，侧栏助手。
-            \n授权说明：\n1.电脑下载网盘全屏助手授权包.zip并解压。\n2.确保电脑有三星usb驱动，如没有请运行并安装SAMSUNG_USB_Driver_for_Mobile_Phones。\n3. 手机开启开发者选项并开启USB调试\n4.数据线连接手机至电脑。\n5.双击运行‘授权.bat’\n6再次开启助手尝试打开全屏助手开关，检查是否授权成功。\n7.注：会操作adb的直接使用以下adb代码即可: pm grant com.banqu.samsung.music android.permission.WRITE_SECURE_SETTINGS" />
+        app:summary="" />
 
 </PreferenceScreen>

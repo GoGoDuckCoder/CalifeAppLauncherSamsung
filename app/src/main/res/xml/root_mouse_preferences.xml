@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="鼠标"
+        app:iconSpaceReserved="false">
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
+            android:defaultValue="false"
+            android:key="xc_mouse"
+            android:title="开启"
+            app:iconSpaceReserved="false"
+            app:summary="开启之后,将在连接后显示鼠标。需要额外下载安装触控板插件哦！" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="界面设置"
+        app:iconSpaceReserved="false">
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
+            android:defaultValue="80"
+            android:key="xc_mouse_size"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="鼠标大小"
+            app:iconSpaceReserved="false"
+            app:summary="设置鼠标大小" />
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            android:defaultValue="0"
+            android:key="xc_mouse_speed"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="鼠标加速度"
+            app:iconSpaceReserved="false"
+            app:summary="设置加速度标量（1-10）" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
+            android:defaultValue="5"
+            android:key="xc_mouse_timeout"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="自动隐藏时间"
+            app:iconSpaceReserved="false"
+            app:summary="设置鼠标自动隐藏时间，再次移动显示，单位（秒）" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

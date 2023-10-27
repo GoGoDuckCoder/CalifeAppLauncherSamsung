@@ -1,2 +1,0 @@
-ninja: Entering directory `C:\Users\Tang-\OneDrive\WorkSpace\CalifeAppLauncherSamsung\CalifeAppLauncherSamsung\app\.cxx\RelWithDebInfo\3w5ay4e2\armeabi-v7a'
-ninja: no work to do.

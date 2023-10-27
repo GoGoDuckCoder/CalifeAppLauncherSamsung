@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.banqu.samsung.music",
+  "applicationId": "com.baidu.BaiduMap",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 22000000,
-      "versionName": "2.2.0",
+      "versionCode": 34000000,
+      "versionName": "3.4.0",
       "outputFile": "app-release.apk"
     }
   ],

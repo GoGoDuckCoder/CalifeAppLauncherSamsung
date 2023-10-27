@@ -1,2 +1,0 @@
-ninja: Entering directory `C:\Users\Yichao\Desktop\app\CalifeAppLauncherSamsung\app\.cxx\Debug\1z553k6h\arm64-v8a'
-ninja: no work to do.

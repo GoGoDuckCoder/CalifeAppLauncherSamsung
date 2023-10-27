@@ -15,7 +15,7 @@
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:title="界面分区设置">
-        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
             android:defaultValue="false"
             android:entries="@array/ui_plugin_entries"
             android:entryValues="@array/ui_plugin_values"
@@ -25,7 +25,7 @@
             app:allowDividerBelow="true"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="app"
@@ -35,7 +35,7 @@
             android:title="分区B"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="false"
@@ -58,7 +58,7 @@
     <PreferenceCategory
         app:iconSpaceReserved="false"
         app:title="界面分区比例设置">
-         <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+         <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="6"
@@ -68,7 +68,7 @@
             android:title="A区域"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="4"
@@ -78,7 +78,7 @@
             android:title="BC区域"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="4"
@@ -88,7 +88,7 @@
             android:title="B区域"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="6"
@@ -103,7 +103,7 @@
     <PreferenceCategory
         android:title="其他设置"
         app:iconSpaceReserved="false">
-        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="dark"
@@ -114,7 +114,7 @@
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
 
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -123,7 +123,7 @@
             app:iconSpaceReserved="false"
             app:summary="图片自适应,如切换了壁纸之后出现闪退，请关闭此选项，重试。" />
 
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="60"
@@ -133,7 +133,7 @@
             android:title="卡片透明度(%)"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="50"
@@ -143,7 +143,7 @@
             android:title="卡片圆角"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="15"

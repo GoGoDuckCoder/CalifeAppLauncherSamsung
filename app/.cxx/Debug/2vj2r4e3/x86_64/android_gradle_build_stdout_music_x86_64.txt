@@ -1,3 +1,0 @@
-ninja: Entering directory `C:\Users\Yichao\Desktop\CalifeAppLauncherSamsung\CalifeAppLauncherSamsung\app\.cxx\Debug\2vj2r4e3\x86_64'
-[1/2] Building CXX object CMakeFiles/music.dir/music.cpp.o
-[2/2] Linking CXX shared library C:\Users\Yichao\Desktop\CalifeAppLauncherSamsung\CalifeAppLauncherSamsung\app\build\intermediates\cxx\Debug\2vj2r4e3\obj\x86_64\libmusic.so

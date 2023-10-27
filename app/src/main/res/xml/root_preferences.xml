@@ -2,97 +2,193 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <com.banqu.samsung.music.ui.ui.OneUIMainTitlePreference
+    <com.baidu.BaiduMap.music.ui.ui.OneUIMainTitlePreference
         android:key="layoutils"
-        app:icon="@drawable/car"
         android:layout="@layout/oneui_preference_layout"
+        android:title="reserved"
         app:allowDividerAbove="false"
         app:allowDividerBelow="false"
-        app:iconSpaceReserved="false"
-        android:title="reserved"/>
+        app:icon="@drawable/car"
+        app:iconSpaceReserved="false" />
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
-        app:isPreferenceVisible="false">
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
+        app:isPreferenceVisible="false"
+        >
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
             android:icon="@drawable/display"
             app:allowDividerAbove="false"
             app:allowDividerBelow="false"
             app:key="oneui_shortcut_update"
             app:summary="@string/oneui_shortcut_update_summary"
             app:title="@string/oneui_shortcut_update_title" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/bookmark_plus"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
+            app:key="oneui_shortcut_instruction"
+            app:summary="@string/oneui_shortcut_instruction_summary"
+            app:title="@string/oneui_shortcut_instruction_title" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:title="车联小窗"
+        app:iconSpaceReserved="false"
+        app:key="xc_pc"
+        app:isPreferenceVisible="false">
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
+            android:defaultValue="false"
+            android:entries="@array/reply_entries"
+            android:entryValues="@array/reply_values"
+            android:key="oneui_shortcut_xc"
+            android:title="设置主页小窗应用"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
+            android:defaultValue="false"
+            android:entries="@array/reply_entries"
+            android:entryValues="@array/reply_values"
+            android:key="oneui_shortcut_xc_bar"
+            android:title="设置侧栏绑定的应用"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            app:iconSpaceReserved="false"
+            android:summary="小窗必须设置，侧栏如不设置则默认打开助手主界面。"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="xxx" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
+            android:defaultValue="false"
+            android:key="du"
+            android:summary="支持家，公司按钮导航；支持使用Carlife语音选择目的地、家、公司；（仅支持高德地图车机版）"
+            android:title="融合"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
-        app:title="快捷访问">
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
+        app:title="助手界面设置">
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
             android:icon="@drawable/car_front"
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             app:key="oneui_shortcut_preview"
             app:summary="@string/oneui_shortcut_preview_summary"
             app:title="@string/oneui_shortcut_preview_title" />
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/car_front"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_ui"
+            app:summary="@string/oneui_shortcut_carui_summary"
+            app:title="@string/oneui_shortcut_carui_title" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
             android:icon="@drawable/grid"
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             app:key="oneui_shortcut_app"
             app:summary="@string/oneui_shortcut_app_summary"
             app:title="@string/oneui_shortcut_app_title" />
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
-            android:icon="@drawable/bookmark_plus"
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/music"
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
-            app:key="oneui_shortcut_instruction"
-            app:summary="@string/oneui_shortcut_instruction_summary"
-            app:title="@string/oneui_shortcut_instruction_title" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        app:iconSpaceReserved="false"
-        app:title="常用功能">
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
-            android:icon="@drawable/music"
-            app:allowDividerAbove="false"
-            app:allowDividerBelow="true"
             app:key="oneui_shortcut_music"
             app:summary="@string/oneui_shortcut_music_summary"
             app:title="@string/oneui_shortcut_music_title" />
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
-            android:icon="@drawable/arrow_counterclockwise"
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="更多设置"
+        app:iconSpaceReserved="false">
+
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/side_bar_fill"
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_navbar"
+            app:summary="@string/oneui_shortcut_navbar_summary"
+            app:title="@string/oneui_shortcut_navbar_title" />
+
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/message_3_fill"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_notification"
+            app:summary="@string/oneui_shortcut_notification_summary"
+            app:title="@string/oneui_shortcut_notification_title" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/compass_4_fill"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_float"
+            app:summary="@string/oneui_shortcut_float_summary"
+            app:title="@string/oneui_shortcut_float_title" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/rocket_2_fill2"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_launch"
+            app:summary="兼容模式启动部分应用"
+            app:title="兼容模式" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/fullscreen_line"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_fullscreen"
+            app:summary="@string/oneui_shortcut_fullscreen_summary"
+            app:title="@string/oneui_shortcut_fullscreen_title" />
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/flask_fill"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:key="oneui_shortcut_support_lockass"
+            app:summary="@string/oneui_shortcut_lockass_summary"
+            app:title="@string/oneui_shortcut_lockass_title" />
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/cursor"
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
-            app:key="oneui_shortcut_close"
-            app:summary="@string/oneui_shortcut_close_summary"
-            app:title="@string/oneui_shortcut_close_title" />
+            app:key="oneui_shortcut_mouse"
+            app:summary="使用手机作为鼠标（非触屏）"
+            app:title="车载鼠标" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
         app:iconSpaceReserved="false"
-        app:title="@string/oneui_shortcut_settings_title">
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
-            android:icon="@drawable/ic_gear"
+        app:title="加入社区">
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/emoji_kiss"
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
-            app:key="oneui_shortcut_settings"
-            app:summary="@string/oneui_shortcut_settings_summary"
-            app:title="@string/oneui_shortcut_settings_title"/>
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
-            android:icon="@drawable/flask_fill"
-            app:allowDividerAbove="true"
-            app:allowDividerBelow="true"
-            app:key="oneui_shortcut_group"
-            app:summary="@string/oneui_shortcut_group_summary"
-            app:title="@string/oneui_shortcut_group_title" />
-        <com.banqu.samsung.music.ui.ui.OneUIPreference
-            android:icon="@drawable/emoji_kiss"
-            app:allowDividerAbove="true"
-            app:allowDividerBelow="false"
             app:key="oneui_shortcut_donation"
             app:summary="@string/oneui_shortcut_donation_summary"
             app:title="@string/oneui_shortcut_donation_title" />
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUIPreference
+            android:icon="@drawable/flask_fill"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="false"
+            app:key="oneui_shortcut_group"
+            app:summary="@string/oneui_shortcut_group_summary"
+            app:title="@string/oneui_shortcut_group_title" />
     </PreferenceCategory>
+
 </PreferenceScreen>

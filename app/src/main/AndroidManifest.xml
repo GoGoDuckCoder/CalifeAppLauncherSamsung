@@ -1,7 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.banqu.samsung.music">
+    package="com.baidu.BaiduMap.music">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.STATUS_BAR_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" /> <!-- <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" /> -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.BIND_APPWIDGET"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.FORCE_STOP_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <meta-data
+        android:name="BaiduMobAd_STAT_ID"
+        android:value="2621824db8" /> <!-- 渠道商编号 -->
+    <meta-data
+        android:name="BaiduMobAd_CHANNEL"
+        android:value="GDJXC" /> <!-- 是否开启错误日志统计，默认为false -->
+    <meta-data
+        android:name="BaiduMobAd_EXCEPTION_LOG"
+        android:value="false" /> <!-- 日志仅在wifi网络下发送，默认为false -->
+    <meta-data
+        android:name="BaiduMobAd_ONLY_WIFI"
+        android:value="false" /> <!-- 是否获取基站位置信息 ,默认为true -->
+    <meta-data
+        android:name="BaiduMobAd_CELL_LOCATION"
+        android:value="false" /> <!-- 是否获取GPS位置信息，默认为true -->
+    <meta-data
+        android:name="BaiduMobAd_GPS_LOCATION"
+        android:value="false" /> <!-- 是否获取WIFI位置信息，默认为true -->
+    <meta-data
+        android:name="BaiduMobAd_WIFI_LOCATION"
+        android:value="false" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -10,30 +76,69 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CalifeAppLauncherSamsung">
+        <activity
+            android:name=".DebugUi"
+            android:exported="true" />
+
+        <provider
+            android:name="com.baidu.baidumaps.oemdata.OemContentProvider"
+            android:authorities="${provider_name}"
+            android:exported="true" />
 
         <activity
-            android:name=".OneUiHomeActivity"
+            android:name=".EntranceActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="map.bar">
+            <intent-filter>
+                <action android:name="vivo.intent.action.carlink.kit" />
+
+                <category android:name="vivo.intent.category.carlink.kit" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="samsung.intent.action.carlink.kit" />
+
+                <category android:name="samsung.intent.category.carlink.kit" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MiniMapActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="map.mini">
+            <intent-filter>
+                <action android:name="samsung.intent.action.carlink.kit.map" />
+
+                <category android:name="samsung.intent.category.carlink.kit.map" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".notouch.SlaveActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notouch.RequestPermissionActivity"
             android:exported="false"
-            android:configChanges="uiMode"
+            android:theme="@style/empty_activity_theme" />
+        <activity
+            android:name=".notouch.MirrorDisplay"
+            android:exported="true" />
+        <activity
+            android:name=".OneUiHomeActivity"
+            android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="false"
             android:label="@string/title_activity_one_ui_home"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.CalifeAppLauncherSamsung.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
-            android:excludeFromRecents="false"
+            android:excludeFromRecents="true"
             android:exported="true"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:taskAffinity="com.banqu.music.CarUI">
-            <intent-filter>
-                <action android:name="samsung.intent.action.carlink.kit" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="vivo.intent.action.carlink.kit" />
-
-                <category android:name="vivo.intent.category.carlink.kit" />
-            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -46,10 +151,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".deeplink.DeepLinkService"
-            android:configChanges="uiMode"
+            android:name=".deeplink.Deeplink"
+            android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:excludeFromRecents="true"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="deep.exe"
+            android:theme="@style/empty_activity_theme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="tasker"
+                    android:scheme="banqumusic" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".deeplink.DeepLinkService"
+            android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="deep.exe">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -63,9 +189,11 @@
         </activity>
         <activity
             android:name=".deeplink.Deepinkfake"
-            android:configChanges="uiMode"
+            android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:excludeFromRecents="true"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="deep.exe">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -76,10 +204,24 @@
                     android:host="deeplinkservice"
                     android:scheme="banqumusic" />
             </intent-filter>
-        </activity>
+        </activity> <!-- <activity -->
+        <!-- android:name=".deeplink.Deepinkfake" -->
+        <!-- android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" -->
+        <!-- android:excludeFromRecents="true" -->
+        <!-- android:exported="true" -->
+        <!-- android:launchMode="singleTop"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW" /> -->
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+        <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+        <!-- <data -->
+        <!-- android:host="deeplinkservice" -->
+        <!-- android:scheme="banqumusic" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <activity
-            android:name=".welcome.StartActivity"
-            android:configChanges="uiMode"
+            android:name=".StartActivity"
+            android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -93,17 +235,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".adapter.MyFragmentDisplayer"
+            android:name=".MyFragmentDisplayer"
             android:configChanges="uiMode"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:taskAffinity="com.banqu.music.phoneUI"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".welcome.IntroducttoryActivity"
-            android:configChanges="uiMode"
-            android:exported="true"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:taskAffinity="com.banqu.music.phoneUI"
             tools:ignore="LockedOrientationActivity" />
@@ -162,88 +296,11 @@
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
+        <service
+            android:name=".notouch.MediaService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="mediaProjection" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission
-        android:name="android.permission.STATUS_BAR_SERVICE"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission
-        android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" /> <!-- <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" /> -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission
-        android:name="android.permission.WRITE_SECURE_SETTINGS"
-        tools:ignore="ProtectedPermissions" /> <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
-    <uses-permission
-        android:name="android.permission.PACKAGE_USAGE_STATS"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission
-        android:name="android.permission.BIND_APPWIDGET"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission
-        android:name="android.permission.FORCE_STOP_PACKAGES"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission
-        android:name="android.permission.QUERY_ALL_PACKAGES"
-        tools:ignore="QueryAllPackagesPermission" />
-    <uses-permission
-        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-
-
-    <meta-data
-        android:name="BaiduMobAd_STAT_ID"
-        android:value="2621824db8" />
-
-    <!-- 渠道商编号 -->
-    <meta-data
-        android:name="BaiduMobAd_CHANNEL"
-        android:value="GDJ" />
-
-    <!-- 是否开启错误日志统计，默认为false -->
-    <meta-data
-        android:name="BaiduMobAd_EXCEPTION_LOG"
-        android:value="false" />
-
-    <!-- 日志仅在wifi网络下发送，默认为false -->
-    <meta-data
-        android:name="BaiduMobAd_ONLY_WIFI"
-        android:value="false" />
-
-    <!-- 是否获取基站位置信息 ,默认为true -->
-    <meta-data
-        android:name="BaiduMobAd_CELL_LOCATION"
-        android:value="false" />
-
-    <!-- 是否获取GPS位置信息，默认为true -->
-    <meta-data
-        android:name="BaiduMobAd_GPS_LOCATION"
-        android:value="false" />
-
-    <!-- 是否获取WIFI位置信息，默认为true -->
-    <meta-data
-        android:name="BaiduMobAd_WIFI_LOCATION"
-        android:value="false" />
 
 </manifest>

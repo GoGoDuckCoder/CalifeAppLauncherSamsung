@@ -4,7 +4,7 @@
     <PreferenceCategory
         android:title="音乐控制控制器"
         app:iconSpaceReserved="false">
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="false"
             android:defaultValue="false"
@@ -16,9 +16,10 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:title="映射服务"
-        app:iconSpaceReserved="false">
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false">
 
-    <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+    <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
         app:allowDividerAbove="false"
         app:allowDividerBelow="false"
         android:defaultValue="false"
@@ -32,7 +33,7 @@
         android:title="播放控制"
         app:iconSpaceReserved="false">
 
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="false"
             android:defaultValue="false"
@@ -45,7 +46,7 @@
         android:title="播放器锁定"
         app:iconSpaceReserved="false">
 
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -53,7 +54,7 @@
             android:title="锁定播放器"
             app:iconSpaceReserved="false"
             app:summary="锁定播放器后，无法自动切换播放器焦点，需手动切换:设置中切换或通过音乐控制器切换" />
-        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="false"
@@ -68,7 +69,7 @@
     <PreferenceCategory
         android:title="专辑封面"
         app:iconSpaceReserved="false">
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="true"
@@ -76,7 +77,7 @@
             android:title="专辑封面"
             app:iconSpaceReserved="false"
             app:summary="是否在播放控制器中显示专辑封面（如果播放器支持的话）" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="80"

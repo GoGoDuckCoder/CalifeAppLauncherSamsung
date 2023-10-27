@@ -2,33 +2,43 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory
-        android:title="@string/oneui_shortcut_float_title"
-        app:iconSpaceReserved="false">
 
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
-            app:allowDividerAbove="false"
-            app:allowDividerBelow="true"
-            android:defaultValue="false"
-            android:key="touchassistant"
-            android:title="随车联助手启动"
-            app:iconSpaceReserved="false"
-            app:summary="随车联助手启动：启动车联助手主界面时，自动启动小白点助手。" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+    <PreferenceCategory
+        android:title="hide"
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false">
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="false"
             android:key="touchassistant_auto"
             android:title="随Carlife启动"
             app:iconSpaceReserved="false"
-            app:summary="随Carlife启动：启动车机连接Carlife时，自动启动小白点助手。权限要求：无障碍 版本要求：车联服务 1.5以上" />
+            app:summary="随Carlife启动：启动车机连接Carlife时，自动启动小白点助手。权限要求：无障碍 版本要求：车联服务 1.5以上"
+            app:isPreferenceVisible="false"/>
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/oneui_shortcut_float_title"
+        app:iconSpaceReserved="false">
+
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
+            app:allowDividerAbove="false"
+            app:allowDividerBelow="false"
+            android:defaultValue="false"
+            android:key="xc_ta"
+            android:title="开关"
+            app:iconSpaceReserved="false"
+            app:summary="启动小白点助手。仅连接后生效。" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory
         android:title="显示模式"
         app:iconSpaceReserved="false">
 
 
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -37,7 +47,7 @@
             app:key="ta_dot_mode"
             app:summary="以小圆点模式启动悬浮助手" />
 
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="3"
@@ -49,7 +59,7 @@
             app:iconSpaceReserved="false"
             app:summary="自动折叠时间"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -58,7 +68,7 @@
             android:title="模式-翻转模式"
             app:iconSpaceReserved="false"
             app:summary="反转悬浮助手布局" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="false"
@@ -73,7 +83,7 @@
         android:title="功能按钮设置"
         app:iconSpaceReserved="false"
         app:summary="触控助手，可以辅助完成快捷操作">
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="true"
@@ -81,7 +91,7 @@
             android:title="按钮-移动"
             app:iconSpaceReserved="false"
             app:summary="是否显示“移动”按钮在触控辅助中" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="true"
@@ -89,7 +99,7 @@
             android:title="按钮-主页"
             app:iconSpaceReserved="false"
             app:summary="是否显示“主页”按钮在触控辅助中" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="true"
@@ -97,7 +107,7 @@
             android:title="按钮-应用抽屉"
             app:iconSpaceReserved="false"
             app:summary="开启后会将收藏区的应用同步到悬浮窗口" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="true"
@@ -106,7 +116,7 @@
             app:dependency="ta_drawer"
             app:iconSpaceReserved="false"
             app:summary="开启后仅自动隐藏触控辅助中的收藏应用！" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="5"
@@ -119,7 +129,7 @@
             app:useSimpleSummaryProvider="true" />
 
 
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="false"
@@ -127,14 +137,14 @@
             android:title="按钮-返回"
             app:iconSpaceReserved="false"
             app:summary="是否显示“返回”按钮在触控辅助中，为了避免多次提示开启权限，请设置我的应用的用电设置为“无限制”。" />
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="false"
             android:key="show_app"
             android:title="按钮-最爱应用"
             app:iconSpaceReserved="false"/>
-        <com.banqu.samsung.music.ui.ui.OneUIListPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIListPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:dependency="show_app"
@@ -146,8 +156,9 @@
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
 
-        <com.banqu.samsung.music.ui.ui.OneUISwitchPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUISwitchPreference
             app:allowDividerAbove="true"
+            app:isPreferenceVisible="false"
             app:allowDividerBelow="false"
             android:defaultValue="false"
             android:key="show_kill"
@@ -157,7 +168,7 @@
     <PreferenceCategory
         android:title="界面设置"
         app:iconSpaceReserved="false">
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="false"
             app:allowDividerBelow="true"
             android:defaultValue="0"
@@ -176,7 +187,7 @@
         <!--            app:iconSpaceReserved="false"-->
         <!--            app:summary="触控助手四边圆角数值"-->
         <!--            app:useSimpleSummaryProvider="true" />-->
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="true"
             android:defaultValue="100"
@@ -186,7 +197,7 @@
             android:title="透明度（%）"
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
-        <com.banqu.samsung.music.ui.ui.OneUIEditTextPreference
+        <com.baidu.BaiduMap.music.ui.ui.OneUIEditTextPreference
             app:allowDividerAbove="true"
             app:allowDividerBelow="false"
             android:defaultValue="0#0#0"
